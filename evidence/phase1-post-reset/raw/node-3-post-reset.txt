@@ -1,0 +1,22 @@
+===== identity =====
+node-3
+192.168.0.13 100.95.145.92 fd7a:115c:a1e0::3a33:915d 
+ 18:06:35 up 34 min,  1 user,  load average: 0.00, 0.00, 0.00
+
+===== network =====
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens3             UP             192.168.0.13/24 fe80::f816:3eff:fed6:ef78/64 
+tailscale0       UNKNOWN        100.95.145.92/32 fd7a:115c:a1e0::3a33:915d/128 fe80::f89a:3ecb:556e:3d90/64 
+default via 192.168.0.1 dev ens3 proto static 
+192.168.0.0/24 dev ens3 proto kernel scope link src 192.168.0.13 
+
+===== services =====
+inactive
+inactive
+active
+
+===== leftover k3s/cni files =====
+
+===== binaries =====
+
+===== processes =====

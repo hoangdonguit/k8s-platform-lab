@@ -1,0 +1,3 @@
+NAME                     SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+p2-platform-namespaces   Synced        Healthy         2dce3505f2eeaf1ec4bedef6197ac7be93951d0d   default
+p2-root-apps             Synced        Healthy         2dce3505f2eeaf1ec4bedef6197ac7be93951d0d   default

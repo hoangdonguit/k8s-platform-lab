@@ -1,0 +1,15 @@
+NAME              STATUS   AGE
+apps              Active   2m56s
+argocd            Active   5m35s
+cert-manager      Active   2m56s
+cilium-secrets    Active   18m
+default           Active   22m
+ingress-nginx     Active   2m56s
+kube-node-lease   Active   22m
+kube-public       Active   22m
+kube-system       Active   22m
+kyverno           Active   2m56s
+longhorn-system   Active   2m56s
+metallb-system    Active   2m56s
+monitoring        Active   2m56s
+platform-system   Active   2m56s

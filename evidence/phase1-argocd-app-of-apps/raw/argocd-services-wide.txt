@@ -1,0 +1,9 @@
+NAME                                      TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE     SELECTOR
+argocd-applicationset-controller          ClusterIP   10.43.176.115   <none>        7000/TCP,8080/TCP            5m19s   app.kubernetes.io/name=argocd-applicationset-controller
+argocd-dex-server                         ClusterIP   10.43.102.5     <none>        5556/TCP,5557/TCP,5558/TCP   5m18s   app.kubernetes.io/name=argocd-dex-server
+argocd-metrics                            ClusterIP   10.43.5.247     <none>        8082/TCP                     5m18s   app.kubernetes.io/name=argocd-application-controller
+argocd-notifications-controller-metrics   ClusterIP   10.43.6.82      <none>        9001/TCP                     5m18s   app.kubernetes.io/name=argocd-notifications-controller
+argocd-redis                              ClusterIP   10.43.1.150     <none>        6379/TCP                     5m17s   app.kubernetes.io/name=argocd-redis
+argocd-repo-server                        ClusterIP   10.43.169.26    <none>        8081/TCP,8084/TCP            5m17s   app.kubernetes.io/name=argocd-repo-server
+argocd-server                             ClusterIP   10.43.50.185    <none>        80/TCP,443/TCP               5m17s   app.kubernetes.io/name=argocd-server
+argocd-server-metrics                     ClusterIP   10.43.87.253    <none>        8083/TCP                     5m16s   app.kubernetes.io/name=argocd-server

@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: p2-root-apps
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: k8s-platform-lab
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hoangdonguit/k8s-platform-lab.git
+    targetRevision: main
+    path: clusters/p2/apps
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

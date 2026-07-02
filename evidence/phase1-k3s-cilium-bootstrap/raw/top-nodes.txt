@@ -1,0 +1,4 @@
+NAME        CPU(cores)   CPU(%)   MEMORY(bytes)   MEMORY(%)   
+p2-node-1   142m         1%       1042Mi          3%          
+p2-node-2   96m          1%       834Mi           5%          
+p2-node-3   89m          1%       835Mi           5%          

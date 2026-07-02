@@ -1,0 +1,14 @@
+NAMESPACE     NAME                                      READY   STATUS    RESTARTS   AGE     IP             NODE        NOMINATED NODE   READINESS GATES
+kube-system   cilium-envoy-6jz95                        1/1     Running   0          5m12s   192.168.0.11   p2-node-1   <none>           <none>
+kube-system   cilium-envoy-qpr7d                        1/1     Running   0          5m12s   192.168.0.12   p2-node-2   <none>           <none>
+kube-system   cilium-envoy-wrx4v                        1/1     Running   0          5m12s   192.168.0.13   p2-node-3   <none>           <none>
+kube-system   cilium-ltbpb                              1/1     Running   0          5m12s   192.168.0.12   p2-node-2   <none>           <none>
+kube-system   cilium-mq297                              1/1     Running   0          5m12s   192.168.0.13   p2-node-3   <none>           <none>
+kube-system   cilium-operator-86f7579767-fdzhd          1/1     Running   0          5m12s   192.168.0.11   p2-node-1   <none>           <none>
+kube-system   cilium-rqd5b                              1/1     Running   0          5m12s   192.168.0.11   p2-node-1   <none>           <none>
+kube-system   coredns-5f5694d56b-9msxp                  1/1     Running   0          9m4s    10.42.0.187    p2-node-1   <none>           <none>
+kube-system   local-path-provisioner-58d557dc48-b7r5p   1/1     Running   0          9m4s    10.42.0.90     p2-node-1   <none>           <none>
+kube-system   metrics-server-7c86f97b8d-gdtn2           1/1     Running   0          9m4s    10.42.0.180    p2-node-1   <none>           <none>
+p2-smoke      nginx-85b9b8c477-lrsgk                    1/1     Running   0          3m32s   10.42.0.237    p2-node-1   <none>           <none>
+p2-smoke      nginx-85b9b8c477-prh4m                    1/1     Running   0          3m32s   10.42.2.25     p2-node-3   <none>           <none>
+p2-smoke      nginx-85b9b8c477-v7658                    1/1     Running   0          3m32s   10.42.1.251    p2-node-2   <none>           <none>

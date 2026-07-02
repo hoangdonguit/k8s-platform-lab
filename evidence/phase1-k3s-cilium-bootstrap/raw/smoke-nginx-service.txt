@@ -1,0 +1,2 @@
+NAME    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+nginx   ClusterIP   10.43.231.240   <none>        80/TCP    3m33s   app=nginx

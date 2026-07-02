@@ -1,0 +1,4 @@
+NAME                     READY   STATUS    RESTARTS   AGE     IP            NODE        NOMINATED NODE   READINESS GATES
+nginx-85b9b8c477-lrsgk   1/1     Running   0          3m33s   10.42.0.237   p2-node-1   <none>           <none>
+nginx-85b9b8c477-prh4m   1/1     Running   0          3m33s   10.42.2.25    p2-node-3   <none>           <none>
+nginx-85b9b8c477-v7658   1/1     Running   0          3m33s   10.42.1.251   p2-node-2   <none>           <none>

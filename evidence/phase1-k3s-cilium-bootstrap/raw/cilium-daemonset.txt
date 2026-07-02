@@ -1,0 +1,2 @@
+NAME     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE     CONTAINERS     IMAGES                                                                                                  SELECTOR
+cilium   3         3         3       3            3           kubernetes.io/os=linux   5m12s   cilium-agent   quay.io/cilium/cilium:v1.19.5@sha256:20fbbc14ac20b55a292c0dcda5571bf31cde30a7dbc68c29db3e709390ab0732   k8s-app=cilium

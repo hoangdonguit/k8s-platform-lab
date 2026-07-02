@@ -1,0 +1,61 @@
+===== nodes =====
+NAME     STATUS   ROLES           AGE   VERSION        INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+node-1   Ready    control-plane   18d   v1.35.4+k3s1   192.168.0.11   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.3-k3s1
+node-2   Ready    <none>          18d   v1.35.4+k3s1   192.168.0.12   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.3-k3s1
+node-3   Ready    <none>          18d   v1.35.4+k3s1   192.168.0.13   <none>        Ubuntu 24.04.4 LTS   6.8.0-124-generic   containerd://2.2.3-k3s1
+
+===== namespaces =====
+NAME              STATUS   AGE
+default           Active   18d
+kube-node-lease   Active   18d
+kube-public       Active   18d
+kube-system       Active   18d
+
+===== resources =====
+NAMESPACE     NAME                                          READY   STATUS      RESTARTS        AGE   IP           NODE     NOMINATED NODE   READINESS GATES
+kube-system   pod/coredns-c4dbffb5f-zbl2z                   1/1     Running     1 (3h29m ago)   18d   10.42.0.9    node-1   <none>           <none>
+kube-system   pod/helm-install-traefik-crd-rth5c            0/1     Completed   0               18d   <none>       node-1   <none>           <none>
+kube-system   pod/helm-install-traefik-mbn2z                0/1     Completed   1               18d   <none>       node-1   <none>           <none>
+kube-system   pod/local-path-provisioner-5c4dc5d66d-nwdb8   1/1     Running     1 (3h29m ago)   18d   10.42.0.10   node-1   <none>           <none>
+kube-system   pod/metrics-server-786d997795-rjhtr           1/1     Running     1 (3h29m ago)   18d   10.42.0.11   node-1   <none>           <none>
+kube-system   pod/svclb-traefik-443b9e6f-g9ngn              2/2     Running     2 (3h29m ago)   18d   10.42.0.8    node-1   <none>           <none>
+kube-system   pod/svclb-traefik-443b9e6f-j26v2              2/2     Running     2 (3h29m ago)   18d   10.42.1.4    node-2   <none>           <none>
+kube-system   pod/svclb-traefik-443b9e6f-qczvs              2/2     Running     2 (3h29m ago)   18d   10.42.2.3    node-3   <none>           <none>
+kube-system   pod/traefik-9bcdbbd9-57jcc                    1/1     Running     1 (3h29m ago)   18d   10.42.1.5    node-2   <none>           <none>
+
+NAMESPACE     NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP                              PORT(S)                      AGE   SELECTOR
+default       service/kubernetes       ClusterIP      10.43.0.1       <none>                                   443/TCP                      18d   <none>
+kube-system   service/kube-dns         ClusterIP      10.43.0.10      <none>                                   53/UDP,53/TCP,9153/TCP       18d   k8s-app=kube-dns
+kube-system   service/metrics-server   ClusterIP      10.43.69.120    <none>                                   443/TCP                      18d   k8s-app=metrics-server
+kube-system   service/traefik          LoadBalancer   10.43.107.190   192.168.0.11,192.168.0.12,192.168.0.13   80:31867/TCP,443:30515/TCP   18d   app.kubernetes.io/instance=traefik-kube-system,app.kubernetes.io/name=traefik
+
+NAMESPACE     NAME                                    DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE   CONTAINERS             IMAGES                                                  SELECTOR
+kube-system   daemonset.apps/svclb-traefik-443b9e6f   3         3         3       3            3           <none>          18d   lb-tcp-80,lb-tcp-443   rancher/klipper-lb:v0.4.15,rancher/klipper-lb:v0.4.15   app=svclb-traefik-443b9e6f
+
+NAMESPACE     NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS               IMAGES                                    SELECTOR
+kube-system   deployment.apps/coredns                  1/1     1            1           18d   coredns                  rancher/mirrored-coredns-coredns:1.14.2   k8s-app=kube-dns
+kube-system   deployment.apps/local-path-provisioner   1/1     1            1           18d   local-path-provisioner   rancher/local-path-provisioner:v0.0.35    app=local-path-provisioner
+kube-system   deployment.apps/metrics-server           1/1     1            1           18d   metrics-server           rancher/mirrored-metrics-server:v0.8.1    k8s-app=metrics-server
+kube-system   deployment.apps/traefik                  1/1     1            1           18d   traefik                  rancher/mirrored-library-traefik:3.6.13   app.kubernetes.io/instance=traefik-kube-system,app.kubernetes.io/name=traefik
+
+NAMESPACE     NAME                                                DESIRED   CURRENT   READY   AGE   CONTAINERS               IMAGES                                    SELECTOR
+kube-system   replicaset.apps/coredns-c4dbffb5f                   1         1         1       18d   coredns                  rancher/mirrored-coredns-coredns:1.14.2   k8s-app=kube-dns,pod-template-hash=c4dbffb5f
+kube-system   replicaset.apps/local-path-provisioner-5c4dc5d66d   1         1         1       18d   local-path-provisioner   rancher/local-path-provisioner:v0.0.35    app=local-path-provisioner,pod-template-hash=5c4dc5d66d
+kube-system   replicaset.apps/metrics-server-786d997795           1         1         1       18d   metrics-server           rancher/mirrored-metrics-server:v0.8.1    k8s-app=metrics-server,pod-template-hash=786d997795
+kube-system   replicaset.apps/traefik-9bcdbbd9                    1         1         1       18d   traefik                  rancher/mirrored-library-traefik:3.6.13   app.kubernetes.io/instance=traefik-kube-system,app.kubernetes.io/name=traefik,pod-template-hash=9bcdbbd9
+
+NAMESPACE     NAME                                 STATUS     COMPLETIONS   DURATION   AGE   CONTAINERS   IMAGES                                       SELECTOR
+kube-system   job.batch/helm-install-traefik       Complete   1/1           36s        18d   helm         rancher/klipper-helm:v0.9.17-build20260422   batch.kubernetes.io/controller-uid=62577b8b-12e3-4688-aa38-4c37f2eab72a
+kube-system   job.batch/helm-install-traefik-crd   Complete   1/1           35s        18d   helm         rancher/klipper-helm:v0.9.17-build20260422   batch.kubernetes.io/controller-uid=9678f5f5-e077-45f7-bf8d-9942fec70e0c
+
+===== storage =====
+NAME                   PROVISIONER             RECLAIMPOLICY   VOLUMEBINDINGMODE      ALLOWVOLUMEEXPANSION   AGE
+local-path (default)   rancher.io/local-path   Delete          WaitForFirstConsumer   false                  18d
+
+===== helmcharts =====
+NAMESPACE     NAME          REPO   CHART                                                                        VERSION   TARGETNAMESPACE   BOOTSTRAP   FAILED
+kube-system   traefik              https://%{KUBERNETES_API}%/static/charts/traefik-39.0.701+up39.0.7.tgz                                               False
+kube-system   traefik-crd          https://%{KUBERNETES_API}%/static/charts/traefik-crd-39.0.701+up39.0.7.tgz                                           False
+
+===== secret count only =====
+8

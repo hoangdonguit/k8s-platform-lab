@@ -1,0 +1,18 @@
+===== date =====
+Thu Jul  2 05:23:07 PM UTC 2026
+
+===== tailscale status =====
+100.126.121.19   donegitops         hoangxuandong2005@  linux  -                          
+100.80.105.122   knight3007-laptop  hoangxuandong2005@  linux  offline, last seen 7d ago  
+100.124.205.88   p2-node-1          hoangxuandong2005@  linux  -                          
+100.115.253.101  p2-node-2          hoangxuandong2005@  linux  -                          
+100.95.145.92    p2-node-3          hoangxuandong2005@  linux  -                          
+100.65.255.2     vm1-gateway        hoangxuandong2005@  linux  -                          
+100.71.13.10     vm2-mesh           hoangxuandong2005@  linux  idle, tx 380 rx 332        
+100.126.17.65    vm3-gitops         hoangxuandong2005@  linux  idle, tx 420 rx 300        
+
+===== vpn route state =====
+tailscale0       UNKNOWN        100.126.121.19/32 fd7a:115c:a1e0::4501:79ac/128 fe80::6047:d818:93ef:5888/64 
+tun0             UNKNOWN        192.168.108.36/24 fe80::656a:3555:b45b:76a9/64 
+192.168.0.0/24 via 192.168.108.1 dev tun0 
+192.168.120.0/23 via 192.168.108.1 dev tun0 

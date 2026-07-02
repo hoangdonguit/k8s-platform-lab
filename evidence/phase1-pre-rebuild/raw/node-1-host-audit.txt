@@ -1,0 +1,173 @@
+===== identity =====
+node-1
+192.168.0.11 10.42.0.0 10.42.0.1 100.124.205.88 fd7a:115c:a1e0::8533:cd59 
+ 17:23:30 up  3:29,  3 users,  load average: 0.15, 0.10, 0.09
+ubuntu   tty1         2026-07-02 14:51
+ubuntu   pts/0        2026-07-02 15:20 (100.126.121.19)
+
+===== resource =====
+8
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       1.2Gi        29Gi       5.8Mi       1.2Gi        30Gi
+Swap:             0B          0B          0B
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           3.2G  1.9M  3.2G   1% /run
+/dev/vda1        19G  3.1G   16G  17% /
+tmpfs            16G     0   16G   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/vda16      881M  117M  703M  15% /boot
+/dev/vda15      105M  6.2M   99M   6% /boot/efi
+tmpfs           3.2G   12K  3.2G   1% /run/user/1000
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+vda     253:0    0   20G  0 disk 
+├─vda1  253:1    0   19G  0 part /
+├─vda14 253:14   0    4M  0 part 
+├─vda15 253:15   0  106M  0 part /boot/efi
+└─vda16 259:0    0  913M  0 part /boot
+
+===== network =====
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens3             UP             192.168.0.11/24 fe80::f816:3eff:fed2:37a/64 
+flannel.1        UNKNOWN        10.42.0.0/32 fe80::5494:17ff:fec0:d24b/64 
+cni0             UP             10.42.0.1/24 fe80::5495:e8ff:fe3d:91af/64 
+vethe0a52ff6@if2 UP             fe80::58ea:bfff:fe5c:3595/64 
+veth7dc83535@if2 UP             fe80::1858:a7ff:fef6:34c0/64 
+vetha3487a79@if2 UP             fe80::f06f:52ff:fea2:6273/64 
+veth95d8e4a8@if2 UP             fe80::788f:6bff:fe2d:ee30/64 
+tailscale0       UNKNOWN        100.124.205.88/32 fd7a:115c:a1e0::8533:cd59/128 fe80::a971:fcf0:a323:c2ac/64 
+default via 192.168.0.1 dev ens3 proto static 
+10.42.0.0/24 dev cni0 proto kernel scope link src 10.42.0.1 
+10.42.1.0/24 via 10.42.1.0 dev flannel.1 onlink 
+10.42.2.0/24 via 10.42.2.0 dev flannel.1 onlink 
+192.168.0.0/24 dev ens3 proto kernel scope link src 192.168.0.11 
+
+===== services =====
+● k3s.service - Lightweight Kubernetes
+     Loaded: loaded (/etc/systemd/system/k3s.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-07-02 13:54:41 UTC; 3h 28min ago
+       Docs: https://k3s.io
+   Main PID: 820 (k3s-server)
+      Tasks: 108
+     Memory: 775.8M (peak: 896.8M)
+        CPU: 21min 37.885s
+     CGroup: /system.slice/k3s.service
+             ├─ 820 "/usr/local/bin/k3s server"
+             ├─ 997 "containerd "
+             ├─1699 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id dc738ee75e9bb206d32a4039a73a0862882b32d469e920029d29feb0e72ef477 -address /run/k3s/containerd/containerd.sock
+             ├─1732 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id 209092a52470907bbc0f7a709d5e6be51720e1d1653b1e08863ea64a840c1abd -address /run/k3s/containerd/containerd.sock
+             ├─1746 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id 2384bd8156ae89de60c3950c741553397eef58bfa4a5faf1a2f1bb98ad8a2d13 -address /run/k3s/containerd/containerd.sock
+             └─1750 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id cd66487e72fe5b31003a4159efef49b8c66393d882dab25361100f317781d0b8 -address /run/k3s/containerd/containerd.sock
+
+Jul 02 17:09:36 node-1 k3s[820]: time="2026-07-02T17:09:36Z" level=info msg="COMPACT compactRev=85851 targetCompactRev=86001 currentRev=87001"
+Jul 02 17:09:36 node-1 k3s[820]: time="2026-07-02T17:09:36Z" level=info msg="COMPACT deleted 150 rows from 150 revisions in 3.514481ms - compacted to 86001/87001"
+Jul 02 17:09:36 node-1 k3s[820]: time="2026-07-02T17:09:36Z" level=info msg="COMPACT compacted from 85851 to 86001 in 1 transactions over 4ms"
+Jul 02 17:14:35 node-1 k3s[820]: I0702 17:14:35.927041     820 cidrallocator.go:278] updated ClusterIP allocator for Service CIDR 10.43.0.0/16
+Jul 02 17:14:36 node-1 k3s[820]: time="2026-07-02T17:14:36Z" level=info msg="COMPACT compactRev=86001 targetCompactRev=86153 currentRev=87153"
+Jul 02 17:14:36 node-1 k3s[820]: time="2026-07-02T17:14:36Z" level=info msg="COMPACT deleted 152 rows from 152 revisions in 3.018906ms - compacted to 86153/87153"
+Jul 02 17:14:36 node-1 k3s[820]: time="2026-07-02T17:14:36Z" level=info msg="COMPACT compacted from 86001 to 86153 in 1 transactions over 3ms"
+Jul 02 17:19:36 node-1 k3s[820]: time="2026-07-02T17:19:36Z" level=info msg="COMPACT compactRev=86153 targetCompactRev=86305 currentRev=87305"
+Jul 02 17:19:36 node-1 k3s[820]: time="2026-07-02T17:19:36Z" level=info msg="COMPACT deleted 152 rows from 152 revisions in 3.44982ms - compacted to 86305/87305"
+Jul 02 17:19:36 node-1 k3s[820]: time="2026-07-02T17:19:36Z" level=info msg="COMPACT compacted from 86153 to 86305 in 1 transactions over 4ms"
+● tailscaled.service - Tailscale node agent
+     Loaded: loaded (/usr/lib/systemd/system/tailscaled.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-07-02 15:14:41 UTC; 2h 8min ago
+       Docs: https://tailscale.com/docs/
+   Main PID: 6285 (tailscaled)
+     Status: "Connected; hoangxuandong2005@gmail.com; 100.124.205.88 fd7a:115c:a1e0::8533:cd59"
+      Tasks: 15 (limit: 38468)
+     Memory: 18.2M (peak: 20.0M)
+        CPU: 5.098s
+     CGroup: /system.slice/tailscaled.service
+             └─6285 /usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=41641
+
+Jul 02 16:00:31 node-1 tailscaled[6285]: magicsock: endpoints changed: 115.78.100.76:58745 (stun), 115.78.100.76:41641 (stun4localport), 101.99.36.202:41641 (stun), 42.116.6.46:5147 (stun), 14.161.6.190:41641 (stun), 14.161.6.190:54040 (stun), 203.205.32.65:65038 (stun), 203.205.32.65:41641 (stun), 113.161.34.227:41641 (stun), 113.161.34.227:20878 (stun), 115.78.13.71:52318 (stun), 10.42.0.0:41641 (local), 10.42.0.1:41641 (local), 192.168.0.11:41641 (local)
+Jul 02 16:00:44 node-1 tailscaled[6285]: magicsock: disco: node [ToSkY] d:85b5573367bbcc32 now using 10.42.2.1:41641 mtu=1360 tx=6b314091e6d0
+Jul 02 16:01:12 node-1 tailscaled[6285]: magicsock: disco: node [ToSkY] d:85b5573367bbcc32 now using 10.42.2.1:41641 mtu=1360 tx=24191f618187
+Jul 02 16:01:13 node-1 tailscaled[6285]: control: controlclient direct: got TSMP disco key advertisement from 100.126.121.19 via eventbus
+Jul 02 16:01:13 node-1 tailscaled[6285]: control: controlclient direct: updating discoKey for 100.126.121.19 via mapSession
+Jul 02 16:02:10 node-1 tailscaled[6285]: magicsock: disco: node [ToSkY] d:85b5573367bbcc32 now using 10.42.2.1:41641 mtu=1360 tx=1d242056b58e
+Jul 02 17:23:12 node-1 tailscaled[6285]: control: controlclient direct: got TSMP disco key advertisement from 100.126.121.19 via eventbus
+Jul 02 17:23:12 node-1 tailscaled[6285]: control: controlclient direct: updating discoKey for 100.126.121.19 via mapSession
+Jul 02 17:23:17 node-1 tailscaled[6285]: netcheck: DetectCaptivePortal(found=false)
+Jul 02 17:23:17 node-1 tailscaled[6285]: magicsock: endpoints changed: 42.116.6.46:41641 (stun), 115.78.100.76:41641 (stun), 203.205.32.65:17895 (stun), 113.161.34.227:41641 (stun), 203.205.32.65:41641 (stun), 14.161.6.190:41641 (stun), 115.78.13.71:41641 (stun), 101.99.36.202:41641 (stun), 113.161.34.227:58486 (stun), 10.42.0.0:41641 (local), 10.42.0.1:41641 (local), 192.168.0.11:41641 (local)
+
+===== user data dirs =====
+4.0K	/mnt
+4.0K	/opt
+4.0K	/srv
+4.0K	/var/lib/boltd
+4.0K	/var/lib/dbus
+4.0K	/var/lib/git
+4.0K	/var/lib/ieee-data
+4.0K	/var/lib/libuuid
+4.0K	/var/lib/man-db
+4.0K	/var/lib/misc
+4.0K	/var/lib/os-prober
+4.0K	/var/lib/plymouth
+4.0K	/var/lib/private
+4.0K	/var/lib/python
+4.0K	/var/lib/selinux
+4.0K	/var/lib/tpm
+4.0K	/var/lib/ubuntu-release-upgrader
+4.0K	/var/lib/udisks2
+4.0K	/var/lib/unattended-upgrades
+4.0K	/var/lib/usb_modeswitch
+8.0K	/var/lib/apport
+8.0K	/var/lib/landscape
+8.0K	/var/lib/logrotate
+8.0K	/var/lib/shim-signed
+8.0K	/var/lib/sudo
+8.0K	/var/lib/vim
+12K	/var/lib/dhcpcd
+12K	/var/lib/sgml-base
+12K	/var/lib/update-manager
+16K	/var/lib/grub
+16K	/var/lib/xml-core
+20K	/var/lib/polkit-1
+20K	/var/lib/update-notifier
+28K	/var/lib/pam
+36K	/var/lib/PackageKit
+68K	/var/lib/swcatalog
+88K	/var/lib/cni
+116K	/var/lib/ucf
+120K	/var/lib/tailscale
+148K	/var/lib/snapd
+212K	/var/lib/cloud
+400K	/var/lib/kubelet
+468K	/home/ubuntu
+472K	/home
+700K	/var/lib/systemd
+1.9M	/var/lib/fwupd
+3.8M	/var/lib/command-not-found
+6.5M	/var/lib/ubuntu-advantage
+32M	/var/lib/dpkg
+186M	/var/lib/apt
+765M	/var/lib/rancher
+996M	/var/lib
+
+===== top processes =====
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         820  9.4  1.9 2050016 639588 ?      Ssl  13:54  19:42 /usr/local/bin/k3s server
+root         997  0.6  0.4 1441688 159352 ?      Sl   13:54   1:18 containerd 
+ubuntu      1943  0.5  0.2 1297348 70392 ?       Ssl  13:54   1:11 /metrics-server --cert-dir=/tmp --secure-port=10250 --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname --kubelet-use-node-status-port --metric-resolution=15s --tls-cipher-suites=TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+65532       1952  0.2  0.1 1399672 60872 ?       Ssl  13:54   0:29 /coredns -conf /etc/coredns/Corefile
+root        6285  0.0  0.1 1355432 43900 ?       Ssl  15:14   0:04 /usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=41641
+root        1930  0.0  0.1 1312548 40188 ?       Ssl  13:54   0:01 local-path-provisioner start --config /etc/config/config.json
+root         439  0.0  0.0 288952 27292 ?        SLsl 13:54   0:01 /sbin/multipathd -d -s
+root         859  0.0  0.0 110012 23204 ?        Ssl  13:54   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         386  0.0  0.0  66908 18028 ?        S<s  13:54   0:00 /usr/lib/systemd/systemd-journald
+root        1746  0.0  0.0 1241664 16824 ?       Sl   13:54   0:06 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id 2384bd8156ae89de60c3950c741553397eef58bfa4a5faf1a2f1bb98ad8a2d13 -address /run/k3s/containerd/containerd.sock
+root        1732  0.0  0.0 1241408 16536 ?       Sl   13:54   0:04 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id 209092a52470907bbc0f7a709d5e6be51720e1d1653b1e08863ea64a840c1abd -address /run/k3s/containerd/containerd.sock
+root        1750  0.0  0.0 1241664 16536 ?       Sl   13:54   0:04 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id cd66487e72fe5b31003a4159efef49b8c66393d882dab25361100f317781d0b8 -address /run/k3s/containerd/containerd.sock
+root        1699  0.0  0.0 1241408 16440 ?       Sl   13:54   0:04 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id dc738ee75e9bb206d32a4039a73a0862882b32d469e920029d29feb0e72ef477 -address /run/k3s/containerd/containerd.sock
+root           1  0.0  0.0  22836 14076 ?        Ss   13:54   0:03 /sbin/init
+root         789  0.0  0.0 468852 13612 ?        Ssl  13:54   0:00 /usr/libexec/udisks2/udisksd
+systemd+     640  0.0  0.0  21720 13280 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-resolved
+root         871  0.0  0.0 392092 13168 ?        Ssl  13:54   0:00 /usr/sbin/ModemManager
+ubuntu      4886  0.0  0.0  20432 11640 ?        Ss   14:51   0:00 /usr/lib/systemd/systemd --user
+root        6712  0.0  0.0  14960 10868 ?        Ss   15:19   0:00 sshd: ubuntu [priv]
+root       12095  0.4  0.0  14968 10700 ?        Ss   17:23   0:00 sshd: ubuntu [priv]
+systemd+     719  0.0  0.0  22424  9796 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-networkd
+root         787  0.0  0.0  18172  8952 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-logind
+root        2616  0.0  0.0  12024  8348 ?        Ss   13:59   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+polkitd      777  0.0  0.0 308164  8156 ?        Ssl  13:54   0:00 /usr/lib/polkit-1/polkitd --no-debug

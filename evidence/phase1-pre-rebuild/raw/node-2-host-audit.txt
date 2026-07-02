@@ -1,0 +1,169 @@
+===== identity =====
+node-2
+192.168.0.12 10.42.1.0 10.42.1.1 100.115.253.101 fd7a:115c:a1e0::2133:fd67 
+ 17:23:39 up  3:29,  3 users,  load average: 0.00, 0.00, 0.00
+ubuntu   tty1         2026-07-02 15:21
+ubuntu   pts/0        2026-07-02 15:48 (100.126.121.19)
+
+===== resource =====
+8
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       692Mi        14Gi       5.5Mi       1.1Gi        14Gi
+Swap:             0B          0B          0B
+Filesystem      Size  Used Avail Use% Mounted on
+tmpfs           1.6G  1.6M  1.6G   1% /run
+/dev/vda1        19G  2.8G   16G  15% /
+tmpfs           7.9G     0  7.9G   0% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+/dev/vda16      881M  117M  703M  15% /boot
+/dev/vda15      105M  6.2M   99M   6% /boot/efi
+tmpfs           1.6G   12K  1.6G   1% /run/user/1000
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+vda     253:0    0   20G  0 disk 
+├─vda1  253:1    0   19G  0 part /
+├─vda14 253:14   0    4M  0 part 
+├─vda15 253:15   0  106M  0 part /boot/efi
+└─vda16 259:0    0  913M  0 part /boot
+
+===== network =====
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+ens3             UP             192.168.0.12/24 fe80::f816:3eff:fed2:db6e/64 
+flannel.1        UNKNOWN        10.42.1.0/32 fe80::1c6f:89ff:fec1:4956/64 
+cni0             UP             10.42.1.1/24 fe80::4cf1:7cff:fe38:c1c6/64 
+veth8c07c0fb@if2 UP             fe80::5c60:77ff:fe5e:fb8c/64 
+veth00db79b5@if2 UP             fe80::c0c3:16ff:fe29:4354/64 
+tailscale0       UNKNOWN        100.115.253.101/32 fd7a:115c:a1e0::2133:fd67/128 fe80::e7df:c5cd:6317:a1a1/64 
+default via 192.168.0.1 dev ens3 proto static 
+10.42.0.0/24 via 10.42.0.0 dev flannel.1 onlink 
+10.42.1.0/24 dev cni0 proto kernel scope link src 10.42.1.1 
+10.42.2.0/24 via 10.42.2.0 dev flannel.1 onlink 
+192.168.0.0/24 dev ens3 proto kernel scope link src 192.168.0.12 
+
+===== services =====
+● k3s-agent.service - Lightweight Kubernetes
+     Loaded: loaded (/etc/systemd/system/k3s-agent.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-07-02 13:54:48 UTC; 3h 28min ago
+       Docs: https://k3s.io
+   Main PID: 828 (k3s-agent)
+      Tasks: 54
+     Memory: 312.8M (peak: 315.6M)
+        CPU: 5min 10.180s
+     CGroup: /system.slice/k3s-agent.service
+             ├─ 828 "/usr/local/bin/k3s agent"
+             ├─1017 "containerd "
+             ├─1543 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id 1a557cdfb4c2c53ce88bbaa3b121a2d38ffefc488e25d82973c31f527ad88f98 -address /run/k3s/containerd/containerd.sock
+             └─1582 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id fbd9a9b86ca3a7e355f22775549f4a23a65d1effee84aaee00452910b2a569f8 -address /run/k3s/containerd/containerd.sock
+
+Jul 02 13:54:47 node-2 k3s[828]: I0702 13:54:47.318578     828 kubelet_network.go:47] "Updating Pod CIDR" originalPodCIDR="" newPodCIDR="10.42.1.0/24"
+Jul 02 13:54:47 node-2 k3s[828]: time="2026-07-02T13:54:47Z" level=info msg="Tunnel authorizer set Kubelet Port 0.0.0.0:10250"
+Jul 02 13:54:48 node-2 k3s[828]: I0702 13:54:48.108456     828 apiserver.go:52] "Watching apiserver"
+Jul 02 13:54:48 node-2 k3s[828]: time="2026-07-02T13:54:48Z" level=info msg="Starting network policy controller version v2.6.3-k3s1, built on 2026-04-27T22:13:59Z, go1.25.9"
+Jul 02 13:54:48 node-2 k3s[828]: time="2026-07-02T13:54:48Z" level=info msg="k3s agent is up and running"
+Jul 02 13:54:48 node-2 k3s[828]: I0702 13:54:48.626304     828 network_policy_controller.go:164] Starting network policy controller
+Jul 02 13:54:48 node-2 systemd[1]: Started k3s-agent.service - Lightweight Kubernetes.
+Jul 02 13:54:48 node-2 k3s[828]: I0702 13:54:48.630912     828 desired_state_of_world_populator.go:154] "Finished populating initial desired state of world"
+Jul 02 13:54:48 node-2 k3s[828]: I0702 13:54:48.755078     828 network_policy_controller.go:179] Starting network policy controller full sync goroutine
+Jul 02 13:54:57 node-2 k3s[828]: I0702 13:54:57.411221     828 prober_manager.go:356] "Failed to trigger a manual run" probe="Readiness"
+● tailscaled.service - Tailscale node agent
+     Loaded: loaded (/usr/lib/systemd/system/tailscaled.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-07-02 15:23:03 UTC; 2h 0min ago
+       Docs: https://tailscale.com/docs/
+   Main PID: 5886 (tailscaled)
+     Status: "Connected; hoangxuandong2005@gmail.com; 100.115.253.101 fd7a:115c:a1e0::2133:fd67"
+      Tasks: 14 (limit: 19144)
+     Memory: 16.7M (peak: 18.9M)
+        CPU: 5.230s
+     CGroup: /system.slice/tailscaled.service
+             └─5886 /usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=41641
+
+Jul 02 16:00:16 node-2 tailscaled[5886]: control: controlclient direct: got TSMP disco key advertisement from 100.126.121.19 via eventbus
+Jul 02 16:00:16 node-2 tailscaled[5886]: control: controlclient direct: updating discoKey for 100.126.121.19 via mapSession
+Jul 02 16:00:55 node-2 tailscaled[5886]: netcheck: DetectCaptivePortal(found=false)
+Jul 02 16:00:55 node-2 tailscaled[5886]: magicsock: endpoints changed: 113.161.34.227:22856 (stun), 115.78.13.71:54459 (stun), 101.99.36.202:60345 (stun), 14.161.6.190:41641 (stun), 42.116.6.46:41641 (stun), 115.78.100.76:41641 (stun), 14.161.6.190:5321 (stun), 203.205.32.65:41641 (stun), 203.205.32.65:52854 (stun), 113.161.34.227:41641 (stun4localport), 10.42.1.0:41641 (local), 10.42.1.1:41641 (local), 192.168.0.12:41641 (local)
+Jul 02 16:01:16 node-2 tailscaled[5886]: control: controlclient direct: got TSMP disco key advertisement from 100.126.121.19 via eventbus
+Jul 02 16:01:16 node-2 tailscaled[5886]: control: controlclient direct: updating discoKey for 100.126.121.19 via mapSession
+Jul 02 17:23:30 node-2 tailscaled[5886]: control: controlclient direct: got TSMP disco key advertisement from 100.126.121.19 via eventbus
+Jul 02 17:23:30 node-2 tailscaled[5886]: control: controlclient direct: updating discoKey for 100.126.121.19 via mapSession
+Jul 02 17:23:33 node-2 tailscaled[5886]: netcheck: DetectCaptivePortal(found=false)
+Jul 02 17:23:33 node-2 tailscaled[5886]: magicsock: endpoints changed: 42.116.6.46:38397 (stun), 14.161.6.190:19019 (stun), 113.161.34.227:41641 (stun), 203.205.32.65:41641 (stun), 115.78.13.71:41641 (stun), 115.78.100.76:49370 (stun), 101.99.36.202:41641 (stun), 203.205.32.65:17816 (stun), 113.161.34.227:52590 (stun), 115.78.100.76:41641 (stun), 42.116.6.46:41641 (stun4localport), 10.42.1.0:41641 (local), 10.42.1.1:41641 (local), 192.168.0.12:41641 (local)
+
+===== user data dirs =====
+4.0K	/mnt
+4.0K	/opt
+4.0K	/srv
+4.0K	/var/lib/boltd
+4.0K	/var/lib/dbus
+4.0K	/var/lib/git
+4.0K	/var/lib/ieee-data
+4.0K	/var/lib/libuuid
+4.0K	/var/lib/man-db
+4.0K	/var/lib/misc
+4.0K	/var/lib/os-prober
+4.0K	/var/lib/plymouth
+4.0K	/var/lib/private
+4.0K	/var/lib/python
+4.0K	/var/lib/selinux
+4.0K	/var/lib/tpm
+4.0K	/var/lib/ubuntu-release-upgrader
+4.0K	/var/lib/udisks2
+4.0K	/var/lib/unattended-upgrades
+4.0K	/var/lib/usb_modeswitch
+8.0K	/var/lib/apport
+8.0K	/var/lib/landscape
+8.0K	/var/lib/logrotate
+8.0K	/var/lib/shim-signed
+8.0K	/var/lib/sudo
+8.0K	/var/lib/vim
+12K	/var/lib/dhcpcd
+12K	/var/lib/sgml-base
+12K	/var/lib/update-manager
+16K	/var/lib/grub
+16K	/var/lib/xml-core
+20K	/var/lib/polkit-1
+20K	/var/lib/update-notifier
+28K	/var/lib/pam
+32K	/home/ubuntu
+36K	/home
+36K	/var/lib/PackageKit
+48K	/var/lib/tailscale
+56K	/var/lib/cni
+68K	/var/lib/swcatalog
+116K	/var/lib/ucf
+148K	/var/lib/snapd
+152K	/var/lib/kubelet
+212K	/var/lib/cloud
+700K	/var/lib/systemd
+1.9M	/var/lib/fwupd
+3.8M	/var/lib/command-not-found
+6.5M	/var/lib/ubuntu-advantage
+32M	/var/lib/dpkg
+186M	/var/lib/apt
+492M	/var/lib/rancher
+723M	/var/lib
+
+===== top processes =====
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         828  1.6  1.1 1438736 191532 ?      Ssl  13:54   3:25 /usr/local/bin/k3s agent
+root        1017  0.6  0.9 1438648 155824 ?      Sl   13:54   1:15 containerd 
+65532       1677  0.0  0.6 1402360 99508 ?       Ssl  13:54   0:08 traefik traefik --entryPoints.metrics.address=:9100/tcp --entryPoints.traefik.address=:8080/tcp --entryPoints.web.address=:8000/tcp --entryPoints.websecure.address=:8443/tcp --api.dashboard=true --ping=true --metrics.prometheus=true --metrics.prometheus.entrypoint=metrics --providers.kubernetescrd --providers.kubernetescrd.allowEmptyServices=true --providers.kubernetesingress --providers.kubernetesingress.allowEmptyServices=true --providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik --entryPoints.websecure.http.tls=true --log.level=INFO
+root        5886  0.0  0.2 1355448 42528 ?       Ssl  15:23   0:05 /usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --port=41641
+root         440  0.0  0.1 288952 27292 ?        SLsl 13:54   0:01 /sbin/multipathd -d -s
+root         845  0.0  0.1 110012 23176 ?        Ssl  13:54   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+root         391  0.0  0.1  66912 17172 ?        S<s  13:54   0:00 /usr/lib/systemd/systemd-journald
+root        1543  0.0  0.1 1241664 16868 ?       Sl   13:54   0:07 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id 1a557cdfb4c2c53ce88bbaa3b121a2d38ffefc488e25d82973c31f527ad88f98 -address /run/k3s/containerd/containerd.sock
+root        1582  0.0  0.1 1241664 16468 ?       Sl   13:54   0:04 /var/lib/rancher/k3s/data/4373bc7eebb47a3f48304fd6d0af7f82c8f47cc82032776b7e85e70e3b73cf93/bin/containerd-shim-runc-v2 -namespace k8s.io -id fbd9a9b86ca3a7e355f22775549f4a23a65d1effee84aaee00452910b2a569f8 -address /run/k3s/containerd/containerd.sock
+root           1  0.0  0.0  22760 13904 ?        Ss   13:54   0:03 /sbin/init
+root         790  0.0  0.0 468852 13744 ?        Ssl  13:54   0:00 /usr/libexec/udisks2/udisksd
+systemd+     658  0.0  0.0  21588 13168 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-resolved
+root         878  0.0  0.0 392092 12892 ?        Ssl  13:54   0:00 /usr/sbin/ModemManager
+ubuntu      5354  0.0  0.0  20340 11532 ?        Ss   15:21   0:00 /usr/lib/systemd/systemd --user
+root        6926  0.0  0.0  14964 10784 ?        Ss   15:48   0:00 sshd: ubuntu [priv]
+root       10543  0.7  0.0  14964 10716 ?        Ss   17:23   0:00 sshd: ubuntu [priv]
+systemd+     720  0.0  0.0  22424  9852 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-networkd
+root         788  0.0  0.0  18168  8952 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-logind
+root        2155  0.0  0.0  12024  8352 ?        Ss   14:03   0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+polkitd      779  0.0  0.0 308164  8100 ?        Ssl  13:54   0:00 /usr/lib/polkit-1/polkitd --no-debug
+root         459  0.0  0.0  26104  7952 ?        Ss   13:54   0:00 /usr/lib/systemd/systemd-udevd
+systemd+     682  0.0  0.0  91028  7936 ?        Ssl  13:54   0:00 /usr/lib/systemd/systemd-timesyncd
+ubuntu     10641  0.0  0.0  15124  7428 ?        S    17:23   0:00 sshd: ubuntu@notty
+ubuntu      6986  0.0  0.0  15124  7212 ?        S    15:48   0:00 sshd: ubuntu@pts/0

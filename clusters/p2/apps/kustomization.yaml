@@ -4,3 +4,4 @@ resources:
   - platform-namespaces.yaml
   - ingress-nginx.yaml
   - cert-manager.yaml
+  - argocd-crds.yaml

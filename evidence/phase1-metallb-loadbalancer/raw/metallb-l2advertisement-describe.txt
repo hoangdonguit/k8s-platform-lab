@@ -1,0 +1,15 @@
+Name:         p2-l2-advertisement
+Namespace:    metallb-system
+Labels:       app.kubernetes.io/part-of=k8s-platform-lab
+Annotations:  argocd.argoproj.io/tracking-id: p2-metallb:metallb.io/L2Advertisement:metallb-system/p2-l2-advertisement
+API Version:  metallb.io/v1beta1
+Kind:         L2Advertisement
+Metadata:
+  Creation Timestamp:  2026-07-03T15:43:02Z
+  Generation:          1
+  Resource Version:    259969
+  UID:                 20ea3ebc-57a4-428f-ae45-5ac907035740
+Spec:
+  Ip Address Pools:
+    p2-private-pool
+Events:  <none>

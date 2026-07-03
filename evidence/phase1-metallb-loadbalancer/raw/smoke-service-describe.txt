@@ -1,0 +1,23 @@
+Name:                     metallb-smoke-nginx
+Namespace:                apps
+Labels:                   app=metallb-smoke-nginx
+Annotations:              metallb.io/ip-allocated-from-pool: p2-private-pool
+Selector:                 app=metallb-smoke-nginx
+Type:                     LoadBalancer
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.43.99.243
+IPs:                      10.43.99.243
+LoadBalancer Ingress:     192.168.0.240 (VIP)
+Port:                     <unset>  80/TCP
+TargetPort:               80/TCP
+NodePort:                 <unset>  30672/TCP
+Endpoints:                10.42.0.244:80,10.42.2.118:80,10.42.1.106:80
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:
+  Type    Reason        Age    From                Message
+  ----    ------        ----   ----                -------
+  Normal  IPAllocated   5m31s  metallb-controller  Assigned IP ["192.168.0.240"]
+  Normal  nodeAssigned  5m31s  metallb-speaker     announcing from node "p2-node-2" with protocol "layer2"

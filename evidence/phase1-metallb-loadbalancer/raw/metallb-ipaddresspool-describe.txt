@@ -1,0 +1,22 @@
+Name:         p2-private-pool
+Namespace:    metallb-system
+Labels:       app.kubernetes.io/part-of=k8s-platform-lab
+Annotations:  argocd.argoproj.io/tracking-id: p2-metallb:metallb.io/IPAddressPool:metallb-system/p2-private-pool
+API Version:  metallb.io/v1beta1
+Kind:         IPAddressPool
+Metadata:
+  Creation Timestamp:  2026-07-03T15:43:02Z
+  Generation:          1
+  Resource Version:    260542
+  UID:                 ccd90caa-e973-4537-a7f2-4210d328ee17
+Spec:
+  Addresses:
+    192.168.0.240-192.168.0.242
+  Auto Assign:       true
+  Avoid Buggy I Ps:  false
+Status:
+  assignedIPv4:   1
+  assignedIPv6:   0
+  availableIPv4:  2
+  availableIPv6:  0
+Events:           <none>

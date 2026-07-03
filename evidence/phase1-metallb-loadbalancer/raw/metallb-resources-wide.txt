@@ -1,0 +1,14 @@
+NAME                                      READY   STATUS    RESTARTS   AGE   IP             NODE        NOMINATED NODE   READINESS GATES
+pod/metallb-controller-75f6b7f996-mr7pm   1/1     Running   0          13m   10.42.2.143    p2-node-3   <none>           <none>
+pod/metallb-speaker-kb4k7                 1/1     Running   0          13m   192.168.0.13   p2-node-3   <none>           <none>
+pod/metallb-speaker-kfdm7                 1/1     Running   0          13m   192.168.0.11   p2-node-1   <none>           <none>
+pod/metallb-speaker-wbdwn                 1/1     Running   0          13m   192.168.0.12   p2-node-2   <none>           <none>
+
+NAME                              TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+service/metallb-webhook-service   ClusterIP   10.43.20.189   <none>        443/TCP   13m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=metallb,app.kubernetes.io/name=metallb
+
+NAME                             DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE   CONTAINERS   IMAGES                            SELECTOR
+daemonset.apps/metallb-speaker   3         3         3       3            3           kubernetes.io/os=linux   13m   speaker      quay.io/metallb/speaker:v0.16.1   app.kubernetes.io/component=speaker,app.kubernetes.io/instance=metallb,app.kubernetes.io/name=metallb
+
+NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                               SELECTOR
+deployment.apps/metallb-controller   1/1     1            1           13m   controller   quay.io/metallb/controller:v0.16.1   app.kubernetes.io/component=controller,app.kubernetes.io/instance=metallb,app.kubernetes.io/name=metallb

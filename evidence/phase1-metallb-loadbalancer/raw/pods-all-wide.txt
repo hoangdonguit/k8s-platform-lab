@@ -1,0 +1,31 @@
+NAMESPACE        NAME                                               READY   STATUS    RESTARTS      AGE     IP             NODE        NOMINATED NODE   READINESS GATES
+apps             metallb-smoke-nginx-d86d65465-2flp6                1/1     Running   0             5m36s   10.42.0.244    p2-node-1   <none>           <none>
+apps             metallb-smoke-nginx-d86d65465-2nm8g                1/1     Running   0             5m36s   10.42.1.106    p2-node-2   <none>           <none>
+apps             metallb-smoke-nginx-d86d65465-bdgwd                1/1     Running   0             5m36s   10.42.2.118    p2-node-3   <none>           <none>
+argocd           argocd-application-controller-0                    1/1     Running   1 (13h ago)   21h     10.42.1.171    p2-node-2   <none>           <none>
+argocd           argocd-applicationset-controller-99fcd6596-f5w98   1/1     Running   0             25m     10.42.0.241    p2-node-1   <none>           <none>
+argocd           argocd-dex-server-99ff57675-h97j6                  1/1     Running   4 (13h ago)   21h     10.42.1.222    p2-node-2   <none>           <none>
+argocd           argocd-notifications-controller-8596549fb6-xc7k6   1/1     Running   1 (13h ago)   21h     10.42.2.1      p2-node-3   <none>           <none>
+argocd           argocd-redis-6f6867546c-dnnd8                      1/1     Running   1 (13h ago)   21h     10.42.1.203    p2-node-2   <none>           <none>
+argocd           argocd-repo-server-59444f4bbb-7crjn                1/1     Running   1 (13h ago)   21h     10.42.2.209    p2-node-3   <none>           <none>
+argocd           argocd-server-765575f778-4qvvp                     1/1     Running   1 (13h ago)   21h     10.42.0.93     p2-node-1   <none>           <none>
+cert-manager     cert-manager-658cd654d-9qf45                       1/1     Running   0             5h35m   10.42.0.73     p2-node-1   <none>           <none>
+cert-manager     cert-manager-cainjector-54d844df76-xglj7           1/1     Running   0             5h35m   10.42.1.99     p2-node-2   <none>           <none>
+cert-manager     cert-manager-webhook-5548dcfb4d-f694x              1/1     Running   0             5h35m   10.42.2.37     p2-node-3   <none>           <none>
+ingress-nginx    ingress-nginx-controller-2fxh6                     1/1     Running   0             11h     10.42.1.96     p2-node-2   <none>           <none>
+ingress-nginx    ingress-nginx-controller-tsltb                     1/1     Running   0             11h     10.42.0.72     p2-node-1   <none>           <none>
+ingress-nginx    ingress-nginx-controller-xjbwv                     1/1     Running   0             11h     10.42.2.147    p2-node-3   <none>           <none>
+kube-system      cilium-envoy-6jz95                                 1/1     Running   1 (13h ago)   21h     192.168.0.11   p2-node-1   <none>           <none>
+kube-system      cilium-envoy-qpr7d                                 1/1     Running   1 (13h ago)   21h     192.168.0.12   p2-node-2   <none>           <none>
+kube-system      cilium-envoy-wrx4v                                 1/1     Running   1 (13h ago)   21h     192.168.0.13   p2-node-3   <none>           <none>
+kube-system      cilium-ltbpb                                       1/1     Running   1 (13h ago)   21h     192.168.0.12   p2-node-2   <none>           <none>
+kube-system      cilium-mq297                                       1/1     Running   1 (13h ago)   21h     192.168.0.13   p2-node-3   <none>           <none>
+kube-system      cilium-operator-86f7579767-fdzhd                   1/1     Running   1 (13h ago)   21h     192.168.0.11   p2-node-1   <none>           <none>
+kube-system      cilium-rqd5b                                       1/1     Running   1 (13h ago)   21h     192.168.0.11   p2-node-1   <none>           <none>
+kube-system      coredns-5f5694d56b-9msxp                           1/1     Running   1 (13h ago)   21h     10.42.0.243    p2-node-1   <none>           <none>
+kube-system      local-path-provisioner-58d557dc48-b7r5p            1/1     Running   1 (13h ago)   21h     10.42.0.37     p2-node-1   <none>           <none>
+kube-system      metrics-server-7c86f97b8d-gdtn2                    1/1     Running   1 (13h ago)   21h     10.42.0.6      p2-node-1   <none>           <none>
+metallb-system   metallb-controller-75f6b7f996-mr7pm                1/1     Running   0             13m     10.42.2.143    p2-node-3   <none>           <none>
+metallb-system   metallb-speaker-kb4k7                              1/1     Running   0             13m     192.168.0.13   p2-node-3   <none>           <none>
+metallb-system   metallb-speaker-kfdm7                              1/1     Running   0             13m     192.168.0.11   p2-node-1   <none>           <none>
+metallb-system   metallb-speaker-wbdwn                              1/1     Running   0             13m     192.168.0.12   p2-node-2   <none>           <none>

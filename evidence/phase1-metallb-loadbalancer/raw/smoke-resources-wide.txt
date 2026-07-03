@@ -1,0 +1,16 @@
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES         SELECTOR
+deployment.apps/metallb-smoke-nginx   3/3     3            3           5m33s   nginx        nginx:alpine   app=metallb-smoke-nginx
+
+NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE     SELECTOR
+service/metallb-smoke-nginx   LoadBalancer   10.43.99.243   192.168.0.240   80:30672/TCP   5m31s   app=metallb-smoke-nginx
+
+NAME                                      READY   STATUS    RESTARTS   AGE     IP            NODE        NOMINATED NODE   READINESS GATES
+pod/metallb-smoke-nginx-d86d65465-2flp6   1/1     Running   0          5m33s   10.42.0.244   p2-node-1   <none>           <none>
+pod/metallb-smoke-nginx-d86d65465-2nm8g   1/1     Running   0          5m33s   10.42.1.106   p2-node-2   <none>           <none>
+pod/metallb-smoke-nginx-d86d65465-bdgwd   1/1     Running   0          5m33s   10.42.2.118   p2-node-3   <none>           <none>
+
+NAME                            ENDPOINTS                                      AGE
+endpoints/metallb-smoke-nginx   10.42.0.244:80,10.42.1.106:80,10.42.2.118:80   5m30s
+
+NAME                                                       ADDRESSTYPE   PORTS   ENDPOINTS                             AGE
+endpointslice.discovery.k8s.io/metallb-smoke-nginx-dcvlq   IPv4          80      10.42.0.244,10.42.2.118,10.42.1.106   5m30s

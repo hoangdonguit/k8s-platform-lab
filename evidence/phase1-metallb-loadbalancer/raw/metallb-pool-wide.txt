@@ -1,0 +1,5 @@
+NAME                                       AUTO ASSIGN   AVOID BUGGY IPS   ADDRESSES
+ipaddresspool.metallb.io/p2-private-pool   true          false             ["192.168.0.240-192.168.0.242"]
+
+NAME                                             IPADDRESSPOOLS        IPADDRESSPOOL SELECTORS   INTERFACES   NODE SELECTORS
+l2advertisement.metallb.io/p2-l2-advertisement   ["p2-private-pool"]                                          

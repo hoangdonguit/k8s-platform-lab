@@ -1,0 +1,21 @@
+Name:         selfsigned-cluster-issuer
+Namespace:    
+Labels:       app.kubernetes.io/part-of=k8s-platform-lab
+Annotations:  argocd.argoproj.io/tracking-id: p2-cert-manager:cert-manager.io/ClusterIssuer:cert-manager/selfsigned-cluster-issuer
+API Version:  cert-manager.io/v1
+Kind:         ClusterIssuer
+Metadata:
+  Creation Timestamp:  2026-07-03T10:15:20Z
+  Generation:          1
+  Resource Version:    170696
+  UID:                 8f48d94e-01a1-4c69-817b-c24a97509d08
+Spec:
+  Self Signed:
+Status:
+  Conditions:
+    Last Transition Time:  2026-07-03T10:15:21Z
+    Observed Generation:   1
+    Reason:                IsReady
+    Status:                True
+    Type:                  Ready
+Events:                    <none>

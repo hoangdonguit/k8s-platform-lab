@@ -1,0 +1,9 @@
+NAME                                           READY   STATUS    RESTARTS   AGE   IP           NODE        NOMINATED NODE   READINESS GATES
+pod/cert-manager-658cd654d-9qf45               1/1     Running   0          11m   10.42.0.73   p2-node-1   <none>           <none>
+pod/cert-manager-cainjector-54d844df76-xglj7   1/1     Running   0          11m   10.42.1.99   p2-node-2   <none>           <none>
+pod/cert-manager-webhook-5548dcfb4d-f694x      1/1     Running   0          11m   10.42.2.37   p2-node-3   <none>           <none>
+
+NAME                              TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)            AGE   SELECTOR
+service/cert-manager              ClusterIP   10.43.24.120    <none>        9402/TCP           11m   app.kubernetes.io/component=controller,app.kubernetes.io/instance=cert-manager,app.kubernetes.io/name=cert-manager
+service/cert-manager-cainjector   ClusterIP   10.43.214.181   <none>        9402/TCP           11m   app.kubernetes.io/component=cainjector,app.kubernetes.io/instance=cert-manager,app.kubernetes.io/name=cainjector
+service/cert-manager-webhook      ClusterIP   10.43.187.186   <none>        443/TCP,9402/TCP   11m   app.kubernetes.io/component=webhook,app.kubernetes.io/instance=cert-manager,app.kubernetes.io/name=webhook

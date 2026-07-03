@@ -1,0 +1,40 @@
+Name:         p2-selfsigned-smoke
+Namespace:    apps
+Labels:       app.kubernetes.io/part-of=k8s-platform-lab
+Annotations:  <none>
+API Version:  cert-manager.io/v1
+Kind:         Certificate
+Metadata:
+  Creation Timestamp:  2026-07-03T10:17:06Z
+  Generation:          1
+  Resource Version:    171254
+  UID:                 466014fe-d945-4392-ba22-270dde8acfa9
+Spec:
+  Common Name:  p2.local
+  Dns Names:
+    p2.local
+  Duration:  2160h
+  Issuer Ref:
+    Kind:        ClusterIssuer
+    Name:        selfsigned-cluster-issuer
+  Renew Before:  360h
+  Secret Name:   p2-selfsigned-smoke-tls
+Status:
+  Conditions:
+    Last Transition Time:  2026-07-03T10:17:06Z
+    Message:               Certificate is up to date and has not expired
+    Observed Generation:   1
+    Reason:                Ready
+    Status:                True
+    Type:                  Ready
+  Not After:               2026-10-01T10:17:06Z
+  Not Before:              2026-07-03T10:17:06Z
+  Renewal Time:            2026-09-16T10:17:06Z
+  Revision:                1
+Events:
+  Type    Reason     Age   From                                       Message
+  ----    ------     ----  ----                                       -------
+  Normal  Issuing    9m8s  cert-manager-certificates-trigger          Issuing certificate as Secret does not exist
+  Normal  Generated  9m8s  cert-manager-certificates-key-manager      Stored new private key in temporary Secret resource "p2-selfsigned-smoke-fr68p"
+  Normal  Requested  9m8s  cert-manager-certificates-request-manager  Created new CertificateRequest resource "p2-selfsigned-smoke-1"
+  Normal  Issuing    9m8s  cert-manager-certificates-issuing          The certificate has been successfully issued

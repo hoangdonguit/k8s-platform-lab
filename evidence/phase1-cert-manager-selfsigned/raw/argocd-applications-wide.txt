@@ -1,0 +1,5 @@
+NAME                     SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+p2-cert-manager          Synced        Healthy         df8975d49a86fd9b930cf54b6046601468f773fe   default
+p2-ingress-nginx         Synced        Healthy         df8975d49a86fd9b930cf54b6046601468f773fe   default
+p2-platform-namespaces   Synced        Healthy         df8975d49a86fd9b930cf54b6046601468f773fe   default
+p2-root-apps             Synced        Healthy         df8975d49a86fd9b930cf54b6046601468f773fe   default

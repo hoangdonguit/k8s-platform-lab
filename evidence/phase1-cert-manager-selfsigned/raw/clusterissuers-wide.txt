@@ -1,0 +1,2 @@
+NAME                        READY   STATUS   AGE
+selfsigned-cluster-issuer   True             10m

@@ -1,0 +1,2 @@
+NAME                  READY   SECRET                    ISSUER                      STATUS                                          AGE
+p2-selfsigned-smoke   True    p2-selfsigned-smoke-tls   selfsigned-cluster-issuer   Certificate is up to date and has not expired   9m8s

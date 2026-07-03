@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: p2-cert-manager
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: k8s-platform-lab
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hoangdonguit/k8s-platform-lab.git
+    targetRevision: main
+    path: clusters/p2/platform/cert-manager
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

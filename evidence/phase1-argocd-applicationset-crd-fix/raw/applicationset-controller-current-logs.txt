@@ -1,0 +1,15 @@
+{"built":"2026-06-18T08:48:48Z","commit":"443415b5527ac55366e0760c93ef0e1abd0cf273","level":"info","msg":"ArgoCD ApplicationSet Controller is starting","namespace":"argocd","time":"2026-07-03T15:25:24Z","version":"v3.4.4"}
+{"level":"info","msg":"Starting configmap/secret informers","time":"2026-07-03T15:25:24Z"}
+{"level":"info","msg":"Configmap/secret informer synced","time":"2026-07-03T15:25:25Z"}
+{"level":"info","msg":"Cluster cache informer synced","time":"2026-07-03T15:25:25Z"}
+{"level":"info","msg":"Loading TLS configuration from secret argocd/argocd-secret","time":"2026-07-03T15:25:25Z"}
+{"level":"info","msg":"Starting webhook server :7000","time":"2026-07-03T15:25:25Z"}
+{"level":"info","msg":"Starting manager","time":"2026-07-03T15:25:25Z"}
+{"level":"info","logger":"controller-runtime.metrics","msg":"Starting metrics server","time":"2026-07-03T15:25:25Z"}
+{"bindAddress":":8080","level":"info","logger":"controller-runtime.metrics","msg":"Serving metrics server","secure":false,"time":"2026-07-03T15:25:25Z"}
+{"addr":"[::]:8081","level":"info","msg":"starting server","name":"health probe","time":"2026-07-03T15:25:25Z"}
+{"controller":"applicationset","controllerGroup":"argoproj.io","controllerKind":"ApplicationSet","level":"info","msg":"Starting EventSource","source":"kind source: *v1.Secret","time":"2026-07-03T15:25:25Z"}
+{"controller":"applicationset","controllerGroup":"argoproj.io","controllerKind":"ApplicationSet","level":"info","msg":"Starting EventSource","source":"kind source: *v1alpha1.ApplicationSet","time":"2026-07-03T15:25:25Z"}
+{"controller":"applicationset","controllerGroup":"argoproj.io","controllerKind":"ApplicationSet","level":"info","msg":"Starting EventSource","source":"kind source: *v1alpha1.Application","time":"2026-07-03T15:25:25Z"}
+{"controller":"applicationset","controllerGroup":"argoproj.io","controllerKind":"ApplicationSet","level":"info","msg":"Starting Controller","time":"2026-07-03T15:25:25Z"}
+{"controller":"applicationset","controllerGroup":"argoproj.io","controllerKind":"ApplicationSet","level":"info","msg":"Starting workers","time":"2026-07-03T15:25:25Z","worker count":10}

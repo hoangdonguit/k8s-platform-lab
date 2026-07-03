@@ -1,0 +1,6 @@
+NAME                     SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+p2-argocd-crds           Synced        Healthy         bf5b476abd05d44c384c6277611c203e29f600f7   default
+p2-cert-manager          Synced        Healthy         bf5b476abd05d44c384c6277611c203e29f600f7   default
+p2-ingress-nginx         Synced        Healthy         bf5b476abd05d44c384c6277611c203e29f600f7   default
+p2-platform-namespaces   Synced        Healthy         bf5b476abd05d44c384c6277611c203e29f600f7   default
+p2-root-apps             Synced        Healthy         bf5b476abd05d44c384c6277611c203e29f600f7   default

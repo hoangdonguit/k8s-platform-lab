@@ -1,0 +1,24 @@
+LAST SEEN   TYPE      REASON               OBJECT                                                   MESSAGE
+3m6s        Normal    Scheduled            pod/argocd-applicationset-controller-99fcd6596-f5w98     Successfully assigned argocd/argocd-applicationset-controller-99fcd6596-f5w98 to p2-node-1
+19m         Normal    Pulled               pod/argocd-applicationset-controller-68fd97ccb6-vn442    (combined from similar events): Successfully pulled image "quay.io/argoproj/argocd:v3.4.4" in 965ms (965ms including waiting). Image size: 195096264 bytes.
+6m59s       Warning   BackOff              pod/argocd-applicationset-controller-68fd97ccb6-vn442    Back-off restarting failed container argocd-applicationset-controller in pod argocd-applicationset-controller-68fd97ccb6-vn442_argocd(2456c45d-75e2-4035-9428-ca88082636e5)
+6m49s       Normal    OperationStarted     application/p2-root-apps                                 Initiated automated sync to 'bf5b476abd05d44c384c6277611c203e29f600f7'
+6m49s       Normal    ResourceUpdated      application/p2-root-apps                                 Updated sync status: Synced -> OutOfSync
+6m48s       Normal    OperationCompleted   application/p2-root-apps                                 Sync operation to bf5b476abd05d44c384c6277611c203e29f600f7 succeeded
+6m48s       Normal    ResourceUpdated      application/p2-root-apps                                 Updated sync status: OutOfSync -> Synced
+6m47s       Normal    ResourceUpdated      application/p2-argocd-crds                               Updated health status:  -> Missing
+6m47s       Normal    OperationStarted     application/p2-argocd-crds                               Initiated automated sync to 'bf5b476abd05d44c384c6277611c203e29f600f7'
+6m47s       Normal    ResourceUpdated      application/p2-argocd-crds                               Updated sync status:  -> OutOfSync
+6m44s       Normal    OperationCompleted   application/p2-argocd-crds                               Sync operation to bf5b476abd05d44c384c6277611c203e29f600f7 succeeded
+6m42s       Normal    ResourceUpdated      application/p2-argocd-crds                               Updated sync status: OutOfSync -> Synced
+6m42s       Normal    ResourceUpdated      application/p2-argocd-crds                               Updated health status: Missing -> Healthy
+5m24s       Normal    Pulling              pod/argocd-applicationset-controller-68fd97ccb6-vn442    Pulling image "quay.io/argoproj/argocd:v3.4.4"
+3m7s        Normal    ScalingReplicaSet    deployment/argocd-applicationset-controller              Scaled up replica set argocd-applicationset-controller-99fcd6596 from 0 to 1
+3m7s        Normal    SuccessfulCreate     replicaset/argocd-applicationset-controller-99fcd6596    Created pod: argocd-applicationset-controller-99fcd6596-f5w98
+3m6s        Normal    Pulling              pod/argocd-applicationset-controller-99fcd6596-f5w98     Pulling image "quay.io/argoproj/argocd:v3.4.4"
+3m5s        Normal    ScalingReplicaSet    deployment/argocd-applicationset-controller              Scaled down replica set argocd-applicationset-controller-68fd97ccb6 from 1 to 0
+3m5s        Normal    Started              pod/argocd-applicationset-controller-99fcd6596-f5w98     Container started
+3m5s        Normal    Created              pod/argocd-applicationset-controller-99fcd6596-f5w98     Container created
+3m5s        Normal    Pulled               pod/argocd-applicationset-controller-99fcd6596-f5w98     Successfully pulled image "quay.io/argoproj/argocd:v3.4.4" in 920ms (920ms including waiting). Image size: 195096264 bytes.
+3m5s        Normal    SuccessfulDelete     replicaset/argocd-applicationset-controller-68fd97ccb6   Deleted pod: argocd-applicationset-controller-68fd97ccb6-vn442
+3m5s        Normal    Killing              pod/argocd-applicationset-controller-68fd97ccb6-vn442    Stopping container argocd-applicationset-controller

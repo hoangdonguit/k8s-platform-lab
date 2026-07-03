@@ -1,0 +1,21 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: p2-private-pool
+  namespace: metallb-system
+  labels:
+    app.kubernetes.io/part-of: k8s-platform-lab
+spec:
+  addresses:
+    - 192.168.0.240-192.168.0.242
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: p2-l2-advertisement
+  namespace: metallb-system
+  labels:
+    app.kubernetes.io/part-of: k8s-platform-lab
+spec:
+  ipAddressPools:
+    - p2-private-pool

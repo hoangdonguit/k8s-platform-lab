@@ -1,0 +1,50 @@
+curl http://100.124.205.88:30080/ -H 'Host: p2.local'
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 100.124.205.88:30080...
+* Connected to 100.124.205.88 (100.124.205.88) port 30080
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0> GET / HTTP/1.1
+> Host: p2.local
+> User-Agent: curl/8.5.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Date: Fri, 03 Jul 2026 08:08:47 GMT
+< Content-Type: text/html
+< Content-Length: 896
+< Connection: keep-alive
+< Last-Modified: Wed, 17 Jun 2026 15:58:07 GMT
+< ETag: "6a32c40f-380"
+< Accept-Ranges: bytes
+< 
+{ [896 bytes data]
+100   896  100   896    0     0   4072      0 --:--:-- --:--:-- --:--:--  4072
+* Connection #0 to host 100.124.205.88 left intact
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>

@@ -1,0 +1,34 @@
+I0703 07:24:27.557910       7 admission.go:149] processed ingress via admission controller {testedIngressLength:1 testedIngressTime:0.002s renderingIngressLength:1 renderingIngressTime:0.001s admissionTime:0.003s testedConfigurationSize:14.8kB}
+I0703 07:24:27.557973       7 main.go:107] "successfully validated configuration, accepting" ingress="apps/ingress-smoke-nginx"
+I0703 07:24:27.565430       7 store.go:443] "Found valid IngressClass" ingress="apps/ingress-smoke-nginx" ingressclass="nginx"
+I0703 07:24:27.565748       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"apps", Name:"ingress-smoke-nginx", UID:"78a62571-5d7c-4859-8304-b912e06c7c61", APIVersion:"networking.k8s.io/v1", ResourceVersion:"125458", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+I0703 07:24:29.994317       7 controller.go:217] "Configuration changes detected, backend reload required"
+I0703 07:24:30.061083       7 controller.go:231] "Backend successfully reloaded"
+I0703 07:24:30.061704       7 event.go:377] Event(v1.ObjectReference{Kind:"Pod", Namespace:"ingress-nginx", Name:"ingress-nginx-controller-2fxh6", UID:"ecb87862-0ea2-4f98-8be7-1f5d1b9dfd1a", APIVersion:"v1", ResourceVersion:"75075", FieldPath:""}): type: 'Normal' reason: 'RELOAD' NGINX reload triggered due to a change in configuration
+10.42.1.247 - - [03/Jul/2026:07:24:42 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.005 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.005 200 46940d6a7b5855c58c854e21ed8689a0
+10.42.2.61 - - [03/Jul/2026:07:24:43 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.002 200 6e7db31e9b439865ef4628701e5a74f5
+I0703 07:25:23.029851       7 event.go:377] Event(v1.ObjectReference{Kind:"Ingress", Namespace:"apps", Name:"ingress-smoke-nginx", UID:"78a62571-5d7c-4859-8304-b912e06c7c61", APIVersion:"networking.k8s.io/v1", ResourceVersion:"125710", FieldPath:""}): type: 'Normal' reason: 'Sync' Scheduled for sync
+10.42.1.247 - - [03/Jul/2026:07:49:02 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.002 200 9209ef82dd7907d05a054a1340ff6489
+10.42.2.61 - - [03/Jul/2026:07:49:02 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.003 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.003 200 ba3df8594f0cdfda65a9bbd7183971aa
+10.42.1.247 - - [03/Jul/2026:07:49:24 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.002 200 e84588c920399927ce8499aa03f749a7
+10.42.2.61 - - [03/Jul/2026:07:49:24 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.003 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.003 200 1fa406bf72be076d30db911327d92085
+10.42.0.89 - - [03/Jul/2026:07:49:30 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.001 200 ac96c8b12c0ef8c716940b59f74fc2ab
+10.42.1.247 - - [03/Jul/2026:07:49:30 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.003 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.003 200 9730003ffac29a4ff17c866bbe8d7ff2
+10.42.1.247 - - [03/Jul/2026:07:49:38 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.001 200 511f37af08cf1e39da775670f77b186c
+10.42.2.61 - - [03/Jul/2026:07:49:39 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.001 200 5e8e9cb8c4d9edc0a18b9463c0c6f803
+10.42.2.61 - - [03/Jul/2026:07:49:45 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.002 200 b25a05c0f2c3ba4d18b2f3d04838d2a7
+10.42.1.247 - - [03/Jul/2026:07:49:59 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.002 200 0835ad6eea09ea715b39f23a82e05464
+10.42.0.89 - - [03/Jul/2026:07:50:07 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.001 200 a59455a7f6c82b68fc6ea054ecbe3b1b
+10.42.0.89 - - [03/Jul/2026:07:50:13 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.001 200 ad937cdcb707a9e203041c65b9e3a0f1
+10.42.2.61 - - [03/Jul/2026:07:50:14 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.002 200 262e6037dd0fd81706ea3ff739307c58
+10.42.0.89 - - [03/Jul/2026:07:50:20 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.003 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.003 200 cb739e0d9be140fa8712bca22c6b36af
+10.42.2.61 - - [03/Jul/2026:07:50:27 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.001 200 7d933f5ef42af9f0acce8f100fdecf75
+10.42.1.247 - - [03/Jul/2026:07:50:33 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.002 200 b0dda04c803723c67c3d3cc025dfb85a
+10.42.2.61 - - [03/Jul/2026:07:50:34 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.001 200 e8673402e801bb4d692939b489ab2a7a
+10.42.1.247 - - [03/Jul/2026:07:50:40 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.002 200 29dd116f6e2b508e429958de55582788
+10.42.2.61 - - [03/Jul/2026:07:50:55 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.0.200:80 896 0.002 200 7e61a0c85cd19dd07b0f1eac03182d6e
+10.42.1.247 - - [03/Jul/2026:07:51:01 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.000 200 231257c08f21db22a588fb9e9b052210
+10.42.1.247 - - [03/Jul/2026:07:51:09 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.001 200 3a46e3557c328c203b4c68dcfb698701
+10.42.2.61 - - [03/Jul/2026:07:51:09 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.002 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.001 200 2616684f79899ab2eb78984d19d217d9
+10.42.1.247 - - [03/Jul/2026:07:51:16 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.1.239:80 896 0.002 200 f726ed1a5b702b962252dc6b66678af6
+10.42.2.61 - - [03/Jul/2026:07:51:16 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" 71 0.001 [apps-ingress-smoke-nginx-80] [] 10.42.2.6:80 896 0.001 200 e791373a773593aa7e06200e79adf4e7

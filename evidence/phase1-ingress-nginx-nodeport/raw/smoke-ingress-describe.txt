@@ -1,0 +1,18 @@
+Name:             ingress-smoke-nginx
+Labels:           app.kubernetes.io/part-of=k8s-platform-lab
+Namespace:        apps
+Address:          10.43.204.106
+Ingress Class:    nginx
+Default backend:  <default>
+Rules:
+  Host        Path  Backends
+  ----        ----  --------
+  p2.local    
+              /   ingress-smoke-nginx:80 (10.42.0.200:80,10.42.1.239:80,10.42.2.6:80)
+Annotations:  <none>
+Events:
+  Type    Reason  Age                From                      Message
+  ----    ------  ----               ----                      -------
+  Normal  Sync    43m (x2 over 44m)  nginx-ingress-controller  Scheduled for sync
+  Normal  Sync    43m (x2 over 44m)  nginx-ingress-controller  Scheduled for sync
+  Normal  Sync    43m (x2 over 44m)  nginx-ingress-controller  Scheduled for sync

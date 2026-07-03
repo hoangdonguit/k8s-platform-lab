@@ -1,0 +1,2 @@
+NAME                        ADDRESSTYPE   PORTS   ENDPOINTS                           AGE
+ingress-smoke-nginx-9spcs   IPv4          80      10.42.0.200,10.42.1.239,10.42.2.6   44m

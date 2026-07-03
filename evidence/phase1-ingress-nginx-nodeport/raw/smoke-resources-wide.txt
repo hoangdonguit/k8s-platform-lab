@@ -1,0 +1,13 @@
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES         SELECTOR
+deployment.apps/ingress-smoke-nginx   3/3     3            3           44m   nginx        nginx:alpine   app=ingress-smoke-nginx
+
+NAME                          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE   SELECTOR
+service/ingress-smoke-nginx   ClusterIP   10.43.157.146   <none>        80/TCP    44m   app=ingress-smoke-nginx
+
+NAME                                            CLASS   HOSTS      ADDRESS         PORTS   AGE
+ingress.networking.k8s.io/ingress-smoke-nginx   nginx   p2.local   10.43.204.106   80      44m
+
+NAME                                       READY   STATUS    RESTARTS   AGE   IP            NODE        NOMINATED NODE   READINESS GATES
+pod/ingress-smoke-nginx-776df7496c-4gwjc   1/1     Running   0          44m   10.42.2.6     p2-node-3   <none>           <none>
+pod/ingress-smoke-nginx-776df7496c-6ljgs   1/1     Running   0          44m   10.42.0.200   p2-node-1   <none>           <none>
+pod/ingress-smoke-nginx-776df7496c-r5gwb   1/1     Running   0          44m   10.42.1.239   p2-node-2   <none>           <none>

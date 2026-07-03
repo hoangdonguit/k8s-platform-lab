@@ -1,0 +1,4 @@
+NAME                     SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+p2-ingress-nginx         Synced        Healthy         5f4b743a9c21e28dfde2818523a8b1f15a9777a0   default
+p2-platform-namespaces   Synced        Healthy         5f4b743a9c21e28dfde2818523a8b1f15a9777a0   default
+p2-root-apps             Synced        Healthy         5f4b743a9c21e28dfde2818523a8b1f15a9777a0   default

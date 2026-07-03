@@ -1,0 +1,53 @@
+324-			
+325-			allow ::1;
+326-			
+327-			deny all;
+328-			
+329-			access_log off;
+330-			stub_status on;
+331-		}
+332-		
+333-	}
+334-	## end server _
+335-	
+336:	## start server p2.local
+337-	server {
+338:		server_name "p2.local" ;
+339-		
+340-		http2 on;
+341-		
+342-		listen 80  ;
+343-		listen [::]:80  ;
+344-		listen 443  ssl;
+345-		listen [::]:443  ssl;
+346-		
+347-		set $proxy_upstream_name "-";
+348-		
+349-		ssl_certificate_by_lua_file /etc/nginx/lua/nginx/ngx_conf_certificate.lua;
+350-		
+--
+437-			proxy_next_upstream_timeout             0;
+438-			proxy_next_upstream_tries               3;
+439-			
+440-			# Custom Response Headers
+441-			
+442-			proxy_pass http://upstream_balancer;
+443-			
+444-			proxy_redirect                          off;
+445-			
+446-		}
+447-		
+448-	}
+449:	## end server p2.local
+450-	
+451-	# backend for when default-backend-service is not configured or it does not have endpoints
+452-	server {
+453-		listen 8181 default_server reuseport backlog=4096;
+454-		listen [::]:8181 default_server reuseport backlog=4096;
+455-		set $proxy_upstream_name "internal";
+456-		
+457-		access_log off;
+458-		
+459-		location / {
+460-			return 404;
+461-		}

@@ -1,0 +1,16 @@
+controller:
+  enabled: true
+
+speaker:
+  enabled: true
+  frr:
+    enabled: false
+
+frrk8s:
+  enabled: false
+
+prometheus:
+  serviceMonitor:
+    enabled: false
+  prometheusRule:
+    enabled: false

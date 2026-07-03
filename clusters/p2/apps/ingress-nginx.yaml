@@ -8,30 +8,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    chart: ingress-nginx
-    targetRevision: 4.15.1
-    helm:
-      releaseName: ingress-nginx
-      values: |
-        controller:
-          kind: DaemonSet
-          ingressClass: nginx
-          ingressClassResource:
-            name: nginx
-            enabled: true
-            default: true
-            controllerValue: k8s.io/ingress-nginx
-          service:
-            type: NodePort
-            nodePorts:
-              http: 30080
-              https: 30443
-            externalTrafficPolicy: Cluster
-          metrics:
-            enabled: true
-          admissionWebhooks:
-            enabled: true
+    repoURL: https://github.com/hoangdonguit/k8s-platform-lab.git
+    targetRevision: main
+    path: clusters/p2/platform/ingress-nginx
   destination:
     server: https://kubernetes.default.svc
     namespace: ingress-nginx

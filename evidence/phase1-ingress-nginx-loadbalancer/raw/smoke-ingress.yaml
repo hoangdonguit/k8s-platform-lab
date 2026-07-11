@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{},"name":"ingress-lb-smoke-nginx","namespace":"apps"},"spec":{"ingressClassName":"nginx","rules":[{"host":"p2.local","http":{"paths":[{"backend":{"service":{"name":"ingress-lb-smoke-nginx","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}]}}
+  creationTimestamp: "2026-07-11T15:26:22Z"
+  generation: 1
+  name: ingress-lb-smoke-nginx
+  namespace: apps
+  resourceVersion: "882535"
+  uid: 5daa32c3-53be-4134-9047-23b3b7de43a7
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: p2.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: ingress-lb-smoke-nginx
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - ip: 192.168.0.241

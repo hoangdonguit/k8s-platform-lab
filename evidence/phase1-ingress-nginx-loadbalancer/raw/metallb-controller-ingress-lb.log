@@ -1,0 +1,5 @@
+{"caller":"service_controller.go:64","controller":"ServiceReconciler","level":"info","start reconcile":"ingress-nginx/ingress-nginx-controller","ts":"2026-07-11T15:23:09Z"}
+{"caller":"service.go:186","event":"ipAllocated","ip":["192.168.0.241"],"level":"info","msg":"IP address assigned by controller","ts":"2026-07-11T15:23:09Z"}
+{"caller":"service_controller.go:115","controller":"ServiceReconciler","end reconcile":"ingress-nginx/ingress-nginx-controller","level":"info","ts":"2026-07-11T15:23:09Z"}
+{"caller":"service_controller.go:64","controller":"ServiceReconciler","level":"info","start reconcile":"ingress-nginx/ingress-nginx-controller","ts":"2026-07-11T15:23:09Z"}
+{"caller":"service_controller.go:115","controller":"ServiceReconciler","end reconcile":"ingress-nginx/ingress-nginx-controller","level":"info","ts":"2026-07-11T15:23:09Z"}

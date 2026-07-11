@@ -4,10 +4,9 @@ This directory contains rendered ingress-nginx manifests generated from the upst
 
 Reason for rendered-manifest mode:
 
-- The ArgoCD repo-server in the cluster failed to fetch the external Helm repo directly.
-- The observed error was: `tls: first record does not look like a TLS handshake`.
-- To keep the deployment GitOps-managed and reproducible, the chart is rendered locally and committed into this repository.
-- ArgoCD applies the manifests from GitHub instead of pulling the Helm chart from the external repo at reconciliation time.
+- ArgoCD repo-server previously had unstable access to external Helm repositories.
+- The chart is rendered locally and committed to Git.
+- ArgoCD applies manifests from GitHub.
 
 Chart:
 
@@ -15,9 +14,16 @@ Chart:
 - Chart: ingress-nginx
 - Version: 4.15.1
 
-Access mode:
+Current mode:
 
-- Controller kind: DaemonSet
-- Service type: NodePort
-- HTTP NodePort: 30080
-- HTTPS NodePort: 30443
+- Controller runs as DaemonSet.
+- IngressClass: nginx.
+- Default IngressClass: true.
+- Service type: LoadBalancer.
+- MetalLB-assigned LoadBalancer IP: 192.168.0.241.
+
+Notes:
+
+- MetalLB pool: 192.168.0.240-192.168.0.242.
+- This LoadBalancer IP is on the OpenStack private network.
+- Direct access from the laptop depends on routing/VPN reachability to 192.168.0.0/24.

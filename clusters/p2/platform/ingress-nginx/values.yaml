@@ -2,6 +2,7 @@ controller:
   kind: DaemonSet
 
   ingressClass: nginx
+
   ingressClassResource:
     name: nginx
     enabled: true
@@ -9,11 +10,10 @@ controller:
     controllerValue: k8s.io/ingress-nginx
 
   service:
-    type: NodePort
-    nodePorts:
-      http: 30080
-      https: 30443
-    externalTrafficPolicy: Cluster
+    type: LoadBalancer
+    loadBalancerIP: 192.168.0.241
+    annotations:
+      metallb.io/loadBalancerIPs: 192.168.0.241
 
   metrics:
     enabled: true

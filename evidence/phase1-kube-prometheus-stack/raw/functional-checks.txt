@@ -1,0 +1,13 @@
+===== Prometheus ready =====
+Prometheus Server is Ready.
+
+===== Alertmanager ready =====
+OK
+===== Grafana health =====
+{
+  "database": "ok",
+  "version": "13.1.0",
+  "commit": "b309c9bb3b81a748c3a75289236a27309ed2566a"
+}
+===== Prometheus query up sample =====
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"up","container":"node-exporter","endpoint":"http-metrics","instance":"192.168.0.13:9100","job":"node-exporter","namespace":"monitoring","pod":"kube-prometheus-stack-prometheus-node-exporter-zqspd","service":"kube-prometheus-stack-prometheus-node-exporter"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","endpoint":"https-metrics","instance":"192.168.0.13:10250","job":"kubelet","metrics_path":"/metrics/cadvisor","namespace":"kube-system","node":"p2-node-3","service":"kube-prometheus-stack-kubelet"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","endpoint":"https-metrics","instance":"192.168.0.12:10250","job":"kubelet","metrics_path":"/metrics","namespace":"kube-system","node":"p2-node-2","service":"kube-prometheus-stack-kubelet"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","endpoint":"https","instance":"192.168.0.13:6443","job":"apiserver","namespace":"default","service":"kubernetes"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","endpoint":"https-metrics","instance":"192.168.0.12:10250","job":"kubelet","metrics_path":"/metrics/cadvisor","namespace":"kube-system","node":"p2-node-2","service":"kube-prometheus-stack-kubelet"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","endpoint":"https","instance":"192.168.0.11:6443","job":"apiserver","namespace":"default","service":"kubernetes"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","container":"coredns","endpoint":"http-metrics","instance":"10.42.0.240:9153","job":"coredns","namespace":"kube-system","pod":"coredns-5f5694d56b-9msxp","service":"kube-prometheus-stack-coredns"},"value":[1783793323.439,"1"]},{"metric":{"__name__":"up","container":"kube-state-metrics","endpoint":"http","instance":"10.42.2.150:8080","job":"kube-state-metrics","namespace":"monitoring","pod":"kube-prometheus-stack-kube-state-metrics-dcd9c7c48-jhdb7","service":"kube-prometheus-stack-kube-state-metrics"},

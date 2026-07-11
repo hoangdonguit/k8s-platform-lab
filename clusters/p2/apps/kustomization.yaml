@@ -6,3 +6,4 @@ resources:
   - cert-manager.yaml
   - argocd-crds.yaml
   - metallb.yaml
+  - kube-prometheus-stack.yaml

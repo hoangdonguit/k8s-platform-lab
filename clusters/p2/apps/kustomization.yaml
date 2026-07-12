@@ -8,3 +8,4 @@ resources:
   - metallb.yaml
   - kube-prometheus-stack.yaml
   - longhorn.yaml
+  - kyverno.yaml

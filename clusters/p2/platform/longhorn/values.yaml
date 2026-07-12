@@ -1,0 +1,23 @@
+persistence:
+  defaultClass: false
+  defaultFsType: ext4
+  defaultClassReplicaCount: 3
+  reclaimPolicy: Delete
+
+defaultSettings:
+  defaultDataPath: /var/lib/longhorn
+  defaultReplicaCount: 3
+  storageOverProvisioningPercentage: 200
+  storageMinimalAvailablePercentage: 25
+  replicaSoftAntiAffinity: false
+  storageMinimalAvailablePercentage: 25
+
+ingress:
+  enabled: false
+
+service:
+  ui:
+    type: ClusterIP
+
+preUpgradeChecker:
+  jobEnabled: false

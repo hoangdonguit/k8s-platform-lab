@@ -7,3 +7,4 @@ resources:
   - argocd-crds.yaml
   - metallb.yaml
   - kube-prometheus-stack.yaml
+  - longhorn.yaml

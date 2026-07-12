@@ -1,0 +1,33 @@
+Name:            pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7
+Labels:          <none>
+Annotations:     longhorn.io/volume-scheduling-error: 
+                 pv.kubernetes.io/provisioned-by: driver.longhorn.io
+                 volume.kubernetes.io/provisioner-deletion-secret-name: 
+                 volume.kubernetes.io/provisioner-deletion-secret-namespace: 
+Finalizers:      [external-provisioner.volume.kubernetes.io/finalizer kubernetes.io/pv-protection external-attacher/driver-longhorn-io]
+StorageClass:    longhorn
+Status:          Bound
+Claim:           apps/longhorn-smoke-pvc
+Reclaim Policy:  Delete
+Access Modes:    RWO
+VolumeMode:      Filesystem
+Capacity:        1Gi
+Node Affinity:   <none>
+Message:         
+Source:
+    Type:              CSI (a Container Storage Interface (CSI) volume source)
+    Driver:            driver.longhorn.io
+    FSType:            ext4
+    VolumeHandle:      pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7
+    ReadOnly:          false
+    VolumeAttributes:      backupTargetName=default
+                           dataEngine=v1
+                           dataLocality=disabled
+                           disableRevisionCounter=true
+                           fromBackup=
+                           fsType=ext4
+                           numberOfReplicas=3
+                           staleReplicaTimeout=30
+                           storage.kubernetes.io/csiProvisionerIdentity=1783830041620-2295-driver.longhorn.io
+                           unmapMarkSnapChainRemoved=ignored
+Events:                <none>

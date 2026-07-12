@@ -1,0 +1,128 @@
+apiVersion: longhorn.io/v1beta2
+kind: Volume
+metadata:
+  creationTimestamp: "2026-07-12T05:51:47Z"
+  finalizers:
+  - longhorn.io
+  generation: 2
+  labels:
+    backup-target: default
+    longhornvolume: pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7
+    recurring-job-group.longhorn.io/default: enabled
+    setting.longhorn.io/remove-snapshots-during-filesystem-trim: ignored
+    setting.longhorn.io/replica-auto-balance: ignored
+    setting.longhorn.io/snapshot-data-integrity: ignored
+  name: pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7
+  namespace: longhorn-system
+  resourceVersion: "1036217"
+  uid: a0127b81-a3b4-4b7c-af68-713e65e701be
+spec:
+  Standby: false
+  accessMode: rwo
+  backingImage: ""
+  backupBlockSize: "2097152"
+  backupCompressionMethod: lz4
+  backupTargetName: default
+  dataEngine: v1
+  dataLocality: disabled
+  dataSource: ""
+  disableFrontend: false
+  diskSelector: []
+  encrypted: false
+  engineNodeID: ""
+  freezeFilesystemForSnapshot: ignored
+  fromBackup: ""
+  frontend: blockdev
+  image: docker.io/longhornio/longhorn-engine:v1.12.0
+  lastAttachedBy: ""
+  migratable: false
+  migrationNodeID: ""
+  nodeID: p2-node-2
+  nodeSelector: []
+  numberOfReplicas: 3
+  offlineRebuilding: ignored
+  rebuildConcurrentSyncLimit: 0
+  replicaAutoBalance: ignored
+  replicaDiskSoftAntiAffinity: ignored
+  replicaRebuildingBandwidthLimit: 0
+  replicaSoftAntiAffinity: ignored
+  replicaZoneSoftAntiAffinity: ignored
+  restoreVolumeRecurringJob: ignored
+  revisionCounterDisabled: true
+  size: "1073741824"
+  snapshotDataIntegrity: ignored
+  snapshotMaxCount: 250
+  snapshotMaxSize: "0"
+  staleReplicaTimeout: 30
+  unmapMarkSnapChainRemoved: ignored
+status:
+  actualSize: 51019776
+  cloneStatus:
+    attemptCount: 0
+    nextAllowedAttemptAt: ""
+    snapshot: ""
+    sourceVolume: ""
+    state: ""
+  conditions:
+  - lastProbeTime: ""
+    lastTransitionTime: "2026-07-12T05:51:47Z"
+    message: ""
+    reason: ""
+    status: "False"
+    type: WaitForBackingImage
+  - lastProbeTime: ""
+    lastTransitionTime: "2026-07-12T05:51:47Z"
+    message: ""
+    reason: ""
+    status: "False"
+    type: TooManySnapshots
+  - lastProbeTime: ""
+    lastTransitionTime: "2026-07-12T05:51:47Z"
+    message: ""
+    reason: ""
+    status: "True"
+    type: Scheduled
+  - lastProbeTime: ""
+    lastTransitionTime: "2026-07-12T05:51:48Z"
+    message: ""
+    reason: ""
+    status: "False"
+    type: Restore
+  - lastProbeTime: ""
+    lastTransitionTime: "2026-07-12T05:51:48Z"
+    message: ""
+    reason: ""
+    status: "False"
+    type: OfflineRebuilding
+  currentEngineNodeID: ""
+  currentImage: docker.io/longhornio/longhorn-engine:v1.12.0
+  currentMigrationNodeID: ""
+  currentNodeID: p2-node-2
+  expansionRequired: false
+  frontendDisabled: false
+  isStandby: false
+  kubernetesStatus:
+    lastPVCRefAt: ""
+    lastPodRefAt: ""
+    namespace: apps
+    pvName: pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7
+    pvStatus: Bound
+    pvcName: longhorn-smoke-pvc
+    workloadsStatus:
+    - podName: longhorn-smoke-reader
+      podStatus: Running
+      workloadName: ""
+      workloadType: ""
+  lastAutoSalvagedAt: ""
+  lastBackup: ""
+  lastBackupAt: ""
+  lastDegradedAt: ""
+  ownerID: p2-node-2
+  remountRequestedAt: ""
+  restoreInitiated: false
+  restoreRequired: false
+  robustness: healthy
+  shareEndpoint: ""
+  shareState: ""
+  state: attached
+  switchoverState: ""

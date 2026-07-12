@@ -1,0 +1,5 @@
+NAME                                       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   VOLUMEATTRIBUTESCLASS   AGE     VOLUMEMODE
+persistentvolumeclaim/longhorn-smoke-pvc   Bound    pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7   1Gi        RWO            longhorn       <unset>                 6m54s   Filesystem
+
+NAME                        READY   STATUS    RESTARTS   AGE     IP            NODE        NOMINATED NODE   READINESS GATES
+pod/longhorn-smoke-reader   1/1     Running   0          5m58s   10.42.1.153   p2-node-2   <none>           <none>

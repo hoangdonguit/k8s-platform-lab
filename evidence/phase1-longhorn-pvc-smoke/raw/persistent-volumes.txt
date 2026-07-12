@@ -1,0 +1,2 @@
+NAME                                       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                     STORAGECLASS   VOLUMEATTRIBUTESCLASS   REASON   AGE
+pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7   1Gi        RWO            Delete           Bound    apps/longhorn-smoke-pvc   longhorn       <unset>                          6m52s

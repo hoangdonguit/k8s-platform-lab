@@ -1,0 +1,21 @@
+Name:          longhorn-smoke-pvc
+Namespace:     apps
+StorageClass:  longhorn
+Status:        Bound
+Volume:        pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7
+Labels:        <none>
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               volume.beta.kubernetes.io/storage-provisioner: driver.longhorn.io
+               volume.kubernetes.io/storage-provisioner: driver.longhorn.io
+Finalizers:    [kubernetes.io/pvc-protection]
+Capacity:      1Gi
+Access Modes:  RWO
+VolumeMode:    Filesystem
+Used By:       longhorn-smoke-reader
+Events:
+  Type    Reason                 Age                    From                                                                                      Message
+  ----    ------                 ----                   ----                                                                                      -------
+  Normal  Provisioning           6m55s                  driver.longhorn.io_csi-provisioner-6f7c8f8fb9-5cnv5_46f3d0a8-4481-4eba-8cba-3c4142bced9c  External provisioner is provisioning volume for claim "apps/longhorn-smoke-pvc"
+  Normal  ExternalProvisioning   6m55s (x2 over 6m55s)  persistentvolume-controller                                                               Waiting for a volume to be created either by the external provisioner 'driver.longhorn.io' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.
+  Normal  ProvisioningSucceeded  6m53s                  driver.longhorn.io_csi-provisioner-6f7c8f8fb9-5cnv5_46f3d0a8-4481-4eba-8cba-3c4142bced9c  Successfully provisioned volume pvc-174da5ba-4e7f-43b6-b815-4beef1c667f7

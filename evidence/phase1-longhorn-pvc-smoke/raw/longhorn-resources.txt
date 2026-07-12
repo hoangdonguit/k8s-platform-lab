@@ -1,0 +1,47 @@
+NAME                                                    READY   STATUS    RESTARTS      AGE   IP            NODE        NOMINATED NODE   READINESS GATES
+pod/csi-attacher-866df4b764-874mw                       1/1     Running   0             98m   10.42.0.251   p2-node-1   <none>           <none>
+pod/csi-attacher-866df4b764-mbxhm                       1/1     Running   0             98m   10.42.2.239   p2-node-3   <none>           <none>
+pod/csi-attacher-866df4b764-sxnqp                       1/1     Running   0             98m   10.42.1.52    p2-node-2   <none>           <none>
+pod/csi-provisioner-6f7c8f8fb9-5cnv5                    1/1     Running   0             98m   10.42.0.75    p2-node-1   <none>           <none>
+pod/csi-provisioner-6f7c8f8fb9-5kg9f                    1/1     Running   0             98m   10.42.2.114   p2-node-3   <none>           <none>
+pod/csi-provisioner-6f7c8f8fb9-64gdt                    1/1     Running   0             98m   10.42.1.94    p2-node-2   <none>           <none>
+pod/csi-resizer-7cc5c4687-lr97j                         1/1     Running   0             98m   10.42.1.232   p2-node-2   <none>           <none>
+pod/csi-resizer-7cc5c4687-w2jfb                         1/1     Running   0             98m   10.42.0.205   p2-node-1   <none>           <none>
+pod/csi-resizer-7cc5c4687-wwgth                         1/1     Running   0             98m   10.42.2.118   p2-node-3   <none>           <none>
+pod/csi-snapshotter-789ffd5dcd-4rsfd                    1/1     Running   0             98m   10.42.1.129   p2-node-2   <none>           <none>
+pod/csi-snapshotter-789ffd5dcd-hfkpz                    1/1     Running   0             98m   10.42.0.252   p2-node-1   <none>           <none>
+pod/csi-snapshotter-789ffd5dcd-nhq75                    1/1     Running   0             98m   10.42.2.181   p2-node-3   <none>           <none>
+pod/engine-image-ei-a4d05f02-49bmn                      1/1     Running   0             99m   10.42.2.122   p2-node-3   <none>           <none>
+pod/engine-image-ei-a4d05f02-n5lzg                      1/1     Running   0             99m   10.42.0.101   p2-node-1   <none>           <none>
+pod/engine-image-ei-a4d05f02-zgcdr                      1/1     Running   0             99m   10.42.1.93    p2-node-2   <none>           <none>
+pod/instance-manager-1eb5291ad18ec9d10fd42600304dc83a   1/1     Running   0             98m   10.42.0.183   p2-node-1   <none>           <none>
+pod/instance-manager-2b0d4a3a0fa7c91553cf667665e98638   1/1     Running   0             98m   10.42.1.163   p2-node-2   <none>           <none>
+pod/instance-manager-acad6aa6acb7b44f065d15b3a7fd1444   1/1     Running   0             98m   10.42.2.166   p2-node-3   <none>           <none>
+pod/longhorn-csi-plugin-2hk4f                           3/3     Running   0             98m   10.42.0.113   p2-node-1   <none>           <none>
+pod/longhorn-csi-plugin-8p4v8                           3/3     Running   0             98m   10.42.2.50    p2-node-3   <none>           <none>
+pod/longhorn-csi-plugin-dmww6                           3/3     Running   0             98m   10.42.1.140   p2-node-2   <none>           <none>
+pod/longhorn-driver-deployer-6b97f48b5b-jbqkc           1/1     Running   1 (98m ago)   99m   10.42.2.201   p2-node-3   <none>           <none>
+pod/longhorn-manager-hrrcb                              2/2     Running   1 (99m ago)   99m   10.42.1.61    p2-node-2   <none>           <none>
+pod/longhorn-manager-ljccr                              2/2     Running   0             99m   10.42.2.170   p2-node-3   <none>           <none>
+pod/longhorn-manager-mlrgm                              2/2     Running   0             99m   10.42.0.149   p2-node-1   <none>           <none>
+pod/longhorn-ui-887d56cd8-8r47b                         1/1     Running   0             99m   10.42.2.139   p2-node-3   <none>           <none>
+pod/longhorn-ui-887d56cd8-tsg4p                         1/1     Running   0             99m   10.42.0.100   p2-node-1   <none>           <none>
+
+NAME                                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/longhorn-admission-webhook   ClusterIP   10.43.55.16    <none>        9502/TCP   99m   longhorn.io/admission-webhook=longhorn-admission-webhook
+service/longhorn-backend             ClusterIP   10.43.230.90   <none>        9500/TCP   99m   app=longhorn-manager
+service/longhorn-frontend            ClusterIP   10.43.32.179   <none>        80/TCP     99m   app=longhorn-ui
+service/longhorn-recovery-backend    ClusterIP   10.43.98.120   <none>        9503/TCP   99m   longhorn.io/recovery-backend=longhorn-recovery-backend
+
+NAME                                       READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                 IMAGES                                                 SELECTOR
+deployment.apps/csi-attacher               3/3     3            3           98m   csi-attacher               docker.io/longhornio/csi-attacher:v4.12.0              app=csi-attacher
+deployment.apps/csi-provisioner            3/3     3            3           98m   csi-provisioner            docker.io/longhornio/csi-provisioner:v5.3.0-20260514   app=csi-provisioner
+deployment.apps/csi-resizer                3/3     3            3           98m   csi-resizer                docker.io/longhornio/csi-resizer:v2.1.0-20260514       app=csi-resizer
+deployment.apps/csi-snapshotter            3/3     3            3           98m   csi-snapshotter            docker.io/longhornio/csi-snapshotter:v8.5.0-20260514   app=csi-snapshotter
+deployment.apps/longhorn-driver-deployer   1/1     1            1           99m   longhorn-driver-deployer   docker.io/longhornio/longhorn-manager:v1.12.0          app=longhorn-driver-deployer
+deployment.apps/longhorn-ui                2/2     2            2           99m   longhorn-ui                docker.io/longhornio/longhorn-ui:v1.12.0               app=longhorn-ui
+
+NAME                                      DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE   CONTAINERS                                                          IMAGES                                                                                                                                            SELECTOR
+daemonset.apps/engine-image-ei-a4d05f02   3         3         3       3            3           <none>          99m   engine-image-ei-a4d05f02                                            docker.io/longhornio/longhorn-engine:v1.12.0                                                                                                      longhorn.io/component=engine-image,longhorn.io/engine-image=ei-a4d05f02
+daemonset.apps/longhorn-csi-plugin        3         3         3       3            3           <none>          98m   node-driver-registrar,longhorn-liveness-probe,longhorn-csi-plugin   docker.io/longhornio/csi-node-driver-registrar:v2.17.0,docker.io/longhornio/livenessprobe:v2.19.0,docker.io/longhornio/longhorn-manager:v1.12.0   app=longhorn-csi-plugin
+daemonset.apps/longhorn-manager           3         3         3       3            3           <none>          99m   longhorn-manager,pre-pull-share-manager-image                       docker.io/longhornio/longhorn-manager:v1.12.0,docker.io/longhornio/longhorn-share-manager:v1.12.0                                                 app=longhorn-manager

@@ -1,0 +1,9 @@
+NAME                       SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+p2-argocd-crds             Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-cert-manager            Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-ingress-nginx           Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-kube-prometheus-stack   Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-longhorn                Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-metallb                 Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-platform-namespaces     Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default
+p2-root-apps               Synced        Healthy         adc24489e37bdbbd3d94f8a00f86ff333baabe8f   default

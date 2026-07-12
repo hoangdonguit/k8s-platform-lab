@@ -34,7 +34,7 @@ Goal:
 
 Deliverables:
 - docs/gitops-model.md
-- platform/root-app/
+- clusters/p2/bootstrap/argocd/
 - evidence/phase3-argocd-ready.md
 
 ## Phase 4 - LoadBalancer, Ingress, and TLS

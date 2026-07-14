@@ -1,0 +1,31 @@
+NAME                                                           READY   STATUS    RESTARTS      AGE   IP             NODE        NOMINATED NODE   READINESS GATES
+pod/alertmanager-kube-prometheus-stack-alertmanager-0          2/2     Running   6 (16h ago)   3d    10.42.2.161    p2-node-3   <none>           <none>
+pod/kube-prometheus-stack-grafana-6b876f7bcc-knbxt             3/3     Running   9 (16h ago)   3d    10.42.1.43     p2-node-2   <none>           <none>
+pod/kube-prometheus-stack-kube-state-metrics-dcd9c7c48-jhdb7   1/1     Running   3 (16h ago)   3d    10.42.2.101    p2-node-3   <none>           <none>
+pod/kube-prometheus-stack-operator-5dd9ff9c76-crvww            1/1     Running   3 (16h ago)   3d    10.42.1.35     p2-node-2   <none>           <none>
+pod/kube-prometheus-stack-prometheus-node-exporter-6mj5n       1/1     Running   3 (16h ago)   3d    192.168.0.11   p2-node-1   <none>           <none>
+pod/kube-prometheus-stack-prometheus-node-exporter-8pfsx       1/1     Running   3 (16h ago)   3d    192.168.0.12   p2-node-2   <none>           <none>
+pod/kube-prometheus-stack-prometheus-node-exporter-zqspd       1/1     Running   3 (16h ago)   3d    192.168.0.13   p2-node-3   <none>           <none>
+pod/prometheus-kube-prometheus-stack-prometheus-0              2/2     Running   6 (16h ago)   3d    10.42.0.207    p2-node-1   <none>           <none>
+
+NAME                                                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE   SELECTOR
+service/alertmanager-operated                            ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP   3d    app.kubernetes.io/name=alertmanager
+service/kube-prometheus-stack-alertmanager               ClusterIP   10.43.248.31    <none>        9093/TCP,8080/TCP            3d    alertmanager=kube-prometheus-stack-alertmanager,app.kubernetes.io/name=alertmanager
+service/kube-prometheus-stack-grafana                    ClusterIP   10.43.108.153   <none>        80/TCP                       3d    app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=grafana
+service/kube-prometheus-stack-kube-state-metrics         ClusterIP   10.43.231.112   <none>        8080/TCP                     3d    app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=kube-state-metrics
+service/kube-prometheus-stack-operator                   ClusterIP   10.43.94.85     <none>        443/TCP                      3d    app=kube-prometheus-stack-operator,release=kube-prometheus-stack
+service/kube-prometheus-stack-prometheus                 ClusterIP   10.43.27.218    <none>        9090/TCP,8080/TCP            3d    app.kubernetes.io/name=prometheus,operator.prometheus.io/name=kube-prometheus-stack-prometheus
+service/kube-prometheus-stack-prometheus-node-exporter   ClusterIP   10.43.213.247   <none>        9100/TCP                     3d    app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=prometheus-node-exporter
+service/prometheus-operated                              ClusterIP   None            <none>        9090/TCP                     3d    app.kubernetes.io/name=prometheus
+
+NAME                                                       READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                                            IMAGES                                                                                                   SELECTOR
+deployment.apps/kube-prometheus-stack-grafana              1/1     1            1           3d    grafana-sc-dashboard,grafana-sc-datasources,grafana   quay.io/kiwigrid/k8s-sidecar:2.8.1,quay.io/kiwigrid/k8s-sidecar:2.8.1,docker.io/grafana/grafana:13.1.0   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=grafana
+deployment.apps/kube-prometheus-stack-kube-state-metrics   1/1     1            1           3d    kube-state-metrics                                    registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.19.1                                            app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=kube-state-metrics
+deployment.apps/kube-prometheus-stack-operator             1/1     1            1           3d    kube-prometheus-stack                                 quay.io/prometheus-operator/prometheus-operator:v0.92.1                                                  app=kube-prometheus-stack-operator,release=kube-prometheus-stack
+
+NAME                                                            DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE   CONTAINERS      IMAGES                                                SELECTOR
+daemonset.apps/kube-prometheus-stack-prometheus-node-exporter   3         3         3       3            3           kubernetes.io/os=linux   3d    node-exporter   quay.io/prometheus/node-exporter:v1.12.0-distroless   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=prometheus-node-exporter
+
+NAME                                                               READY   AGE   CONTAINERS                     IMAGES
+statefulset.apps/alertmanager-kube-prometheus-stack-alertmanager   1/1     3d    alertmanager,config-reloader   quay.io/prometheus/alertmanager:v0.33.1,quay.io/prometheus-operator/prometheus-config-reloader:v0.92.1
+statefulset.apps/prometheus-kube-prometheus-stack-prometheus       1/1     3d    prometheus,config-reloader     quay.io/prometheus/prometheus:v3.13.1-distroless,quay.io/prometheus-operator/prometheus-config-reloader:v0.92.1

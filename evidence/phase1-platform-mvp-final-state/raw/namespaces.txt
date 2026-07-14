@@ -1,0 +1,15 @@
+NAME              STATUS   AGE
+apps              Active   11d
+argocd            Active   11d
+cert-manager      Active   11d
+cilium-secrets    Active   11d
+default           Active   11d
+ingress-nginx     Active   11d
+kube-node-lease   Active   11d
+kube-public       Active   11d
+kube-system       Active   11d
+kyverno           Active   11d
+longhorn-system   Active   11d
+metallb-system    Active   11d
+monitoring        Active   11d
+platform-system   Active   11d

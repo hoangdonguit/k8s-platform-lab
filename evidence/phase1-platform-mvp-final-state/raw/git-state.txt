@@ -1,0 +1,29 @@
+===== git status =====
+?? evidence/phase1-platform-mvp-final-state/
+
+===== git log =====
+28db5e8 docs: record kyverno policy baseline evidence
+0bf5a52 fix: normalize kyverno gitops manifests
+fc50257 fix: relax kyverno argocd diff rules
+fbfbc69 fix: ignore kyverno controller managed drift
+5b1a540 gitops: add kyverno policy baseline
+80830f7 docs: update phase plan repository layout
+04db161 docs: record longhorn pvc smoke evidence
+adc2448 chore: remove unused platform skeleton
+112e95a gitops: add longhorn storage
+c72db14 docs: summarize kube prometheus stack evidence
+205cf17 docs: record kube prometheus stack evidence
+6b101c5 gitops: add kube prometheus stack
+5e7dec0 docs: record ingress nginx loadbalancer evidence
+3a33742 fix: use single metallb ip assignment for ingress nginx
+0c4bbec gitops: expose ingress nginx with metallb loadbalancer
+8d9a86f docs: record metallb loadbalancer evidence
+17416e7 gitops: add metallb private address pool
+859b378 gitops: add metallb base
+f5cb3de docs: record argocd applicationset crd fix evidence
+bf5b476 gitops: add argocd applicationset crd
+abbb752 docs: record cert manager selfsigned evidence
+df8975d gitops: add cert manager
+5b0dffc docs: record ingress nginx nodeport evidence
+5f4b743 gitops: render ingress nginx manifests in repo
+4812ceb gitops: add ingress nginx application

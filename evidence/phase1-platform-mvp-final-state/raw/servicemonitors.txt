@@ -1,0 +1,10 @@
+NAMESPACE    NAME                                             AGE
+monitoring   kube-prometheus-stack-alertmanager               3d
+monitoring   kube-prometheus-stack-apiserver                  3d
+monitoring   kube-prometheus-stack-coredns                    3d
+monitoring   kube-prometheus-stack-grafana                    3d
+monitoring   kube-prometheus-stack-kube-state-metrics         3d
+monitoring   kube-prometheus-stack-kubelet                    3d
+monitoring   kube-prometheus-stack-operator                   3d
+monitoring   kube-prometheus-stack-prometheus                 3d
+monitoring   kube-prometheus-stack-prometheus-node-exporter   3d

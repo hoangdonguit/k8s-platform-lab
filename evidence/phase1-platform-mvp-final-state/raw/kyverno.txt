@@ -1,0 +1,19 @@
+NAME                                                 READY   STATUS    RESTARTS      AGE     IP            NODE        NOMINATED NODE   READINESS GATES
+pod/kyverno-admission-controller-f849f45fd-xdq6t     1/1     Running   2 (16h ago)   2d11h   10.42.1.252   p2-node-2   <none>           <none>
+pod/kyverno-background-controller-548976bf69-t6mqb   1/1     Running   2 (16h ago)   2d11h   10.42.2.165   p2-node-3   <none>           <none>
+pod/kyverno-cleanup-controller-5f58476578-kfwmm      1/1     Running   2 (16h ago)   2d11h   10.42.1.164   p2-node-2   <none>           <none>
+pod/kyverno-reports-controller-75f4dc8fb7-gpmfk      1/1     Running   2 (16h ago)   2d11h   10.42.1.203   p2-node-2   <none>           <none>
+
+NAME                                            TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE     SELECTOR
+service/kyverno-background-controller-metrics   ClusterIP   10.43.255.43    <none>        8000/TCP   2d11h   app.kubernetes.io/component=background-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+service/kyverno-cleanup-controller              ClusterIP   10.43.197.143   <none>        443/TCP    2d11h   app.kubernetes.io/component=cleanup-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+service/kyverno-cleanup-controller-metrics      ClusterIP   10.43.89.112    <none>        8000/TCP   2d11h   app.kubernetes.io/component=cleanup-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+service/kyverno-reports-controller-metrics      ClusterIP   10.43.88.86     <none>        8000/TCP   2d11h   app.kubernetes.io/component=reports-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+service/kyverno-svc                             ClusterIP   10.43.40.43     <none>        443/TCP    2d11h   app.kubernetes.io/component=admission-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+service/kyverno-svc-metrics                     ClusterIP   10.43.186.166   <none>        8000/TCP   2d11h   app.kubernetes.io/component=admission-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+
+NAME                                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                                                 SELECTOR
+deployment.apps/kyverno-admission-controller    1/1     1            1           2d11h   kyverno      reg.kyverno.io/kyverno/kyverno:v1.18.2                 app.kubernetes.io/component=admission-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+deployment.apps/kyverno-background-controller   1/1     1            1           2d11h   controller   reg.kyverno.io/kyverno/background-controller:v1.18.2   app.kubernetes.io/component=background-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+deployment.apps/kyverno-cleanup-controller      1/1     1            1           2d11h   controller   reg.kyverno.io/kyverno/cleanup-controller:v1.18.2      app.kubernetes.io/component=cleanup-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno
+deployment.apps/kyverno-reports-controller      1/1     1            1           2d11h   controller   reg.kyverno.io/kyverno/reports-controller:v1.18.2      app.kubernetes.io/component=reports-controller,app.kubernetes.io/instance=kyverno,app.kubernetes.io/part-of=kyverno

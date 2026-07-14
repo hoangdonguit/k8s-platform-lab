@@ -1,0 +1,55 @@
+Name:                   gitops-cicd-demo-app
+Namespace:              apps
+CreationTimestamp:      Wed, 15 Jul 2026 01:58:27 +0700
+Labels:                 app=gitops-cicd-demo-app
+                        app.kubernetes.io/name=gitops-cicd-demo-app
+                        app.kubernetes.io/part-of=k8s-platform-lab
+                        environment=p2-platform
+Annotations:            argocd.argoproj.io/tracking-id: p2-portfolio-gitops-cicd-demo:apps/Deployment:apps/gitops-cicd-demo-app
+                        deployment.kubernetes.io/revision: 1
+Selector:               app=gitops-cicd-demo-app,environment=p2-platform
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=gitops-cicd-demo-app
+           app.kubernetes.io/name=gitops-cicd-demo-app
+           app.kubernetes.io/part-of=k8s-platform-lab
+           environment=p2-platform
+  Containers:
+   app:
+    Image:      hoangdonguit/gitops-cicd-demo-app:sha-c73671f
+    Port:       8080/TCP (http)
+    Host Port:  0/TCP (http)
+    Limits:
+      cpu:     250m
+      memory:  256Mi
+    Requests:
+      cpu:      50m
+      memory:   64Mi
+    Liveness:   http-get http://:http/healthz delay=10s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:http/healthz delay=3s timeout=1s period=5s #success=1 #failure=3
+    Environment:
+      APP_NAME:     gitops-cicd-demo-app
+      APP_VERSION:  sha-c73671f
+    Mounts:
+      /tmp from tmp (rw)
+  Volumes:
+   tmp:
+    Type:          EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:        Memory
+    SizeLimit:     <unset>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   gitops-cicd-demo-app-74865b8c78 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  16m   deployment-controller  Scaled up replica set gitops-cicd-demo-app-74865b8c78 from 0 to 1

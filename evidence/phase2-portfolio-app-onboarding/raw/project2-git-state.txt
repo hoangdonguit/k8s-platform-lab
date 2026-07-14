@@ -1,0 +1,14 @@
+===== Project 2 git =====
+?? evidence/phase2-portfolio-app-onboarding/
+86b6c17 gitops: onboard portfolio ci cd demo app
+04c9aaf docs: record platform mvp final state
+28db5e8 docs: record kyverno policy baseline evidence
+0bf5a52 fix: normalize kyverno gitops manifests
+fc50257 fix: relax kyverno argocd diff rules
+fbfbc69 fix: ignore kyverno controller managed drift
+5b1a540 gitops: add kyverno policy baseline
+80830f7 docs: update phase plan repository layout
+04db161 docs: record longhorn pvc smoke evidence
+adc2448 chore: remove unused platform skeleton
+112e95a gitops: add longhorn storage
+c72db14 docs: summarize kube prometheus stack evidence

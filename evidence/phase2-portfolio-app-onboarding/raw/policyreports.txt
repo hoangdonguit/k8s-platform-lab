@@ -1,0 +1,4 @@
+NAMESPACE   NAME                                   KIND         NAME                                    PASS   FAIL   WARN   ERROR   SKIP   AGE
+apps        21dcd9b0-7279-49b3-ba6b-12b80010ad7a   ReplicaSet   gitops-cicd-demo-app-74865b8c78         2      0      0      0       0      15m
+apps        81c08ca7-90af-484a-a3b0-7f476270c458   Deployment   gitops-cicd-demo-app                    3      0      0      0       0      16m
+apps        c485f79c-f27d-4604-85de-83bb8336dfae   Pod          gitops-cicd-demo-app-74865b8c78-8fbxp   2      0      0      0       0      16m

@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: gunicorn
+Date: Tue, 14 Jul 2026 19:15:20 GMT
+Connection: close
+Content-Type: application/json
+Content-Length: 16
+
+{"status":"ok"}
+pod "curl-check" deleted from apps namespace

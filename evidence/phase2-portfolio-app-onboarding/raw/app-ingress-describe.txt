@@ -1,0 +1,20 @@
+Name:             gitops-cicd-demo-app
+Labels:           app.kubernetes.io/name=gitops-cicd-demo-app
+                  app.kubernetes.io/part-of=k8s-platform-lab
+                  environment=p2-platform
+Namespace:        apps
+Address:          192.168.0.241
+Ingress Class:    nginx
+Default backend:  <default>
+Rules:
+  Host           Path  Backends
+  ----           ----  --------
+  demo.p2.local  
+                 /   gitops-cicd-demo-app:80 (10.42.2.89:8080)
+Annotations:     argocd.argoproj.io/tracking-id: p2-portfolio-gitops-cicd-demo:networking.k8s.io/Ingress:apps/gitops-cicd-demo-app
+Events:
+  Type    Reason  Age                From                      Message
+  ----    ------  ----               ----                      -------
+  Normal  Sync    15m (x2 over 16m)  nginx-ingress-controller  Scheduled for sync
+  Normal  Sync    15m (x2 over 16m)  nginx-ingress-controller  Scheduled for sync
+  Normal  Sync    15m (x2 over 16m)  nginx-ingress-controller  Scheduled for sync

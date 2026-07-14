@@ -1,0 +1,148 @@
+===== Project 1 git =====
+792bf3a gitops: add p2 platform overlay
+9aa6a0e docs: compact README architecture diagram
+a1a6903 docs: polish README diagram and screenshot layout
+3e45fbd docs: fix README diagram and screenshot rendering
+fb01c40 docs: add architecture diagram and verification screenshots
+facbe78 docs: add final project summary
+43235c0 docs: record security hardening proof and final runtime state
+3d866b0 chore(gitops): update image tag to sha-c73671f [skip ci]
+
+===== p2-platform overlay render =====
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: gitops-cicd-demo-app
+    environment: p2-platform
+  name: gitops-cicd-demo-app
+  namespace: apps
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: gitops-cicd-demo-app
+    environment: p2-platform
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: gitops-cicd-demo-app
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    environment: p2-platform
+  name: gitops-cicd-demo-app
+  namespace: apps
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: gitops-cicd-demo-app
+      environment: p2-platform
+  template:
+    metadata:
+      labels:
+        app: gitops-cicd-demo-app
+        app.kubernetes.io/name: gitops-cicd-demo-app
+        app.kubernetes.io/part-of: k8s-platform-lab
+        environment: p2-platform
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env:
+        - name: APP_NAME
+          value: gitops-cicd-demo-app
+        - name: APP_VERSION
+          value: sha-c73671f
+        image: hoangdonguit/gitops-cicd-demo-app:sha-c73671f
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: app
+        ports:
+        - containerPort: 8080
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp
+      securityContext:
+        fsGroup: 10001
+        runAsGroup: 10001
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      volumes:
+      - emptyDir:
+          medium: Memory
+        name: tmp
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    environment: p2-platform
+  name: gitops-cicd-demo-app
+  namespace: apps
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: demo.p2.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: gitops-cicd-demo-app
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  labels:
+    environment: p2-platform
+  name: gitops-cicd-demo-app-ingress
+  namespace: apps
+spec:
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitops-cicd-demo-app
+      environment: p2-platform
+  policyTypes:
+  - Ingress

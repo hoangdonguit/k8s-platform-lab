@@ -1,0 +1,57 @@
+
+===== test from 100.124.205.88 =====
+--- GET / ---
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2026 19:15:05 GMT
+Content-Type: application/json
+Content-Length: 218
+Connection: keep-alive
+
+{"app":"gitops-cicd-demo-app","hostname":"gitops-cicd-demo-app-74865b8c78-8fbxp","message":"Hello from GitOps CI/CD K3s Lab - deployed by ArgoCD","timestamp":"2026-07-14T19:15:05.502287+00:00","version":"sha-c73671f"}
+
+--- GET /healthz ---
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2026 19:15:05 GMT
+Content-Type: application/json
+Content-Length: 16
+Connection: keep-alive
+
+{"status":"ok"}
+
+===== test from 100.115.253.101 =====
+--- GET / ---
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2026 19:15:11 GMT
+Content-Type: application/json
+Content-Length: 218
+Connection: keep-alive
+
+{"app":"gitops-cicd-demo-app","hostname":"gitops-cicd-demo-app-74865b8c78-8fbxp","message":"Hello from GitOps CI/CD K3s Lab - deployed by ArgoCD","timestamp":"2026-07-14T19:15:11.031330+00:00","version":"sha-c73671f"}
+
+--- GET /healthz ---
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2026 19:15:11 GMT
+Content-Type: application/json
+Content-Length: 16
+Connection: keep-alive
+
+{"status":"ok"}
+
+===== test from 100.95.145.92 =====
+--- GET / ---
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2026 19:15:16 GMT
+Content-Type: application/json
+Content-Length: 218
+Connection: keep-alive
+
+{"app":"gitops-cicd-demo-app","hostname":"gitops-cicd-demo-app-74865b8c78-8fbxp","message":"Hello from GitOps CI/CD K3s Lab - deployed by ArgoCD","timestamp":"2026-07-14T19:15:16.548461+00:00","version":"sha-c73671f"}
+
+--- GET /healthz ---
+HTTP/1.1 200 OK
+Date: Tue, 14 Jul 2026 19:15:16 GMT
+Content-Type: application/json
+Content-Length: 16
+Connection: keep-alive
+
+{"status":"ok"}

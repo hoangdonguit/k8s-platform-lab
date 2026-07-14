@@ -1,0 +1,278 @@
+apiVersion: v1
+items:
+- apiVersion: wgpolicyk8s.io/v1alpha2
+  kind: PolicyReport
+  metadata:
+    creationTimestamp: "2026-07-14T17:33:49Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: kyverno
+    name: 3118ce90-04fb-4507-9e87-0b6625b660b0
+    namespace: apps
+    ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: kyverno-smoke-missing-label-77dd9884cc
+      uid: 3118ce90-04fb-4507-9e87-0b6625b660b0
+    resourceVersion: "2155085"
+    uid: 4a455993-c0d7-4f3a-963b-c322413b4f01
+  results:
+  - message: rule passed
+    policy: p2-baseline-disallow-privileged-apps
+    properties:
+      process: background scan
+    result: pass
+    rule: autogen-disallow-privileged-containers-in-apps
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  - message: 'validation failure: validation error: Application pods should define
+      CPU and memory requests. rule autogen-require-cpu-memory-requests failed at
+      path /resources/requests/'
+    policy: p2-baseline-require-resource-requests-apps
+    properties:
+      process: background scan
+    result: fail
+    rule: autogen-require-cpu-memory-requests
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  scope:
+    apiVersion: apps/v1
+    kind: ReplicaSet
+    name: kyverno-smoke-missing-label-77dd9884cc
+    namespace: apps
+    uid: 3118ce90-04fb-4507-9e87-0b6625b660b0
+  summary:
+    error: 0
+    fail: 1
+    pass: 1
+    skip: 0
+    warn: 0
+- apiVersion: wgpolicyk8s.io/v1alpha2
+  kind: PolicyReport
+  metadata:
+    creationTimestamp: "2026-07-14T17:33:30Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/managed-by: kyverno
+    name: 63c05bc1-b5d4-40b5-9bb5-f8b9457009f5
+    namespace: apps
+    ownerReferences:
+    - apiVersion: v1
+      kind: Pod
+      name: kyverno-smoke-no-requests
+      uid: 63c05bc1-b5d4-40b5-9bb5-f8b9457009f5
+    resourceVersion: "2155094"
+    uid: fc40b473-45a0-4e1d-a215-a9f7be242822
+  results:
+  - message: rule passed
+    policy: p2-baseline-disallow-privileged-apps
+    properties:
+      process: background scan
+    result: pass
+    rule: disallow-privileged-containers-in-apps
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050420
+  - message: 'validation failure: validation error: Application pods should define
+      CPU and memory requests. rule require-cpu-memory-requests failed at path /resources/requests/'
+    policy: p2-baseline-require-resource-requests-apps
+    properties:
+      process: background scan
+    result: fail
+    rule: require-cpu-memory-requests
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050420
+  scope:
+    apiVersion: v1
+    kind: Pod
+    name: kyverno-smoke-no-requests
+    namespace: apps
+    uid: 63c05bc1-b5d4-40b5-9bb5-f8b9457009f5
+  summary:
+    error: 0
+    fail: 1
+    pass: 1
+    skip: 0
+    warn: 0
+- apiVersion: wgpolicyk8s.io/v1alpha2
+  kind: PolicyReport
+  metadata:
+    creationTimestamp: "2026-07-14T17:33:29Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/managed-by: kyverno
+    name: 7b135a13-ccc3-480c-b94a-f0e297e6e667
+    namespace: apps
+    ownerReferences:
+    - apiVersion: apps/v1
+      kind: Deployment
+      name: kyverno-smoke-missing-label
+      uid: 7b135a13-ccc3-480c-b94a-f0e297e6e667
+    resourceVersion: "2155083"
+    uid: 9fdfbcb6-89d1-41b5-874a-d8d53e7cde74
+  results:
+  - message: rule passed
+    policy: p2-baseline-disallow-privileged-apps
+    properties:
+      process: background scan
+    result: pass
+    rule: autogen-disallow-privileged-containers-in-apps
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  - message: 'validation error: Workloads in apps namespace should have app.kubernetes.io/name
+      label. rule require-app-label-on-workloads failed at path /metadata/labels/app.kubernetes.io/name/'
+    policy: p2-baseline-require-common-labels
+    properties:
+      process: background scan
+    result: fail
+    rule: require-app-label-on-workloads
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  - message: 'validation failure: validation error: Application pods should define
+      CPU and memory requests. rule autogen-require-cpu-memory-requests failed at
+      path /resources/requests/'
+    policy: p2-baseline-require-resource-requests-apps
+    properties:
+      process: background scan
+    result: fail
+    rule: autogen-require-cpu-memory-requests
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  scope:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: kyverno-smoke-missing-label
+    namespace: apps
+    uid: 7b135a13-ccc3-480c-b94a-f0e297e6e667
+  summary:
+    error: 0
+    fail: 2
+    pass: 1
+    skip: 0
+    warn: 0
+- apiVersion: wgpolicyk8s.io/v1alpha2
+  kind: PolicyReport
+  metadata:
+    creationTimestamp: "2026-07-14T17:33:30Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/managed-by: kyverno
+    name: 8d5d46e1-e847-418d-a912-23aa8caa374b
+    namespace: apps
+    ownerReferences:
+    - apiVersion: v1
+      kind: Pod
+      name: kyverno-smoke-privileged
+      uid: 8d5d46e1-e847-418d-a912-23aa8caa374b
+    resourceVersion: "2155100"
+    uid: f3a899ac-72af-45f8-b712-f5ca4b3d1790
+  results:
+  - message: 'validation failure: Application pods should not run privileged containers.'
+    policy: p2-baseline-disallow-privileged-apps
+    properties:
+      process: background scan
+    result: fail
+    rule: disallow-privileged-containers-in-apps
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050420
+  - message: rule passed
+    policy: p2-baseline-require-resource-requests-apps
+    properties:
+      process: background scan
+    result: pass
+    rule: require-cpu-memory-requests
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050420
+  scope:
+    apiVersion: v1
+    kind: Pod
+    name: kyverno-smoke-privileged
+    namespace: apps
+    uid: 8d5d46e1-e847-418d-a912-23aa8caa374b
+  summary:
+    error: 0
+    fail: 1
+    pass: 1
+    skip: 0
+    warn: 0
+- apiVersion: wgpolicyk8s.io/v1alpha2
+  kind: PolicyReport
+  metadata:
+    creationTimestamp: "2026-07-14T17:33:29Z"
+    generation: 2
+    labels:
+      app.kubernetes.io/managed-by: kyverno
+    name: e0da9e11-c9f5-4996-9654-cf3aa4ddf9db
+    namespace: apps
+    ownerReferences:
+    - apiVersion: v1
+      kind: Pod
+      name: kyverno-smoke-missing-label-77dd9884cc-skmrf
+      uid: e0da9e11-c9f5-4996-9654-cf3aa4ddf9db
+    resourceVersion: "2155087"
+    uid: 0c17aa35-175d-47ab-b3dd-54cbdd6a9828
+  results:
+  - message: rule passed
+    policy: p2-baseline-disallow-privileged-apps
+    properties:
+      process: background scan
+    result: pass
+    rule: disallow-privileged-containers-in-apps
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  - message: 'validation failure: validation error: Application pods should define
+      CPU and memory requests. rule require-cpu-memory-requests failed at path /resources/requests/'
+    policy: p2-baseline-require-resource-requests-apps
+    properties:
+      process: background scan
+    result: fail
+    rule: require-cpu-memory-requests
+    scored: true
+    source: kyverno
+    timestamp:
+      nanos: 0
+      seconds: 1784050419
+  scope:
+    apiVersion: v1
+    kind: Pod
+    name: kyverno-smoke-missing-label-77dd9884cc-skmrf
+    namespace: apps
+    uid: e0da9e11-c9f5-4996-9654-cf3aa4ddf9db
+  summary:
+    error: 0
+    fail: 1
+    pass: 1
+    skip: 0
+    warn: 0
+kind: List
+metadata:
+  resourceVersion: ""

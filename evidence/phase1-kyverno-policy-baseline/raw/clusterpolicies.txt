@@ -1,0 +1,4 @@
+NAME                                         ADMISSION   BACKGROUND   READY   AGE     FAILURE POLICY   VALIDATE   MUTATE   GENERATE   VERIFY IMAGES   MESSAGE
+p2-baseline-disallow-privileged-apps         true        true         True    2d11h                    1          0        0          0               Ready
+p2-baseline-require-common-labels            true        true         True    2d11h                    1          0        0          0               Ready
+p2-baseline-require-resource-requests-apps   true        true         True    2d11h                    1          0        0          0               Ready

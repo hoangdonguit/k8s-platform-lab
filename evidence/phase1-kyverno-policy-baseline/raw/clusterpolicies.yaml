@@ -1,0 +1,259 @@
+apiVersion: v1
+items:
+- apiVersion: kyverno.io/v1
+  kind: ClusterPolicy
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: p2-kyverno:kyverno.io/ClusterPolicy:kyverno/p2-baseline-disallow-privileged-apps
+    creationTimestamp: "2026-07-12T06:07:08Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/part-of: k8s-platform-lab
+    name: p2-baseline-disallow-privileged-apps
+    resourceVersion: "2139974"
+    uid: 3b1b7b02-9686-4a63-ae70-1ee6325202eb
+  spec:
+    admission: true
+    background: true
+    emitWarning: false
+    rules:
+    - match:
+        any:
+        - resources:
+            kinds:
+            - Pod
+            namespaces:
+            - apps
+      name: disallow-privileged-containers-in-apps
+      skipBackgroundRequests: true
+      validate:
+        allowExistingViolations: true
+        foreach:
+        - deny:
+            conditions:
+              any:
+              - key: '{{ element.securityContext.privileged || `false` }}'
+                operator: Equals
+                value: true
+          list: request.object.spec.containers[]
+        message: Application pods should not run privileged containers.
+    validationFailureAction: Audit
+  status:
+    autogen:
+      rules:
+      - match:
+          any:
+          - resources:
+              kinds:
+              - apps/v1/DaemonSet
+              - apps/v1/Deployment
+              - batch/v1/Job
+              - apps/v1/ReplicaSet
+              - v1/ReplicationController
+              - apps/v1/StatefulSet
+              namespaces:
+              - apps
+          resources: {}
+        name: autogen-disallow-privileged-containers-in-apps
+        skipBackgroundRequests: true
+        validate:
+          allowExistingViolations: true
+          foreach:
+          - deny:
+              conditions:
+                any:
+                - key: '{{ element.securityContext.privileged || `false` }}'
+                  operator: Equals
+                  value: true
+            list: request.object.spec.template.spec.containers[]
+          message: Application pods should not run privileged containers.
+      - match:
+          any:
+          - resources:
+              kinds:
+              - batch/v1/CronJob
+              namespaces:
+              - apps
+          resources: {}
+        name: autogen-cronjob-disallow-privileged-containers-in-apps
+        skipBackgroundRequests: true
+        validate:
+          allowExistingViolations: true
+          foreach:
+          - deny:
+              conditions:
+                any:
+                - key: '{{ element.securityContext.privileged || `false` }}'
+                  operator: Equals
+                  value: true
+            list: request.object.spec.jobTemplate.spec.template.spec.containers[]
+          message: Application pods should not run privileged containers.
+    conditions:
+    - lastTransitionTime: "2026-07-14T01:33:58Z"
+      message: Ready
+      reason: Succeeded
+      status: "True"
+      type: Ready
+    rulecount:
+      generate: 0
+      mutate: 0
+      validate: 1
+      verifyimages: 0
+    validatingadmissionpolicy:
+      generated: false
+      message: skip generating ValidatingAdmissionPolicy for non CEL rules.
+- apiVersion: kyverno.io/v1
+  kind: ClusterPolicy
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: p2-kyverno:kyverno.io/ClusterPolicy:kyverno/p2-baseline-require-common-labels
+    creationTimestamp: "2026-07-12T06:07:08Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/part-of: k8s-platform-lab
+    name: p2-baseline-require-common-labels
+    resourceVersion: "2139972"
+    uid: 3040dbe3-dcd1-4b51-b20a-f36f0920a3d2
+  spec:
+    admission: true
+    background: true
+    emitWarning: false
+    rules:
+    - match:
+        any:
+        - resources:
+            kinds:
+            - Deployment
+            - StatefulSet
+            - DaemonSet
+            - Job
+            namespaces:
+            - apps
+      name: require-app-label-on-workloads
+      skipBackgroundRequests: true
+      validate:
+        allowExistingViolations: true
+        message: Workloads in apps namespace should have app.kubernetes.io/name label.
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/name: ?*
+    validationFailureAction: Audit
+  status:
+    autogen: {}
+    conditions:
+    - lastTransitionTime: "2026-07-14T01:33:57Z"
+      message: Ready
+      reason: Succeeded
+      status: "True"
+      type: Ready
+    rulecount:
+      generate: 0
+      mutate: 0
+      validate: 1
+      verifyimages: 0
+    validatingadmissionpolicy:
+      generated: false
+      message: skip generating ValidatingAdmissionPolicy for non CEL rules.
+- apiVersion: kyverno.io/v1
+  kind: ClusterPolicy
+  metadata:
+    annotations:
+      argocd.argoproj.io/tracking-id: p2-kyverno:kyverno.io/ClusterPolicy:kyverno/p2-baseline-require-resource-requests-apps
+    creationTimestamp: "2026-07-12T06:07:08Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/part-of: k8s-platform-lab
+    name: p2-baseline-require-resource-requests-apps
+    resourceVersion: "2139975"
+    uid: d1b2c163-2d4f-4500-aff0-2fccb7294b77
+  spec:
+    admission: true
+    background: true
+    emitWarning: false
+    rules:
+    - match:
+        any:
+        - resources:
+            kinds:
+            - Pod
+            namespaces:
+            - apps
+      name: require-cpu-memory-requests
+      skipBackgroundRequests: true
+      validate:
+        allowExistingViolations: true
+        foreach:
+        - list: request.object.spec.containers[]
+          pattern:
+            resources:
+              requests:
+                cpu: ?*
+                memory: ?*
+        message: Application pods should define CPU and memory requests.
+    validationFailureAction: Audit
+  status:
+    autogen:
+      rules:
+      - match:
+          any:
+          - resources:
+              kinds:
+              - apps/v1/DaemonSet
+              - apps/v1/Deployment
+              - batch/v1/Job
+              - apps/v1/ReplicaSet
+              - v1/ReplicationController
+              - apps/v1/StatefulSet
+              namespaces:
+              - apps
+          resources: {}
+        name: autogen-require-cpu-memory-requests
+        skipBackgroundRequests: true
+        validate:
+          allowExistingViolations: true
+          foreach:
+          - list: request.object.spec.template.spec.containers[]
+            pattern:
+              resources:
+                requests:
+                  cpu: ?*
+                  memory: ?*
+          message: Application pods should define CPU and memory requests.
+      - match:
+          any:
+          - resources:
+              kinds:
+              - batch/v1/CronJob
+              namespaces:
+              - apps
+          resources: {}
+        name: autogen-cronjob-require-cpu-memory-requests
+        skipBackgroundRequests: true
+        validate:
+          allowExistingViolations: true
+          foreach:
+          - list: request.object.spec.jobTemplate.spec.template.spec.containers[]
+            pattern:
+              resources:
+                requests:
+                  cpu: ?*
+                  memory: ?*
+          message: Application pods should define CPU and memory requests.
+    conditions:
+    - lastTransitionTime: "2026-07-14T01:33:58Z"
+      message: Ready
+      reason: Succeeded
+      status: "True"
+      type: Ready
+    rulecount:
+      generate: 0
+      mutate: 0
+      validate: 1
+      verifyimages: 0
+    validatingadmissionpolicy:
+      generated: false
+      message: skip generating ValidatingAdmissionPolicy for non CEL rules.
+kind: List
+metadata:
+  resourceVersion: ""

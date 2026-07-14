@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: p2-portfolio-gitops-cicd-demo
+  namespace: argocd
+  labels:
+    app.kubernetes.io/part-of: k8s-platform-lab
+    app.kubernetes.io/name: gitops-cicd-demo-app
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/hoangdonguit/gitops-cicd-k3s-lab.git
+    targetRevision: main
+    path: k8s/overlays/p2-platform
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

@@ -9,3 +9,4 @@ resources:
   - kube-prometheus-stack.yaml
   - longhorn.yaml
   - kyverno.yaml
+  - portfolio-gitops-cicd-demo.yaml

@@ -33,25 +33,9 @@ spec:
         - .spec.versions[].schema
         - .status
 
-    - group: batch
-      kind: Job
-      namespace: kyverno
-      name: kyverno-migrate-resources
-      jqPathExpressions:
-        - .metadata.annotations
-        - .metadata.labels
-        - .spec.selector
-        - .spec.template.metadata
-        - .status
-
     - group: kyverno.io
       kind: ClusterPolicy
       jqPathExpressions:
         - .metadata.annotations
         - .metadata.labels
-        - .spec.admission
-        - .spec.background
-        - .spec.emitWarning
-        - .spec.rules[].skipBackgroundRequests
-        - .spec.validationFailureActionOverrides
         - .status

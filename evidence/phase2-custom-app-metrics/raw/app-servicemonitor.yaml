@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: p2-portfolio-gitops-cicd-demo:monitoring.coreos.com/ServiceMonitor:apps/gitops-cicd-demo-app
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"monitoring.coreos.com/v1","kind":"ServiceMonitor","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"p2-portfolio-gitops-cicd-demo:monitoring.coreos.com/ServiceMonitor:apps/gitops-cicd-demo-app"},"labels":{"app.kubernetes.io/name":"gitops-cicd-demo-app","app.kubernetes.io/part-of":"k8s-platform-lab","environment":"p2-platform"},"name":"gitops-cicd-demo-app","namespace":"apps"},"spec":{"endpoints":[{"interval":"30s","path":"/metrics","port":"http","scrapeTimeout":"10s"}],"namespaceSelector":{"matchNames":["apps"]},"selector":{"matchLabels":{"app":"gitops-cicd-demo-app","environment":"p2-platform"}}}}
+  creationTimestamp: "2026-07-15T14:05:19Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    environment: p2-platform
+  name: gitops-cicd-demo-app
+  namespace: apps
+  resourceVersion: "2520559"
+  uid: fa52c66a-0be3-4bd2-951e-2eb8eb263998
+spec:
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    port: http
+    scrapeTimeout: 10s
+  namespaceSelector:
+    matchNames:
+    - apps
+  selector:
+    matchLabels:
+      app: gitops-cicd-demo-app
+      environment: p2-platform

@@ -1,0 +1,127 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: p2-portfolio-gitops-cicd-demo:apps/Deployment:apps/gitops-cicd-demo-app
+    deployment.kubernetes.io/revision: "3"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"p2-portfolio-gitops-cicd-demo:apps/Deployment:apps/gitops-cicd-demo-app"},"labels":{"app":"gitops-cicd-demo-app","app.kubernetes.io/name":"gitops-cicd-demo-app","app.kubernetes.io/part-of":"k8s-platform-lab","environment":"p2-platform"},"name":"gitops-cicd-demo-app","namespace":"apps"},"spec":{"replicas":1,"revisionHistoryLimit":3,"selector":{"matchLabels":{"app":"gitops-cicd-demo-app","environment":"p2-platform"}},"template":{"metadata":{"labels":{"app":"gitops-cicd-demo-app","app.kubernetes.io/name":"gitops-cicd-demo-app","app.kubernetes.io/part-of":"k8s-platform-lab","environment":"p2-platform"}},"spec":{"automountServiceAccountToken":false,"containers":[{"env":[{"name":"APP_NAME","value":"gitops-cicd-demo-app"},{"name":"APP_VERSION","value":"sha-2218381"}],"image":"hoangdonguit/gitops-cicd-demo-app:sha-2218381","imagePullPolicy":"IfNotPresent","livenessProbe":{"httpGet":{"path":"/healthz","port":"http"},"initialDelaySeconds":10,"periodSeconds":10},"name":"app","ports":[{"containerPort":8080,"name":"http"}],"readinessProbe":{"httpGet":{"path":"/healthz","port":"http"},"initialDelaySeconds":3,"periodSeconds":5},"resources":{"limits":{"cpu":"250m","memory":"256Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true},"volumeMounts":[{"mountPath":"/tmp","name":"tmp"}]}],"securityContext":{"fsGroup":10001,"runAsGroup":10001,"runAsNonRoot":true,"runAsUser":10001,"seccompProfile":{"type":"RuntimeDefault"}},"volumes":[{"emptyDir":{"medium":"Memory"},"name":"tmp"}]}}}}
+  creationTimestamp: "2026-07-14T18:58:27Z"
+  generation: 3
+  labels:
+    app: gitops-cicd-demo-app
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    environment: p2-platform
+  name: gitops-cicd-demo-app
+  namespace: apps
+  resourceVersion: "2541366"
+  uid: 81c08ca7-90af-484a-a3b0-7f476270c458
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: gitops-cicd-demo-app
+      environment: p2-platform
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: gitops-cicd-demo-app
+        app.kubernetes.io/name: gitops-cicd-demo-app
+        app.kubernetes.io/part-of: k8s-platform-lab
+        environment: p2-platform
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env:
+        - name: APP_NAME
+          value: gitops-cicd-demo-app
+        - name: APP_VERSION
+          value: sha-2218381
+        image: hoangdonguit/gitops-cicd-demo-app:sha-2218381
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: app
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /healthz
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 3
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            cpu: 250m
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 10001
+        runAsGroup: 10001
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir:
+          medium: Memory
+        name: tmp
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2026-07-15T04:28:51Z"
+    lastUpdateTime: "2026-07-15T04:28:51Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2026-07-14T18:58:27Z"
+    lastUpdateTime: "2026-07-15T14:51:06Z"
+    message: ReplicaSet "gitops-cicd-demo-app-7f96d64bc8" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 3
+  readyReplicas: 1
+  replicas: 1
+  terminatingReplicas: 0
+  updatedReplicas: 1

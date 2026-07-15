@@ -1,0 +1,48 @@
+NAME                                                                VERSION              DESIRED   READY   RECONCILED   AVAILABLE   AGE     PAUSED
+prometheus.monitoring.coreos.com/kube-prometheus-stack-prometheus   v3.13.1-distroless   1         1       True         True        3d17h   false
+
+NAME                                                                    VERSION   REPLICAS   READY   RECONCILED   AVAILABLE   AGE     PAUSED
+alertmanager.monitoring.coreos.com/kube-prometheus-stack-alertmanager   v0.33.1   1          1       True         True        3d17h   false
+
+NAME                                                                                  AGE
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-alertmanager               3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-apiserver                  3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-coredns                    3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-grafana                    3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-kube-state-metrics         3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-kubelet                    3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-operator                   3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-prometheus                 3d17h
+servicemonitor.monitoring.coreos.com/kube-prometheus-stack-prometheus-node-exporter   3d17h
+
+NAME                                                                                                   AGE
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-alertmanager.rules                          3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-config-reloaders                            3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-general.rules                               3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.container-cpu-usage-seconds-tot   3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.container-memory-cache            3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.container-memory-rss              3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.container-memory-swap             3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.container-memory-working-set-by   3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.container-resource                3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-k8s.rules.pod-owner                         3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-apiserver-availability.rules           3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-apiserver-burnrate.rules               3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-apiserver-histogram.rules              3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-apiserver-slos                         3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-prometheus-general.rules               3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-prometheus-node-recording.rules        3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kube-state-metrics                          3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubelet.rules                               3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubernetes-apps                             3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubernetes-resources                        3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubernetes-storage                          3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubernetes-system                           3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubernetes-system-apiserver                 3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-kubernetes-system-kubelet                   3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-node-exporter                               3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-node-exporter.rules                         3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-node-network                                3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-node.rules                                  3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-prometheus                                  3d17h
+prometheusrule.monitoring.coreos.com/kube-prometheus-stack-prometheus-operator                         3d17h

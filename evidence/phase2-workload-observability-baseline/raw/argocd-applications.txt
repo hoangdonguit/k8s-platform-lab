@@ -1,0 +1,11 @@
+NAME                            SYNC STATUS   HEALTH STATUS   REVISION                                   PROJECT
+p2-argocd-crds                  Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-cert-manager                 Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-ingress-nginx                Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-kube-prometheus-stack        Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-kyverno                      Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-longhorn                     Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-metallb                      Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-platform-namespaces          Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default
+p2-portfolio-gitops-cicd-demo   Synced        Healthy         792bf3ac99d1bdc737a166d5be501e4016e65601   default
+p2-root-apps                    Synced        Healthy         25bc24ab6c64d9f0f18b5aac50a29764d991f54f   default

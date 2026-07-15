@@ -1,0 +1,25 @@
+===== Project 1 git state =====
+c03c618 chore(gitops): update image tag to sha-b10ebf1 [skip ci]
+b10ebf1 refactor: use route label for app metrics
+6001e95 chore(gitops): update image tag to sha-2218381 [skip ci]
+2218381 fix: use prometheus content type header
+cfbadc7 chore(gitops): update image tag to sha-bfe89c4 [skip ci]
+bfe89c4 feat: expose prometheus metrics
+792bf3a gitops: add p2 platform overlay
+9aa6a0e docs: compact README architecture diagram
+
+===== Image tag =====
+11:    newTag: sha-b10ebf1
+42:            - name: APP_VERSION
+43-              value: sha-b10ebf1
+
+===== App metrics label source =====
+7:from prometheus_client import CONTENT_TYPE_LATEST, Counter, Gauge, Histogram, generate_latest
+21:HTTP_REQUESTS_TOTAL = Counter(
+24:    ["method", "route", "status"],
+27:HTTP_REQUEST_DURATION_SECONDS = Histogram(
+30:    ["method", "route"],
+41:    route = request.endpoint or "unknown"
+43:    if route != "metrics":
+52:            route=route,
+58:            route=route,

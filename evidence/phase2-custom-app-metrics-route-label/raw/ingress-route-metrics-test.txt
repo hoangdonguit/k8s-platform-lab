@@ -1,0 +1,21 @@
+===== /version =====
+HTTP/1.1 200 OK
+Date: Wed, 15 Jul 2026 18:19:44 GMT
+Content-Type: application/json
+Content-Length: 55
+Connection: keep-alive
+
+{"app":"gitops-cicd-demo-app","version":"sha-b10ebf1"}
+
+===== /metrics route label lines =====
+HTTP/1.1 200 OK
+Content-Type: text/plain; version=0.0.4; charset=utf-8
+# HELP gitops_cicd_demo_app_info Application build information
+# TYPE gitops_cicd_demo_app_info gauge
+gitops_cicd_demo_app_info{app="gitops-cicd-demo-app",version="sha-b10ebf1"} 1.0
+# HELP gitops_cicd_demo_http_requests_total Total HTTP requests handled by the application
+# TYPE gitops_cicd_demo_http_requests_total counter
+gitops_cicd_demo_http_requests_total{method="GET",route="healthz",status="200"} 890.0
+gitops_cicd_demo_http_requests_total{method="GET",route="version",status="200"} 2.0
+gitops_cicd_demo_http_request_duration_seconds_count{method="GET",route="healthz"} 890.0
+gitops_cicd_demo_http_request_duration_seconds_count{method="GET",route="version"} 2.0

@@ -1,0 +1,94 @@
+===== Project 1 git state =====
+61a9713 feat: add app prometheus alert rules
+c03c618 chore(gitops): update image tag to sha-b10ebf1 [skip ci]
+b10ebf1 refactor: use route label for app metrics
+6001e95 chore(gitops): update image tag to sha-2218381 [skip ci]
+2218381 fix: use prometheus content type header
+cfbadc7 chore(gitops): update image tag to sha-bfe89c4 [skip ci]
+bfe89c4 feat: expose prometheus metrics
+792bf3a gitops: add p2 platform overlay
+9aa6a0e docs: compact README architecture diagram
+a1a6903 docs: polish README diagram and screenshot layout
+
+===== p2-platform overlay resources =====
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: apps
+
+resources:
+  - ../../base
+  - ingress.yaml
+  - servicemonitor.yaml
+  - prometheusrule.yaml
+
+labels:
+  - pairs:
+      environment: p2-platform
+    includeSelectors: true
+
+patches:
+  - path: deployment-label-patch.yaml
+
+===== PrometheusRule manifest =====
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: gitops-cicd-demo-app-alerts
+  labels:
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+spec:
+  groups:
+    - name: gitops-cicd-demo-app.rules
+      rules:
+        - alert: GitOpsDemoAppTargetDown
+          expr: up{job="gitops-cicd-demo-app",namespace="apps"} == 0
+          for: 2m
+          labels:
+            severity: critical
+            app: gitops-cicd-demo-app
+          annotations:
+            summary: GitOps CI/CD demo app Prometheus target is down
+            description: Prometheus cannot scrape the gitops-cicd-demo-app target in namespace apps.
+
+        - alert: GitOpsDemoAppNoReadyPods
+          expr: kube_deployment_status_replicas_available{namespace="apps",deployment="gitops-cicd-demo-app"} < 1
+          for: 2m
+          labels:
+            severity: critical
+            app: gitops-cicd-demo-app
+          annotations:
+            summary: GitOps CI/CD demo app has no ready pods
+            description: Deployment gitops-cicd-demo-app has less than one available replica.
+
+        - alert: GitOpsDemoAppHigh5xxRate
+          expr: |
+            (
+              sum(rate(gitops_cicd_demo_http_requests_total{job="gitops-cicd-demo-app",namespace="apps",status=~"5.."}[5m]))
+              /
+              clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job="gitops-cicd-demo-app",namespace="apps"}[5m])), 0.001)
+            ) > 0.05
+          for: 5m
+          labels:
+            severity: warning
+            app: gitops-cicd-demo-app
+          annotations:
+            summary: GitOps CI/CD demo app has high 5xx error ratio
+            description: More than 5 percent of app requests are returning HTTP 5xx responses.
+
+        - alert: GitOpsDemoAppHighP95Latency
+          expr: |
+            histogram_quantile(
+              0.95,
+              sum by (le, route, method) (
+                rate(gitops_cicd_demo_http_request_duration_seconds_bucket{job="gitops-cicd-demo-app",namespace="apps",route!=""}[5m])
+              )
+            ) > 0.5
+          for: 5m
+          labels:
+            severity: warning
+            app: gitops-cicd-demo-app
+          annotations:
+            summary: GitOps CI/CD demo app p95 latency is high
+            description: The p95 latency for one or more application routes is above 500ms.

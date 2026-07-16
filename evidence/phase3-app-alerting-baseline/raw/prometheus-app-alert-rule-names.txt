@@ -1,0 +1,4 @@
+GitOpsDemoAppHigh5xxRate
+GitOpsDemoAppHighP95Latency
+GitOpsDemoAppNoReadyPods
+GitOpsDemoAppTargetDown

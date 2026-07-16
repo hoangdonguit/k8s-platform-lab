@@ -145,6 +145,7 @@ Major evidence checkpoints:
 - `evidence/phase2-workload-observability-baseline`
 - `evidence/phase2-custom-app-metrics`
 - `evidence/phase2-custom-app-metrics-route-label`
+- `evidence/phase3-app-alerting-baseline`
 
 ## Useful commands
 

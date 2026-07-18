@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"__name__":"up","container":"app","endpoint":"http","instance":"10.42.2.85:8080","job":"gitops-cicd-demo-app","namespace":"apps","pod":"gitops-cicd-demo-app-868d67b77d-dj9tx","service":"gitops-cicd-demo-app"},"value":[1784365754.017,"1"]}]}}

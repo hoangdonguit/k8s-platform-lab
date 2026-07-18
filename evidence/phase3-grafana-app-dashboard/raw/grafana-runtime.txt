@@ -1,0 +1,5 @@
+NAME                                    TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/kube-prometheus-stack-grafana   ClusterIP   10.43.108.153   <none>        80/TCP    6d15h   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=grafana
+
+NAME                                                 READY   STATUS    RESTARTS   AGE   IP            NODE        NOMINATED NODE   READINESS GATES
+pod/kube-prometheus-stack-grafana-7948f67bc7-bwzk5   3/3     Running   0          16m   10.42.1.131   p2-node-2   <none>           <none>

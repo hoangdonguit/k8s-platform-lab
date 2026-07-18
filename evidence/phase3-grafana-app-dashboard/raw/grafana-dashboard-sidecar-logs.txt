@@ -1,0 +1,101 @@
+{"time": "2026-07-18T08:52:13.872069+00:00", "level": "INFO", "msg": "Starting collector"}
+{"time": "2026-07-18T08:52:13.873432+00:00", "level": "INFO", "msg": "No folder annotation was provided, defaulting to k8s-sidecar-target-directory"}
+{"time": "2026-07-18T08:52:13.873805+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+Exception in thread Thread-1 (run):
+{"time": "2026-07-18T08:52:13.874979+00:00", "level": "INFO", "msg": "Unique filenames will not be enforced."}
+{"time": "2026-07-18T08:52:13.875139+00:00", "level": "INFO", "msg": "5xx response content will not be enabled."}
+{"time": "2026-07-18T08:52:13.875389+00:00", "level": "INFO", "msg": "Performing initial list-based sync before starting watch."}
+{"time": "2026-07-18T08:52:13.875534+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:52:13.876589+00:00", "level": "INFO", "msg": "Performing list-based sync on secret resources: {}"}
+{"time": "2026-07-18T08:52:13.937278+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:52:13.940243+00:00", "level": "INFO", "msg": "Performing list-based sync on configmap resources: {}"}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.15/threading.py", line 1218, in _bootstrap_inner
+    self._context.run(self.run)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/usr/local/lib/python3.15/threading.py", line 1160, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.15/site-packages/healthz.py", line 133, in run
+    server = ThreadingHTTPServer(("", health_port), HealthHandler)
+  File "/usr/local/lib/python3.15/socketserver.py", line 454, in __init__
+    self.server_bind()
+    ~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.15/http/server.py", line 122, in server_bind
+    socketserver.TCPServer.server_bind(self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/usr/local/lib/python3.15/socketserver.py", line 475, in server_bind
+    self.socket.bind(self.server_address)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 98] Address in use
+{"time": "2026-07-18T08:52:13.964534+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/gitops-cicd-demo-app.json (ascii)"}
+{"time": "2026-07-18T08:52:13.966139+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/alertmanager-overview.json (ascii)"}
+{"time": "2026-07-18T08:52:13.967522+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/apiserver.json (ascii)"}
+{"time": "2026-07-18T08:52:13.968800+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/cluster-total.json (ascii)"}
+{"time": "2026-07-18T08:52:13.970048+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/grafana-overview.json (ascii)"}
+{"time": "2026-07-18T08:52:13.985541+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-coredns.json (ascii)"}
+{"time": "2026-07-18T08:52:13.987017+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-cluster.json (ascii)"}
+{"time": "2026-07-18T08:52:13.988799+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-multicluster.json (ascii)"}
+{"time": "2026-07-18T08:52:13.990268+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-namespace.json (ascii)"}
+{"time": "2026-07-18T08:52:13.991643+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-node.json (ascii)"}
+{"time": "2026-07-18T08:52:14.007446+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-nodes-overview.json (ascii)"}
+{"time": "2026-07-18T08:52:14.009069+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-pod.json (ascii)"}
+{"time": "2026-07-18T08:52:14.010526+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-workload.json (ascii)"}
+{"time": "2026-07-18T08:52:14.011951+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/k8s-resources-workloads-namespace.json (ascii)"}
+{"time": "2026-07-18T08:52:14.013502+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/kubelet.json (ascii)"}
+{"time": "2026-07-18T08:52:14.026511+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/namespace-by-pod.json (ascii)"}
+{"time": "2026-07-18T08:52:14.027809+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/namespace-by-workload.json (ascii)"}
+{"time": "2026-07-18T08:52:14.028844+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/node-cluster-rsrc-use.json (ascii)"}
+{"time": "2026-07-18T08:52:14.029826+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/node-rsrc-use.json (ascii)"}
+{"time": "2026-07-18T08:52:14.030734+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/nodes.json (ascii)"}
+{"time": "2026-07-18T08:52:14.043375+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/nodes-aix.json (ascii)"}
+{"time": "2026-07-18T08:52:14.044786+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/nodes-darwin.json (ascii)"}
+{"time": "2026-07-18T08:52:14.046283+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/persistentvolumesusage.json (ascii)"}
+{"time": "2026-07-18T08:52:14.047440+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/pod-total.json (ascii)"}
+{"time": "2026-07-18T08:52:14.048563+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/prometheus.json (ascii)"}
+{"time": "2026-07-18T08:52:14.059667+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/workload-total.json (ascii)"}
+{"time": "2026-07-18T08:52:14.063555+00:00", "level": "WARNING", "msg": "Retrying (Retry(total=4, connect=9, read=5, redirect=None, status=None)) after connection broken by 'NewConnectionError(\"HTTPConnection(host='localhost', port=3000): Failed to establish a new connection: [Errno 111] Connection refused\")': /api/admin/provisioning/dashboards/reload"}
+{"time": "2026-07-18T08:52:16.265080+00:00", "level": "WARNING", "msg": "Retrying (Retry(total=3, connect=8, read=5, redirect=None, status=None)) after connection broken by 'NewConnectionError(\"HTTPConnection(host='localhost', port=3000): Failed to establish a new connection: [Errno 111] Connection refused\")': /api/admin/provisioning/dashboards/reload"}
+{"time": "2026-07-18T08:52:20.666674+00:00", "level": "WARNING", "msg": "Retrying (Retry(total=2, connect=7, read=5, redirect=None, status=None)) after connection broken by 'NewConnectionError(\"HTTPConnection(host='localhost', port=3000): Failed to establish a new connection: [Errno 111] Connection refused\")': /api/admin/provisioning/dashboards/reload"}
+{"time": "2026-07-18T08:52:20.748866+00:00", "level": "INFO", "msg": "None sent to http://localhost:3000/api/admin/provisioning/dashboards/reload. Response: 200 OK {\"message\":\"Dashboards config reloaded\"}"}
+{"time": "2026-07-18T08:52:20.749131+00:00", "level": "INFO", "msg": "Initial sync complete, sidecar is ready."}
+{"time": "2026-07-18T08:52:20.749760+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:52:20.750271+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:52:20.751540+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:52:20.752367+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:53:20.766343+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:53:20.767138+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:54:20.782065+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:54:20.782659+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:55:20.796279+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:55:20.799943+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:56:20.814014+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:56:20.814612+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:57:20.835397+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:57:20.835996+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:58:20.849128+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:58:20.852893+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:59:20.864272+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T08:59:20.864552+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:00:20.876789+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:00:20.878392+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:01:20.893116+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:01:20.893449+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:02:20.905810+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:02:20.909317+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:03:20.920706+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:03:20.924710+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:03:51.223360+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/gitops-cicd-demo-app.json (ascii)"}
+{"time": "2026-07-18T09:03:51.271096+00:00", "level": "INFO", "msg": "None sent to http://localhost:3000/api/admin/provisioning/dashboards/reload. Response: 401 Unauthorized {\"extra\":null,\"message\":\"Invalid username or password\",\"messageId\":\"password-auth.failed\",\"statusCode\":401,\"traceID\":\"\"}\n"}
+{"time": "2026-07-18T09:04:20.937299+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:04:20.937627+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:05:20.955184+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:05:20.955888+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:06:20.969510+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:06:20.971087+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:07:20.984782+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:07:20.989998+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:08:01.957795+00:00", "level": "INFO", "msg": "Writing /tmp/dashboards/gitops-cicd-demo-app.json (ascii)"}
+{"time": "2026-07-18T09:08:01.995888+00:00", "level": "INFO", "msg": "None sent to http://localhost:3000/api/admin/provisioning/dashboards/reload. Response: 401 Unauthorized {\"extra\":null,\"message\":\"Invalid username or password\",\"messageId\":\"password-auth.failed\",\"statusCode\":401,\"traceID\":\"\"}\n"}
+{"time": "2026-07-18T09:08:21.004682+00:00", "level": "INFO", "msg": "Loading incluster config..."}
+{"time": "2026-07-18T09:08:21.009148+00:00", "level": "INFO", "msg": "Loading incluster config..."}

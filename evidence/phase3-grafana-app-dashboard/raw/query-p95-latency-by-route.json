@@ -1,0 +1,1 @@
+{"status":"success","data":{"resultType":"vector","result":[{"metric":{"method":"GET","route":"healthz"},"value":[1784365756.045,"0.00475"]}]}}

@@ -1,0 +1,18 @@
+===== Project git state =====
+?? evidence/phase3-grafana-app-dashboard/
+c20ef81 fix: tune app dashboard healthy state scales
+a42fb27 fix: show zero values in app dashboard healthy state
+54f6cf4 gitops: add grafana app dashboard
+0e8a470 docs: update phase 3 fire drill summary
+a12e43f docs: record alert fire drill evidence
+065efcc docs: add phase 3 app alerting summary
+b916aef docs: add app alerting guide
+33ac7ae docs: record app alerting baseline evidence
+118840d docs: add phase 2 application observability summary
+36ea822 docs: update evidence index for app observability
+801b574 docs: record app metrics route label evidence
+8b7e511 docs: record custom app metrics evidence
+
+===== Dashboard files =====
+platform/grafana-app-dashboards/kustomization.yaml
+platform/grafana-app-dashboards/gitops-cicd-demo-app-dashboard.yaml

@@ -11,7 +11,11 @@ data:
     {
       "uid": "gitops-cicd-demo-app",
       "title": "GitOps CI/CD Demo App",
-      "tags": ["k8s-platform-lab", "gitops-cicd-demo-app", "prometheus"],
+      "tags": [
+        "k8s-platform-lab",
+        "gitops-cicd-demo-app",
+        "prometheus"
+      ],
       "timezone": "browser",
       "schemaVersion": 39,
       "version": 1,
@@ -38,7 +42,12 @@ data:
           "id": 1,
           "type": "stat",
           "title": "App Version",
-          "gridPos": {"h": 5, "w": 6, "x": 0, "y": 0},
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 0
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -49,7 +58,9 @@ data:
           ],
           "options": {
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -63,7 +74,12 @@ data:
           "id": 2,
           "type": "stat",
           "title": "Scrape Target Up",
-          "gridPos": {"h": 5, "w": 6, "x": 6, "y": 0},
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 6,
+            "y": 0
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -74,7 +90,9 @@ data:
           ],
           "options": {
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -88,7 +106,12 @@ data:
           "id": 3,
           "type": "stat",
           "title": "Ready Replicas",
-          "gridPos": {"h": 5, "w": 6, "x": 12, "y": 0},
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 12,
+            "y": 0
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -99,7 +122,9 @@ data:
           ],
           "options": {
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -113,7 +138,12 @@ data:
           "id": 4,
           "type": "stat",
           "title": "Current App Alerts",
-          "gridPos": {"h": 5, "w": 6, "x": 18, "y": 0},
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 18,
+            "y": 0
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -124,7 +154,9 @@ data:
           ],
           "options": {
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -138,7 +170,12 @@ data:
           "id": 5,
           "type": "timeseries",
           "title": "Request Rate by Route",
-          "gridPos": {"h": 8, "w": 12, "x": 0, "y": 5},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 5
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -158,7 +195,12 @@ data:
           "id": 6,
           "type": "timeseries",
           "title": "P95 Latency by Route",
-          "gridPos": {"h": 8, "w": 12, "x": 12, "y": 5},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 5
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -178,7 +220,12 @@ data:
           "id": 7,
           "type": "timeseries",
           "title": "5xx Error Ratio",
-          "gridPos": {"h": 8, "w": 12, "x": 0, "y": 13},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 13
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -189,7 +236,10 @@ data:
           ],
           "fieldConfig": {
             "defaults": {
-              "unit": "percentunit"
+              "unit": "percentunit",
+              "min": 0,
+              "max": 1,
+              "decimals": 4
             },
             "overrides": []
           }
@@ -198,7 +248,12 @@ data:
           "id": 8,
           "type": "timeseries",
           "title": "Container CPU Usage",
-          "gridPos": {"h": 8, "w": 12, "x": 12, "y": 13},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 13
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -218,7 +273,12 @@ data:
           "id": 9,
           "type": "timeseries",
           "title": "Container Memory Working Set",
-          "gridPos": {"h": 8, "w": 12, "x": 0, "y": 21},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 21
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -238,7 +298,12 @@ data:
           "id": 10,
           "type": "timeseries",
           "title": "Firing App Alerts",
-          "gridPos": {"h": 8, "w": 12, "x": 12, "y": 21},
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 21
+          },
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
@@ -246,7 +311,15 @@ data:
               "legendFormat": "firing alerts",
               "refId": "A"
             }
-          ]
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "min": 0,
+              "max": 1,
+              "decimals": 0
+            }
+          }
         }
       ]
     }

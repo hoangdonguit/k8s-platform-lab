@@ -163,13 +163,30 @@ Related docs:
 
 - `docs/app-alerting.md`
 
-## Current limitation
+## Alert fire-drill result
 
-This phase validates rule loading and healthy-state evaluation.
+A controlled alert fire-drill was completed after the baseline alert rules were created.
 
-It does not intentionally fire the alerts yet.
+The fire-drill used a temporary GitOps-managed PrometheusRule:
 
-A future fire-drill can safely validate alert firing by adding a temporary test rule or temporarily scaling the app down in a controlled maintenance window.
+- Alert: `GitOpsDemoAppFireDrill`
+- Expr: `vector(1)`
+- For: `30s`
+- Severity: `info`
+
+Validated flow:
+
+1. Temporary fire-drill rule was added through Project 1.
+2. ArgoCD synced the rule into Project 2.
+3. Prometheus loaded the fire-drill rule.
+4. Alert state changed to `firing`.
+5. Temporary rule was removed through GitOps.
+6. Prometheus no longer showed the fire-drill rule or alert.
+7. Baseline app alert rules remained loaded.
+
+Evidence:
+
+- `evidence/phase3-alert-fire-drill`
 
 ## Recommended next steps
 

@@ -125,6 +125,23 @@ StorageClasses:
 
 A PVC smoke test verified that data persisted across pod recreation before cleanup.
 
+## CV highlights
+
+This project demonstrates a platform engineering workflow:
+
+- Built a 3-node K3s platform with Cilium, ArgoCD App-of-Apps, ingress-nginx, MetalLB, cert-manager, kube-prometheus-stack, Longhorn, and Kyverno.
+- Onboarded a separate GitOps CI/CD Flask application from another repository.
+- Exposed the app through ingress-nginx and MetalLB.
+- Added custom Prometheus application metrics and ServiceMonitor scraping.
+- Added PrometheusRule alerting for target down, no ready pods, high 5xx ratio, and high p95 latency.
+- Validated alert firing through a controlled fire-drill and GitOps cleanup.
+- Added Grafana dashboard-as-code for app version, scrape health, request rate, p95 latency, 5xx ratio, CPU, memory, and alerts.
+- Recorded evidence and runbooks for each major platform milestone.
+
+Detailed CV summary:
+
+- `docs/cv-project-summary.md`
+
 ## Evidence index
 
 Major evidence checkpoints:

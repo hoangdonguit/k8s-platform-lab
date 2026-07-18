@@ -1,0 +1,71 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: p2-portfolio-gitops-cicd-demo:monitoring.coreos.com/PrometheusRule:apps/gitops-cicd-demo-app-alerts
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"monitoring.coreos.com/v1","kind":"PrometheusRule","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"p2-portfolio-gitops-cicd-demo:monitoring.coreos.com/PrometheusRule:apps/gitops-cicd-demo-app-alerts"},"labels":{"app.kubernetes.io/name":"gitops-cicd-demo-app","app.kubernetes.io/part-of":"k8s-platform-lab","environment":"p2-platform"},"name":"gitops-cicd-demo-app-alerts","namespace":"apps"},"spec":{"groups":[{"name":"gitops-cicd-demo-app.rules","rules":[{"alert":"GitOpsDemoAppTargetDown","annotations":{"description":"Prometheus cannot scrape the gitops-cicd-demo-app target in namespace apps.","summary":"GitOps CI/CD demo app Prometheus target is down"},"expr":"up{job=\"gitops-cicd-demo-app\",namespace=\"apps\"} == 0","for":"2m","labels":{"app":"gitops-cicd-demo-app","severity":"critical"}},{"alert":"GitOpsDemoAppNoReadyPods","annotations":{"description":"Deployment gitops-cicd-demo-app has less than one available replica.","summary":"GitOps CI/CD demo app has no ready pods"},"expr":"kube_deployment_status_replicas_available{namespace=\"apps\",deployment=\"gitops-cicd-demo-app\"} \u003c 1","for":"2m","labels":{"app":"gitops-cicd-demo-app","severity":"critical"}},{"alert":"GitOpsDemoAppHigh5xxRate","annotations":{"description":"More than 5 percent of app requests are returning HTTP 5xx responses.","summary":"GitOps CI/CD demo app has high 5xx error ratio"},"expr":"(\n  sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\",status=~\"5..\"}[5m]))\n  /\n  clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\"}[5m])), 0.001)\n) \u003e 0.05\n","for":"5m","labels":{"app":"gitops-cicd-demo-app","severity":"warning"}},{"alert":"GitOpsDemoAppHighP95Latency","annotations":{"description":"The p95 latency for one or more application routes is above 500ms.","summary":"GitOps CI/CD demo app p95 latency is high"},"expr":"histogram_quantile(\n  0.95,\n  sum by (le, route, method) (\n    rate(gitops_cicd_demo_http_request_duration_seconds_bucket{job=\"gitops-cicd-demo-app\",namespace=\"apps\",route!=\"\"}[5m])\n  )\n) \u003e 0.5\n","for":"5m","labels":{"app":"gitops-cicd-demo-app","severity":"warning"}}]}]}}
+    prometheus-operator-validated: "true"
+  creationTimestamp: "2026-07-16T12:51:13Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    environment: p2-platform
+  name: gitops-cicd-demo-app-alerts
+  namespace: apps
+  resourceVersion: "2780863"
+  uid: 8b3683cf-dee2-48e5-9eb0-c230bda05d57
+spec:
+  groups:
+  - name: gitops-cicd-demo-app.rules
+    rules:
+    - alert: GitOpsDemoAppTargetDown
+      annotations:
+        description: Prometheus cannot scrape the gitops-cicd-demo-app target in namespace
+          apps.
+        summary: GitOps CI/CD demo app Prometheus target is down
+      expr: up{job="gitops-cicd-demo-app",namespace="apps"} == 0
+      for: 2m
+      labels:
+        app: gitops-cicd-demo-app
+        severity: critical
+    - alert: GitOpsDemoAppNoReadyPods
+      annotations:
+        description: Deployment gitops-cicd-demo-app has less than one available replica.
+        summary: GitOps CI/CD demo app has no ready pods
+      expr: kube_deployment_status_replicas_available{namespace="apps",deployment="gitops-cicd-demo-app"}
+        < 1
+      for: 2m
+      labels:
+        app: gitops-cicd-demo-app
+        severity: critical
+    - alert: GitOpsDemoAppHigh5xxRate
+      annotations:
+        description: More than 5 percent of app requests are returning HTTP 5xx responses.
+        summary: GitOps CI/CD demo app has high 5xx error ratio
+      expr: |
+        (
+          sum(rate(gitops_cicd_demo_http_requests_total{job="gitops-cicd-demo-app",namespace="apps",status=~"5.."}[5m]))
+          /
+          clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job="gitops-cicd-demo-app",namespace="apps"}[5m])), 0.001)
+        ) > 0.05
+      for: 5m
+      labels:
+        app: gitops-cicd-demo-app
+        severity: warning
+    - alert: GitOpsDemoAppHighP95Latency
+      annotations:
+        description: The p95 latency for one or more application routes is above 500ms.
+        summary: GitOps CI/CD demo app p95 latency is high
+      expr: |
+        histogram_quantile(
+          0.95,
+          sum by (le, route, method) (
+            rate(gitops_cicd_demo_http_request_duration_seconds_bucket{job="gitops-cicd-demo-app",namespace="apps",route!=""}[5m])
+          )
+        ) > 0.5
+      for: 5m
+      labels:
+        app: gitops-cicd-demo-app
+        severity: warning

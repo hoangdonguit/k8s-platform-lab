@@ -1,0 +1,333 @@
+apiVersion: v1
+data:
+  gitops-cicd-demo-app.json: |
+    {
+      "uid": "gitops-cicd-demo-app",
+      "title": "GitOps CI/CD Demo App",
+      "tags": [
+        "k8s-platform-lab",
+        "gitops-cicd-demo-app",
+        "prometheus"
+      ],
+      "timezone": "browser",
+      "schemaVersion": 39,
+      "version": 1,
+      "refresh": "30s",
+      "time": {
+        "from": "now-1h",
+        "to": "now"
+      },
+      "templating": {
+        "list": [
+          {
+            "name": "DS_PROMETHEUS",
+            "type": "datasource",
+            "query": "prometheus",
+            "current": {
+              "text": "Prometheus",
+              "value": "Prometheus"
+            }
+          }
+        ]
+      },
+      "panels": [
+        {
+          "id": 1,
+          "type": "stat",
+          "title": "App Version",
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 0,
+            "y": 0
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "gitops_cicd_demo_app_info{job=\"gitops-cicd-demo-app\",namespace=\"apps\"}",
+              "legendFormat": "{{version}}",
+              "refId": "A"
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "orientation": "auto",
+            "textMode": "name",
+            "colorMode": "value",
+            "graphMode": "area"
+          }
+        },
+        {
+          "id": 2,
+          "type": "stat",
+          "title": "Scrape Target Up",
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 6,
+            "y": 0
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "up{job=\"gitops-cicd-demo-app\",namespace=\"apps\"}",
+              "legendFormat": "{{pod}}",
+              "refId": "A"
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "orientation": "auto",
+            "textMode": "auto",
+            "colorMode": "value",
+            "graphMode": "area"
+          }
+        },
+        {
+          "id": 3,
+          "type": "stat",
+          "title": "Ready Replicas",
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 12,
+            "y": 0
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "kube_deployment_status_replicas_available{namespace=\"apps\",deployment=\"gitops-cicd-demo-app\"}",
+              "legendFormat": "available",
+              "refId": "A"
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "orientation": "auto",
+            "textMode": "auto",
+            "colorMode": "value",
+            "graphMode": "area"
+          }
+        },
+        {
+          "id": 4,
+          "type": "stat",
+          "title": "Current App Alerts",
+          "gridPos": {
+            "h": 5,
+            "w": 6,
+            "x": 18,
+            "y": 0
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "sum(ALERTS{app=\"gitops-cicd-demo-app\",alertstate=\"firing\"}) or vector(0)",
+              "legendFormat": "firing",
+              "refId": "A"
+            }
+          ],
+          "options": {
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "orientation": "auto",
+            "textMode": "auto",
+            "colorMode": "value",
+            "graphMode": "area"
+          }
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "Request Rate by Route",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 5
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "sum by (route, method, status) (rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\",route!=\"\"}[5m]))",
+              "legendFormat": "{{method}} {{route}} {{status}}",
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "reqps"
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "P95 Latency by Route",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 5
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "histogram_quantile(0.95, sum by (le, route, method) (rate(gitops_cicd_demo_http_request_duration_seconds_bucket{job=\"gitops-cicd-demo-app\",namespace=\"apps\",route!=\"\"}[5m])))",
+              "legendFormat": "{{method}} {{route}}",
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s"
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "5xx Error Ratio",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 13
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "((sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\",status=~\"5..\"}[5m])) or vector(0)) / clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\"}[5m])), 0.001))",
+              "legendFormat": "5xx ratio",
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "percentunit",
+              "min": 0,
+              "max": 1,
+              "decimals": 4
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "Container CPU Usage",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 13
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "rate(container_cpu_usage_seconds_total{namespace=\"apps\",pod=~\"gitops-cicd-demo-app.*\",container=\"app\"}[5m])",
+              "legendFormat": "{{pod}}",
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "cores"
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 9,
+          "type": "timeseries",
+          "title": "Container Memory Working Set",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 21
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "container_memory_working_set_bytes{namespace=\"apps\",pod=~\"gitops-cicd-demo-app.*\",container=\"app\"}",
+              "legendFormat": "{{pod}}",
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes"
+            },
+            "overrides": []
+          }
+        },
+        {
+          "id": 10,
+          "type": "timeseries",
+          "title": "Firing App Alerts",
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 21
+          },
+          "datasource": "${DS_PROMETHEUS}",
+          "targets": [
+            {
+              "expr": "sum(ALERTS{app=\"gitops-cicd-demo-app\",alertstate=\"firing\"}) or vector(0)",
+              "legendFormat": "firing alerts",
+              "refId": "A"
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "min": 0,
+              "max": 1,
+              "decimals": 0
+            }
+          }
+        }
+      ]
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: p2-grafana-app-dashboards:/ConfigMap:monitoring/gitops-cicd-demo-app-dashboard
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"gitops-cicd-demo-app.json":"{\n  \"uid\": \"gitops-cicd-demo-app\",\n  \"title\": \"GitOps CI/CD Demo App\",\n  \"tags\": [\n    \"k8s-platform-lab\",\n    \"gitops-cicd-demo-app\",\n    \"prometheus\"\n  ],\n  \"timezone\": \"browser\",\n  \"schemaVersion\": 39,\n  \"version\": 1,\n  \"refresh\": \"30s\",\n  \"time\": {\n    \"from\": \"now-1h\",\n    \"to\": \"now\"\n  },\n  \"templating\": {\n    \"list\": [\n      {\n        \"name\": \"DS_PROMETHEUS\",\n        \"type\": \"datasource\",\n        \"query\": \"prometheus\",\n        \"current\": {\n          \"text\": \"Prometheus\",\n          \"value\": \"Prometheus\"\n        }\n      }\n    ]\n  },\n  \"panels\": [\n    {\n      \"id\": 1,\n      \"type\": \"stat\",\n      \"title\": \"App Version\",\n      \"gridPos\": {\n        \"h\": 5,\n        \"w\": 6,\n        \"x\": 0,\n        \"y\": 0\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"gitops_cicd_demo_app_info{job=\\\"gitops-cicd-demo-app\\\",namespace=\\\"apps\\\"}\",\n          \"legendFormat\": \"{{version}}\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"options\": {\n        \"reduceOptions\": {\n          \"calcs\": [\n            \"lastNotNull\"\n          ],\n          \"fields\": \"\",\n          \"values\": false\n        },\n        \"orientation\": \"auto\",\n        \"textMode\": \"name\",\n        \"colorMode\": \"value\",\n        \"graphMode\": \"area\"\n      }\n    },\n    {\n      \"id\": 2,\n      \"type\": \"stat\",\n      \"title\": \"Scrape Target Up\",\n      \"gridPos\": {\n        \"h\": 5,\n        \"w\": 6,\n        \"x\": 6,\n        \"y\": 0\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"up{job=\\\"gitops-cicd-demo-app\\\",namespace=\\\"apps\\\"}\",\n          \"legendFormat\": \"{{pod}}\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"options\": {\n        \"reduceOptions\": {\n          \"calcs\": [\n            \"lastNotNull\"\n          ],\n          \"fields\": \"\",\n          \"values\": false\n        },\n        \"orientation\": \"auto\",\n        \"textMode\": \"auto\",\n        \"colorMode\": \"value\",\n        \"graphMode\": \"area\"\n      }\n    },\n    {\n      \"id\": 3,\n      \"type\": \"stat\",\n      \"title\": \"Ready Replicas\",\n      \"gridPos\": {\n        \"h\": 5,\n        \"w\": 6,\n        \"x\": 12,\n        \"y\": 0\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"kube_deployment_status_replicas_available{namespace=\\\"apps\\\",deployment=\\\"gitops-cicd-demo-app\\\"}\",\n          \"legendFormat\": \"available\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"options\": {\n        \"reduceOptions\": {\n          \"calcs\": [\n            \"lastNotNull\"\n          ],\n          \"fields\": \"\",\n          \"values\": false\n        },\n        \"orientation\": \"auto\",\n        \"textMode\": \"auto\",\n        \"colorMode\": \"value\",\n        \"graphMode\": \"area\"\n      }\n    },\n    {\n      \"id\": 4,\n      \"type\": \"stat\",\n      \"title\": \"Current App Alerts\",\n      \"gridPos\": {\n        \"h\": 5,\n        \"w\": 6,\n        \"x\": 18,\n        \"y\": 0\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"sum(ALERTS{app=\\\"gitops-cicd-demo-app\\\",alertstate=\\\"firing\\\"}) or vector(0)\",\n          \"legendFormat\": \"firing\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"options\": {\n        \"reduceOptions\": {\n          \"calcs\": [\n            \"lastNotNull\"\n          ],\n          \"fields\": \"\",\n          \"values\": false\n        },\n        \"orientation\": \"auto\",\n        \"textMode\": \"auto\",\n        \"colorMode\": \"value\",\n        \"graphMode\": \"area\"\n      }\n    },\n    {\n      \"id\": 5,\n      \"type\": \"timeseries\",\n      \"title\": \"Request Rate by Route\",\n      \"gridPos\": {\n        \"h\": 8,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 5\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"sum by (route, method, status) (rate(gitops_cicd_demo_http_requests_total{job=\\\"gitops-cicd-demo-app\\\",namespace=\\\"apps\\\",route!=\\\"\\\"}[5m]))\",\n          \"legendFormat\": \"{{method}} {{route}} {{status}}\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\": \"reqps\"\n        },\n        \"overrides\": []\n      }\n    },\n    {\n      \"id\": 6,\n      \"type\": \"timeseries\",\n      \"title\": \"P95 Latency by Route\",\n      \"gridPos\": {\n        \"h\": 8,\n        \"w\": 12,\n        \"x\": 12,\n        \"y\": 5\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"histogram_quantile(0.95, sum by (le, route, method) (rate(gitops_cicd_demo_http_request_duration_seconds_bucket{job=\\\"gitops-cicd-demo-app\\\",namespace=\\\"apps\\\",route!=\\\"\\\"}[5m])))\",\n          \"legendFormat\": \"{{method}} {{route}}\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\": \"s\"\n        },\n        \"overrides\": []\n      }\n    },\n    {\n      \"id\": 7,\n      \"type\": \"timeseries\",\n      \"title\": \"5xx Error Ratio\",\n      \"gridPos\": {\n        \"h\": 8,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 13\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"((sum(rate(gitops_cicd_demo_http_requests_total{job=\\\"gitops-cicd-demo-app\\\",namespace=\\\"apps\\\",status=~\\\"5..\\\"}[5m])) or vector(0)) / clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job=\\\"gitops-cicd-demo-app\\\",namespace=\\\"apps\\\"}[5m])), 0.001))\",\n          \"legendFormat\": \"5xx ratio\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\": \"percentunit\",\n          \"min\": 0,\n          \"max\": 1,\n          \"decimals\": 4\n        },\n        \"overrides\": []\n      }\n    },\n    {\n      \"id\": 8,\n      \"type\": \"timeseries\",\n      \"title\": \"Container CPU Usage\",\n      \"gridPos\": {\n        \"h\": 8,\n        \"w\": 12,\n        \"x\": 12,\n        \"y\": 13\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"rate(container_cpu_usage_seconds_total{namespace=\\\"apps\\\",pod=~\\\"gitops-cicd-demo-app.*\\\",container=\\\"app\\\"}[5m])\",\n          \"legendFormat\": \"{{pod}}\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\": \"cores\"\n        },\n        \"overrides\": []\n      }\n    },\n    {\n      \"id\": 9,\n      \"type\": \"timeseries\",\n      \"title\": \"Container Memory Working Set\",\n      \"gridPos\": {\n        \"h\": 8,\n        \"w\": 12,\n        \"x\": 0,\n        \"y\": 21\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"container_memory_working_set_bytes{namespace=\\\"apps\\\",pod=~\\\"gitops-cicd-demo-app.*\\\",container=\\\"app\\\"}\",\n          \"legendFormat\": \"{{pod}}\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\": \"bytes\"\n        },\n        \"overrides\": []\n      }\n    },\n    {\n      \"id\": 10,\n      \"type\": \"timeseries\",\n      \"title\": \"Firing App Alerts\",\n      \"gridPos\": {\n        \"h\": 8,\n        \"w\": 12,\n        \"x\": 12,\n        \"y\": 21\n      },\n      \"datasource\": \"${DS_PROMETHEUS}\",\n      \"targets\": [\n        {\n          \"expr\": \"sum(ALERTS{app=\\\"gitops-cicd-demo-app\\\",alertstate=\\\"firing\\\"}) or vector(0)\",\n          \"legendFormat\": \"firing alerts\",\n          \"refId\": \"A\"\n        }\n      ],\n      \"fieldConfig\": {\n        \"defaults\": {\n          \"unit\": \"short\",\n          \"min\": 0,\n          \"max\": 1,\n          \"decimals\": 0\n        }\n      }\n    }\n  ]\n}\n"},"kind":"ConfigMap","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"p2-grafana-app-dashboards:/ConfigMap:monitoring/gitops-cicd-demo-app-dashboard"},"labels":{"app.kubernetes.io/name":"gitops-cicd-demo-app","app.kubernetes.io/part-of":"k8s-platform-lab","grafana_dashboard":"1"},"name":"gitops-cicd-demo-app-dashboard","namespace":"monitoring"}}
+  creationTimestamp: "2026-07-18T08:37:31Z"
+  labels:
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    grafana_dashboard: "1"
+  name: gitops-cicd-demo-app-dashboard
+  namespace: monitoring
+  resourceVersion: "3168040"
+  uid: a1c3ef55-c861-4a28-a616-587fa916f8f0

@@ -1,0 +1,11 @@
+NAME                                      READY   STATUS    RESTARTS       AGE   IP             NODE        NOMINATED NODE   READINESS GATES
+pod/metallb-controller-75f6b7f996-mr7pm   1/1     Running   9 (6h9m ago)   14d   10.42.2.159    p2-node-3   <none>           <none>
+pod/metallb-speaker-kb4k7                 1/1     Running   9 (6h9m ago)   14d   192.168.0.13   p2-node-3   <none>           <none>
+pod/metallb-speaker-kfdm7                 1/1     Running   8 (6h9m ago)   14d   192.168.0.11   p2-node-1   <none>           <none>
+pod/metallb-speaker-wbdwn                 1/1     Running   9 (6h9m ago)   14d   192.168.0.12   p2-node-2   <none>           <none>
+
+NAME                                       AUTO ASSIGN   AVOID BUGGY IPS   ADDRESSES
+ipaddresspool.metallb.io/p2-private-pool   true          false             ["192.168.0.240-192.168.0.242"]
+
+NAME                                             IPADDRESSPOOLS        IPADDRESSPOOL SELECTORS   INTERFACES   NODE SELECTORS
+l2advertisement.metallb.io/p2-l2-advertisement   ["p2-private-pool"]                                          

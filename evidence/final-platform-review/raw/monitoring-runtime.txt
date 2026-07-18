@@ -1,0 +1,64 @@
+NAME                                                       READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS                                            IMAGES                                                                                                   SELECTOR
+deployment.apps/kube-prometheus-stack-grafana              1/1     1            1           6d16h   grafana-sc-dashboard,grafana-sc-datasources,grafana   quay.io/kiwigrid/k8s-sidecar:2.8.1,quay.io/kiwigrid/k8s-sidecar:2.8.1,docker.io/grafana/grafana:13.1.0   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=grafana
+deployment.apps/kube-prometheus-stack-kube-state-metrics   1/1     1            1           6d16h   kube-state-metrics                                    registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.19.1                                            app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=kube-state-metrics
+deployment.apps/kube-prometheus-stack-operator             1/1     1            1           6d16h   kube-prometheus-stack                                 quay.io/prometheus-operator/prometheus-operator:v0.92.1                                                  app=kube-prometheus-stack-operator,release=kube-prometheus-stack
+
+NAME                                                               READY   AGE     CONTAINERS                     IMAGES
+statefulset.apps/alertmanager-kube-prometheus-stack-alertmanager   1/1     6d16h   alertmanager,config-reloader   quay.io/prometheus/alertmanager:v0.33.1,quay.io/prometheus-operator/prometheus-config-reloader:v0.92.1
+statefulset.apps/prometheus-kube-prometheus-stack-prometheus       1/1     6d16h   prometheus,config-reloader     quay.io/prometheus/prometheus:v3.13.1-distroless,quay.io/prometheus-operator/prometheus-config-reloader:v0.92.1
+
+NAME                                                            DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE     CONTAINERS      IMAGES                                                SELECTOR
+daemonset.apps/kube-prometheus-stack-prometheus-node-exporter   3         3         3       3            3           kubernetes.io/os=linux   6d16h   node-exporter   quay.io/prometheus/node-exporter:v1.12.0-distroless   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=prometheus-node-exporter
+
+NAME                                                     TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE     SELECTOR
+service/alertmanager-operated                            ClusterIP   None            <none>        9093/TCP,9094/TCP,9094/UDP   6d16h   app.kubernetes.io/name=alertmanager
+service/kube-prometheus-stack-alertmanager               ClusterIP   10.43.248.31    <none>        9093/TCP,8080/TCP            6d16h   alertmanager=kube-prometheus-stack-alertmanager,app.kubernetes.io/name=alertmanager
+service/kube-prometheus-stack-grafana                    ClusterIP   10.43.108.153   <none>        80/TCP                       6d16h   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=grafana
+service/kube-prometheus-stack-kube-state-metrics         ClusterIP   10.43.231.112   <none>        8080/TCP                     6d16h   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=kube-state-metrics
+service/kube-prometheus-stack-operator                   ClusterIP   10.43.94.85     <none>        443/TCP                      6d16h   app=kube-prometheus-stack-operator,release=kube-prometheus-stack
+service/kube-prometheus-stack-prometheus                 ClusterIP   10.43.27.218    <none>        9090/TCP,8080/TCP            6d16h   app.kubernetes.io/name=prometheus,operator.prometheus.io/name=kube-prometheus-stack-prometheus
+service/kube-prometheus-stack-prometheus-node-exporter   ClusterIP   10.43.213.247   <none>        9100/TCP                     6d16h   app.kubernetes.io/instance=kube-prometheus-stack,app.kubernetes.io/name=prometheus-node-exporter
+service/prometheus-operated                              ClusterIP   None            <none>        9090/TCP                     6d16h   app.kubernetes.io/name=prometheus
+
+NAME                                                           READY   STATUS    RESTARTS        AGE     IP             NODE        NOMINATED NODE   READINESS GATES
+pod/alertmanager-kube-prometheus-stack-alertmanager-0          2/2     Running   12 (6h2m ago)   6d16h   10.42.2.165    p2-node-3   <none>           <none>
+pod/kube-prometheus-stack-grafana-7948f67bc7-bwzk5             3/3     Running   0               35m     10.42.1.131    p2-node-2   <none>           <none>
+pod/kube-prometheus-stack-kube-state-metrics-dcd9c7c48-jhdb7   1/1     Running   6 (6h2m ago)    6d16h   10.42.2.242    p2-node-3   <none>           <none>
+pod/kube-prometheus-stack-operator-5dd9ff9c76-crvww            1/1     Running   6 (6h2m ago)    6d16h   10.42.1.147    p2-node-2   <none>           <none>
+pod/kube-prometheus-stack-prometheus-node-exporter-6mj5n       1/1     Running   6 (6h2m ago)    6d16h   192.168.0.11   p2-node-1   <none>           <none>
+pod/kube-prometheus-stack-prometheus-node-exporter-8pfsx       1/1     Running   6 (6h2m ago)    6d16h   192.168.0.12   p2-node-2   <none>           <none>
+pod/kube-prometheus-stack-prometheus-node-exporter-zqspd       1/1     Running   6 (6h2m ago)    6d16h   192.168.0.13   p2-node-3   <none>           <none>
+pod/prometheus-kube-prometheus-stack-prometheus-0              2/2     Running   12 (6h2m ago)   6d16h   10.42.0.178    p2-node-1   <none>           <none>
+
+NAME                                                                DATA   AGE
+configmap/gitops-cicd-demo-app-dashboard                            1      49m
+configmap/kube-prometheus-stack-alertmanager-overview               1      6d16h
+configmap/kube-prometheus-stack-apiserver                           1      6d16h
+configmap/kube-prometheus-stack-cluster-total                       1      6d16h
+configmap/kube-prometheus-stack-grafana                             1      6d16h
+configmap/kube-prometheus-stack-grafana-config-dashboards           1      6d16h
+configmap/kube-prometheus-stack-grafana-datasource                  1      6d16h
+configmap/kube-prometheus-stack-grafana-overview                    1      6d16h
+configmap/kube-prometheus-stack-k8s-coredns                         1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-cluster               1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-multicluster          1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-namespace             1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-node                  1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-nodes-overview        1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-pod                   1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-workload              1      6d16h
+configmap/kube-prometheus-stack-k8s-resources-workloads-namespace   1      6d16h
+configmap/kube-prometheus-stack-kubelet                             1      6d16h
+configmap/kube-prometheus-stack-namespace-by-pod                    1      6d16h
+configmap/kube-prometheus-stack-namespace-by-workload               1      6d16h
+configmap/kube-prometheus-stack-node-cluster-rsrc-use               1      6d16h
+configmap/kube-prometheus-stack-node-rsrc-use                       1      6d16h
+configmap/kube-prometheus-stack-nodes                               1      6d16h
+configmap/kube-prometheus-stack-nodes-aix                           1      6d16h
+configmap/kube-prometheus-stack-nodes-darwin                        1      6d16h
+configmap/kube-prometheus-stack-persistentvolumesusage              1      6d16h
+configmap/kube-prometheus-stack-pod-total                           1      6d16h
+configmap/kube-prometheus-stack-prometheus                          1      6d16h
+configmap/kube-prometheus-stack-workload-total                      1      6d16h
+configmap/kube-root-ca.crt                                          1      15d
+configmap/prometheus-kube-prometheus-stack-prometheus-rulefiles-0   31     6d16h

@@ -1,0 +1,20 @@
+NAME                                   READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                                          SELECTOR
+deployment.apps/gitops-cicd-demo-app   1/1     1            1           3d14h   app          hoangdonguit/gitops-cicd-demo-app:sha-b10ebf1   app=gitops-cicd-demo-app,environment=p2-platform
+
+NAME                           TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE     SELECTOR
+service/gitops-cicd-demo-app   ClusterIP   10.43.151.148   <none>        80/TCP    3d14h   app=gitops-cicd-demo-app,environment=p2-platform
+
+NAME                                             CLASS   HOSTS           ADDRESS         PORTS   AGE
+ingress.networking.k8s.io/gitops-cicd-demo-app   nginx   demo.p2.local   192.168.0.241   80      3d14h
+
+NAME                                        READY   STATUS    RESTARTS       AGE     IP           NODE        NOMINATED NODE   READINESS GATES
+pod/gitops-cicd-demo-app-868d67b77d-dj9tx   1/1     Running   2 (6h2m ago)   2d15h   10.42.2.85   p2-node-3   <none>           <none>
+
+NAME                                                        ADDRESSTYPE   PORTS   ENDPOINTS    AGE
+endpointslice.discovery.k8s.io/gitops-cicd-demo-app-c2sh4   IPv4          8080    10.42.2.85   3d14h
+
+NAME                                                        AGE
+servicemonitor.monitoring.coreos.com/gitops-cicd-demo-app   2d19h
+
+NAME                                                               AGE
+prometheusrule.monitoring.coreos.com/gitops-cicd-demo-app-alerts   44h

@@ -1,0 +1,30 @@
+===== Timestamp =====
+2026-07-18T16:27:03+07:00
+
+===== Project 2 git state =====
+?? evidence/final-platform-review/
+e1c3e5c docs: document grafana app dashboard
+2a28611 docs: record grafana app dashboard evidence
+c20ef81 fix: tune app dashboard healthy state scales
+a42fb27 fix: show zero values in app dashboard healthy state
+54f6cf4 gitops: add grafana app dashboard
+0e8a470 docs: update phase 3 fire drill summary
+a12e43f docs: record alert fire drill evidence
+065efcc docs: add phase 3 app alerting summary
+b916aef docs: add app alerting guide
+33ac7ae docs: record app alerting baseline evidence
+118840d docs: add phase 2 application observability summary
+36ea822 docs: update evidence index for app observability
+801b574 docs: record app metrics route label evidence
+8b7e511 docs: record custom app metrics evidence
+3278920 docs: record workload observability baseline evidence
+25bc24a docs: add platform operations runbooks
+017a7d9 docs: refresh platform lab README
+20925bd docs: document portfolio app onboarding
+890fd47 docs: record portfolio app onboarding evidence
+86b6c17 gitops: onboard portfolio ci cd demo app
+04c9aaf docs: record platform mvp final state
+28db5e8 docs: record kyverno policy baseline evidence
+0bf5a52 fix: normalize kyverno gitops manifests
+fc50257 fix: relax kyverno argocd diff rules
+fbfbc69 fix: ignore kyverno controller managed drift

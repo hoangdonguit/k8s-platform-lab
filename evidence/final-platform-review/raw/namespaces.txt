@@ -1,0 +1,15 @@
+NAME              STATUS   AGE
+apps              Active   15d
+argocd            Active   15d
+cert-manager      Active   15d
+cilium-secrets    Active   15d
+default           Active   15d
+ingress-nginx     Active   15d
+kube-node-lease   Active   15d
+kube-public       Active   15d
+kube-system       Active   15d
+kyverno           Active   15d
+longhorn-system   Active   15d
+metallb-system    Active   15d
+monitoring        Active   15d
+platform-system   Active   15d

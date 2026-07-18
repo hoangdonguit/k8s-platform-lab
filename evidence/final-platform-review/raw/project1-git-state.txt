@@ -1,0 +1,26 @@
+===== Project 1 git state =====
+1397817 test: remove temporary app alert fire drill
+61770d3 test: add temporary app alert fire drill
+61a9713 feat: add app prometheus alert rules
+c03c618 chore(gitops): update image tag to sha-b10ebf1 [skip ci]
+b10ebf1 refactor: use route label for app metrics
+6001e95 chore(gitops): update image tag to sha-2218381 [skip ci]
+2218381 fix: use prometheus content type header
+cfbadc7 chore(gitops): update image tag to sha-bfe89c4 [skip ci]
+bfe89c4 feat: expose prometheus metrics
+792bf3a gitops: add p2 platform overlay
+9aa6a0e docs: compact README architecture diagram
+a1a6903 docs: polish README diagram and screenshot layout
+3e45fbd docs: fix README diagram and screenshot rendering
+fb01c40 docs: add architecture diagram and verification screenshots
+facbe78 docs: add final project summary
+43235c0 docs: record security hardening proof and final runtime state
+3d866b0 chore(gitops): update image tag to sha-c73671f [skip ci]
+c73671f security: harden container and Kubernetes workload
+8416f3c docs: fix CI quality gates proof details
+3088a22 docs: record CI quality gates proof
+
+===== Current app image tag =====
+11:    newTag: sha-b10ebf1
+42:            - name: APP_VERSION
+43-              value: sha-b10ebf1

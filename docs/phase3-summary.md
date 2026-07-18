@@ -188,6 +188,35 @@ Evidence:
 
 - `evidence/phase3-alert-fire-drill`
 
+
+## Grafana dashboard result
+
+A Grafana dashboard was added for the onboarded application.
+
+Dashboard:
+
+- Title: `GitOps CI/CD Demo App`
+- UID: `gitops-cicd-demo-app`
+- Source path: `platform/grafana-app-dashboards`
+- ConfigMap: `monitoring/gitops-cicd-demo-app-dashboard`
+- Delivery method: GitOps + Grafana dashboard sidecar
+
+The dashboard visualizes:
+
+- app version
+- scrape target health
+- ready replicas
+- current firing app alerts
+- request rate by route
+- p95 latency by route
+- 5xx error ratio
+- container CPU usage
+- container memory working set
+
+Evidence:
+
+- `evidence/phase3-grafana-app-dashboard`
+
 ## Recommended next steps
 
 Recommended next phase options:

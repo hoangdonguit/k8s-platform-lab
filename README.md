@@ -147,6 +147,7 @@ Major evidence checkpoints:
 - `evidence/phase2-custom-app-metrics-route-label`
 - `evidence/phase3-app-alerting-baseline`
 - `evidence/phase3-alert-fire-drill`
+- `evidence/phase3-grafana-app-dashboard`
 
 ## Useful commands
 

@@ -10,3 +10,4 @@ resources:
   - longhorn.yaml
   - kyverno.yaml
   - portfolio-gitops-cicd-demo.yaml
+  - grafana-app-dashboards.yaml

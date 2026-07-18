@@ -182,7 +182,7 @@ data:
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
-              "expr": "(sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\",status=~\"5..\"}[5m])) / clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\"}[5m])), 0.001))",
+              "expr": "((sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\",status=~\"5..\"}[5m])) or vector(0)) / clamp_min(sum(rate(gitops_cicd_demo_http_requests_total{job=\"gitops-cicd-demo-app\",namespace=\"apps\"}[5m])), 0.001))",
               "legendFormat": "5xx ratio",
               "refId": "A"
             }
@@ -237,13 +237,13 @@ data:
         {
           "id": 10,
           "type": "timeseries",
-          "title": "Alert Rule State",
+          "title": "Firing App Alerts",
           "gridPos": {"h": 8, "w": 12, "x": 12, "y": 21},
           "datasource": "${DS_PROMETHEUS}",
           "targets": [
             {
-              "expr": "ALERTS{app=\"gitops-cicd-demo-app\"}",
-              "legendFormat": "{{alertname}} {{alertstate}}",
+              "expr": "sum(ALERTS{app=\"gitops-cicd-demo-app\",alertstate=\"firing\"}) or vector(0)",
+              "legendFormat": "firing alerts",
               "refId": "A"
             }
           ]

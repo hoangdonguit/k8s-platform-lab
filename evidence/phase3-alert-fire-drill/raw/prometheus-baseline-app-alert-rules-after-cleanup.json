@@ -1,0 +1,37 @@
+{
+  "name": "gitops-cicd-demo-app.rules",
+  "rules": [
+    {
+      "name": "GitOpsDemoAppTargetDown",
+      "state": "inactive",
+      "labels": {
+        "app": "gitops-cicd-demo-app",
+        "severity": "critical"
+      }
+    },
+    {
+      "name": "GitOpsDemoAppNoReadyPods",
+      "state": "inactive",
+      "labels": {
+        "app": "gitops-cicd-demo-app",
+        "severity": "critical"
+      }
+    },
+    {
+      "name": "GitOpsDemoAppHigh5xxRate",
+      "state": "inactive",
+      "labels": {
+        "app": "gitops-cicd-demo-app",
+        "severity": "warning"
+      }
+    },
+    {
+      "name": "GitOpsDemoAppHighP95Latency",
+      "state": "inactive",
+      "labels": {
+        "app": "gitops-cicd-demo-app",
+        "severity": "warning"
+      }
+    }
+  ]
+}

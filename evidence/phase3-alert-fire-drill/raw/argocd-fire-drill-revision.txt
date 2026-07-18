@@ -1,0 +1,2 @@
+NAME                            SYNC     HEALTH    REVISION
+p2-portfolio-gitops-cicd-demo   Synced   Healthy   61770d34c2f760ff54d4c97bd418485d5950e689

@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: p2-portfolio-gitops-cicd-demo:monitoring.coreos.com/PrometheusRule:apps/gitops-cicd-demo-app-fire-drill
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"monitoring.coreos.com/v1","kind":"PrometheusRule","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"p2-portfolio-gitops-cicd-demo:monitoring.coreos.com/PrometheusRule:apps/gitops-cicd-demo-app-fire-drill"},"labels":{"app.kubernetes.io/name":"gitops-cicd-demo-app","app.kubernetes.io/part-of":"k8s-platform-lab","environment":"p2-platform"},"name":"gitops-cicd-demo-app-fire-drill","namespace":"apps"},"spec":{"groups":[{"name":"gitops-cicd-demo-app.fire-drill","rules":[{"alert":"GitOpsDemoAppFireDrill","annotations":{"description":"Temporary alert used to verify Prometheus alert evaluation and firing state without breaking the application.","summary":"GitOps CI/CD demo app alert fire-drill"},"expr":"vector(1)","for":"30s","labels":{"app":"gitops-cicd-demo-app","drill":"alert-pipeline","severity":"info"}}]}]}}
+    prometheus-operator-validated: "true"
+  creationTimestamp: "2026-07-18T03:26:46Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/name: gitops-cicd-demo-app
+    app.kubernetes.io/part-of: k8s-platform-lab
+    environment: p2-platform
+  name: gitops-cicd-demo-app-fire-drill
+  namespace: apps
+  resourceVersion: "3013649"
+  uid: 62e54f95-6a62-4326-b6ad-8e39b1fc5c48
+spec:
+  groups:
+  - name: gitops-cicd-demo-app.fire-drill
+    rules:
+    - alert: GitOpsDemoAppFireDrill
+      annotations:
+        description: Temporary alert used to verify Prometheus alert evaluation and
+          firing state without breaking the application.
+        summary: GitOps CI/CD demo app alert fire-drill
+      expr: vector(1)
+      for: 30s
+      labels:
+        app: gitops-cicd-demo-app
+        drill: alert-pipeline
+        severity: info

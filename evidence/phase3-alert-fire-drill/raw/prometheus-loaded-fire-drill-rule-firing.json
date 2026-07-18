@@ -1,0 +1,20 @@
+{
+  "name": "gitops-cicd-demo-app.fire-drill",
+  "file": "/etc/prometheus/rules/prometheus-kube-prometheus-stack-prometheus-rulefiles-0/apps-gitops-cicd-demo-app-fire-drill-62e54f95-6a62-4326-b6ad-8e39b1fc5c48.yaml",
+  "rules": [
+    {
+      "name": "GitOpsDemoAppFireDrill",
+      "state": "firing",
+      "query": "vector(1)",
+      "labels": {
+        "app": "gitops-cicd-demo-app",
+        "drill": "alert-pipeline",
+        "severity": "info"
+      },
+      "annotations": {
+        "description": "Temporary alert used to verify Prometheus alert evaluation and firing state without breaking the application.",
+        "summary": "GitOps CI/CD demo app alert fire-drill"
+      }
+    }
+  ]
+}

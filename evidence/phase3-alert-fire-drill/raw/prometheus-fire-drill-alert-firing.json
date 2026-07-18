@@ -1,0 +1,16 @@
+[
+  {
+    "state": "firing",
+    "activeAt": "2026-07-18T03:27:02.389298148Z",
+    "labels": {
+      "alertname": "GitOpsDemoAppFireDrill",
+      "app": "gitops-cicd-demo-app",
+      "drill": "alert-pipeline",
+      "severity": "info"
+    },
+    "annotations": {
+      "description": "Temporary alert used to verify Prometheus alert evaluation and firing state without breaking the application.",
+      "summary": "GitOps CI/CD demo app alert fire-drill"
+    }
+  }
+]

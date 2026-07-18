@@ -1,0 +1,3 @@
+NAME                              AGE
+gitops-cicd-demo-app-alerts       42h
+gitops-cicd-demo-app-fire-drill   3h53m

@@ -146,6 +146,8 @@ Detailed CV summary:
 
 Major evidence checkpoints:
 
+- `evidence/final-platform-review`
+
 - `evidence/phase1-post-reset`
 - `evidence/phase1-k3s-cilium-bootstrap`
 - `evidence/phase1-argocd-app-of-apps`
